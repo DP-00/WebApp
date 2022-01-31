@@ -1,3 +1,3 @@
 # WebApp
 
-Hello, it is me
+Szymon is connected
