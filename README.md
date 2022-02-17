@@ -1,3 +1,1 @@
 # WebApp
-
-Szymon is connected
