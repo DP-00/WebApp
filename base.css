@@ -34,7 +34,7 @@ body {
 header {
     background: var(--blue-dark);
     color: var(--grey3);
-    padding: 1.4rem;
+    padding: 1.6rem;
     border-radius: 0;
 }
 
@@ -53,27 +53,24 @@ a:hover {
 
 section {
     border-radius: 0;
-    padding: 1.4rem;
-}
-
-section:nth-child(odd) {
-    background: var(--blue1);
-    color: var(--grey3);
-}
-
-section:nth-child(even) {
-    background: var(--blue2);
-    color: var(--grey3);
+    padding: 3.2rem;
 }
 
 h1 {
     font-size: 5rem;
+    padding: 1.6rem;
 }
 
 h2 {
     font-size: 4rem;
+    padding: 1.6rem;
+}
+
+p {
+    padding: 1.6rem;
 }
 
 img {
     display: inline-block;
+    padding: 1.6rem;
 }
