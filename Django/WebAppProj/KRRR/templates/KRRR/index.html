@@ -1,0 +1,317 @@
+<!--
+TODO
+
+For content that appears on hover and focus – it should be dismissible with Esc key
+aria labels
+vlidte n koniec: https://validator.w3.org/
+
+DP
+Ogolne
+  kolory
+  czcionka
+  guziki - brak powiekszania
+Navigation bar
+Hero - dodac gradient
+
+Modals
+  x w oknie
+  sformatowac wyrownanie do bokow
+  biale pole na inny kolor
+
+wyrownywanie sekcji
+Cards
+  czy da sie mie rozne zdj w css?
+  guziki wyrownac
+  cene wpisac
+Wybrac zdjecia i przygotowac kilka wersji (hero, about, products)
+
+Dodac rsponsywnosc
+Sprawdzic lighthouse i html validator
+
+
+
+Dodać mape z miejscami
+
+Dodać ruchomy tekst do hero
+Zmienic static dane (cena i info o produktach) na pobierane z bazy
+
+------ Backend ------
+Stworzyc projekt w Django
+Dodac model na podstawie E/R
+Stworzenie odpowiednich URL
+
+MS
+Gallery
+Future in
+Customers
+Footer
+Skopiowac karty do klienta potym jak DP je skonczy
+Stworzyc koszyk
+logo svg
+
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+      <title>KRRR</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> 
+    <style>  
+      @import url(style.css);
+      @import url(base.css);
+      
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+      <nav>        
+        <ul>
+          <li><img src="images/world.svg" alt="Keep roling roling roling"></li>
+          <li><a href="#about-us">About us</a></li>
+          <li><a href="#our-products">Products</a></li>
+          <li><a href="#places-to-explore">Trips</a></li>
+          <li><a href="#featured-in">Opinions</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button onclick="document.getElementById('login').style.display='block'">Login</button></li>
+        </ul>
+      </nav>   
+
+      <!-- Login window-->
+      <div id="login" class="modal">
+        
+        
+
+        <form class="modal-content animate" action="file.py">
+
+          <div class="container"></div>
+            <button onclick="document.getElementById('login').style.display='none'" class="close" title="Close window">&times;</button>
+            <label><strong>Username</strong>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            </label>
+            <br>
+
+            <label><strong>Password</strong>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            </label>
+            <br>
+
+            <button type="submit">Log in</button>
+            
+            <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            
+            <br>
+
+            <span>Forgot password?</span>
+            <span>Create account</span>
+          </div>
+
+        </form>
+      </div> 
+    </header>
+
+    <main>
+      <section id="hero">
+        <div class="color-overlay"></div>
+        <h1>Bicycle rentals for modern folks</h1>
+        <p>Choose {changing word} lifestyle!</p>
+        <button onclick="location.href='#our-products'" class="cta">Call to action</button>
+      </section>
+
+      <section id="about-us">
+        <h2>About us</h2>
+        <div class="section-container">
+          <p><img src="images/test.jpg" alt="?"></p>
+          <p class="textSection">Life is too short to not add kick out on pedals. Our service 
+          makes it fast and easy to rent a bike in seconds and leave 
+          it at any place convenient to you. We clean up after you - 
+          our service-guys pick up all the bikes within 2 hours 
+          (median pickup time: 37 minutes).</p>
+        </div>
+        
+      </section>
+
+      <section id="our-products">
+        <h2>Our Products</h2>
+        <p class="textSection">We have 120 bikes available in Ålesund. New bikes 
+          upgraded every month according to latest trends. 20 brand 
+          new electric bikes waiting for you! We are true to the 
+          BYOWT concept: Bring Your Own Winter Tires! Nothing 
+          brings a warm home feeling better than BYOWT!</p>
+
+
+
+        
+        <div class="card-container">
+
+          <div class="card">
+            <div class="card-front">
+              <div class="card-image">
+                <img src="images/test.jpg" alt="Bike to rent">
+              </div>
+              <div class="card-text">
+                <h3>Bike rental</h3>
+              </div>               
+            </div>
+            <div class="card-back">
+              <ul>
+                <li>Classy bike from 80s</li>
+                <li>Available in brown, green and yellow</li>
+                <li>Customizable seat height</li>
+                <li>Helmet included in price</li>
+                <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+                <li>Price: 1 NOK/min</li>
+              </ul>
+              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <div class="card-image">
+                <img src="images/test.jpg" alt="E-Bike to rent">
+              </div>
+              <div class="card-text">
+                <h3>E-Bike rental</h3>
+              </div>               
+            </div>
+            <div class="card-back">
+              <ul>
+                <li>Modern bike</li>
+                <li>Available in brown, green and yellow</li>
+                <li>Customizable seat height</li>
+                <li>Helmet included in price</li>
+                <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+                <li><div>1</div> <div>NOK<br>per min</div></li>
+              </ul>
+              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <div class="card-image">
+                
+              </div>
+              <div class="card-text">
+                <h3>Personalization option</h3>
+              </div>               
+            </div>
+            <div class="card-back">
+              <ul>
+                <li>Use our non-permanent colors to paint a sketch of your own style across the bike</li>
+                <li>16 different color tones available</li>
+                <li>Pick up at Moa bus station</li>
+                <li>Color holds on for 30 minutes when it is not raining</li>
+                <li>Price: 150 NOK</li>
+              </ul>
+              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <div class="card-image">
+                <img src="images/test.jpg" alt="Textile bag">
+              </div>
+              <div class="card-text">
+                <h3>Textile bag</h3>
+              </div>               
+            </div>
+            <div class="card-back">
+              <ul>
+                <li>Eco-cotton</li>
+                <li>Fair trade</li>
+                <li>Impress your friends</li>
+                <li>Buy today and get sunglasses for free</li>
+                <li>Pick up when renting a bike</li>
+                <li>Price: 250 NOK</li>
+              </ul>
+              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+            </div>
+          </div>
+
+          <div id="product-comments" class="modal">
+            <div class="modal-content animate">
+            <p>User: Comment</p>
+            <button onclick="document.getElementById('product-comments').style.display='none'" class="close" title="Close window">&times;</button>
+            </div>
+          </div>
+
+        </div> 
+
+
+
+      </section>
+
+      <section id="places-to-explore">
+        <h2>Places to explore</h2>
+        <div class="section-container">
+          <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
+          Well, there is! Check the map to see where you can go from our renting points.</p>
+          <p><img src="images/test.jpg" alt="Map of places to explore"></p>
+        </div>
+        
+      </section>
+
+      <section id="gallery">
+        <h2>Gallery</h2>
+        <p><img src="images/test.jpg" alt="picture 1" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 2" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 3" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 4" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 5" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 6" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 7" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 8" width="200" height="200">
+        <img src="images/test.jpg" alt="picture 9" width="200" height="200"></p>
+      </section>
+
+      <section id="featured-in">
+        <h2>Featured in...</h2>
+        <p>
+          <img src="images/test.jpg" alt="logo 1" width="40" height="40">
+          <img src="images/test.jpg" alt="logo 2" width="40" height="40">
+          <img src="images/test.jpg" alt="logo 3" width="40" height="40">
+        </p>
+      </section>
+
+      <section id="comments">
+        <h2>What our customers say about us:</h2>
+        <p>{a random comment from the base}</p>
+
+      </section>
+
+      <section id="reminder">
+        <h2>What are you waiting for?</h2>
+        <a href="#our-products">Choose your companion!</a>
+      </section>
+
+
+    </main>
+
+    <footer>
+      <ul>
+        <li><a href="#about-us">About us</a></li>
+        <li><a href="#our-products">Products</a></li>
+        <li><a href="#places-to-explore">Trips</a></li>
+        <li><a href="#featured-in">Opinions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.6675411038773!2d6.1595391501548455!3d62.47505369465827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4616db5238b7a445%3A0xaf5df0231694efbe!2sFjellstua%20utsiktspunkt!5e0!3m2!1spl!2sno!4v1644447888656!5m2!1spl!2sno"
+       width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </footer>
+
+  </body>
+</html>
