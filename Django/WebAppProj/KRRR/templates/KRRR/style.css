@@ -2,16 +2,15 @@ section {
   border-radius: 0;
   padding: 6.4rem 12.8rem;
   text-align: justify;
+  color: var(--grey3);
 }
 
 section:nth-child(odd) {
   background: var(--blue1);
-  color: var(--grey3);
 }
 
 section:nth-child(even) {
   background: var(--blue2);
-  color: var(--grey3);
 }
 
 
