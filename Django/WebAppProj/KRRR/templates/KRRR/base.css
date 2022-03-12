@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
 
+
+/* GENERAL SETTINGS */
 :root {
     --grey1: #151719;
     --grey2: #35393d;
@@ -29,6 +31,27 @@ html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
 
+}
+
+
+/* NAVIGATION BAR */
+nav button{
+
+    background-color: var(--blue2);
+
+}
+
+nav {
+    text-align: right;
+}
+
+nav img{
+    width:10rem;
+    height:10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
 }
 
 body {

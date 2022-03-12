@@ -13,33 +13,11 @@ section:nth-child(even) {
   background: var(--blue2);
 }
 
-
-nav button{
-
-  background-color: var(--blue2);
-
-}
-
-nav {
-  text-align: right;
-}
-
-nav img{
-  width:10rem;
-  height:10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 1rem;
-}
-
 .modal button{
 
   background-color: var(--blue2);
 
 }
-
-
 
 /* HERO */  
   
