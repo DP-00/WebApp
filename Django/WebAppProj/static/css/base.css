@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+
+
+/* GENERAL SETTINGS */
+:root {
+    --grey1: #151719;
+    --grey2: #35393d;
+    --grey3: #bec5c5;
+
+    --blue2: #003232;
+    --blue1: #0E2424;
+    --blue-text: #c9ffff;
+    --blue-dark: #091818;
+
+    --blue3: #008585;
+    --blue4: #007474 ;
+}
+
+
+* {
+    /* global sizing reset */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 5rem;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+
+/* NAVIGATION BAR */
+nav button{
+    background-color: var(--blue2);
+}
+
+nav {
+    text-align: right;
+}
+
+nav img{
+    width:10rem;
+    height:10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+}
+
+body {
+    font-size: 3rem;
+}
+
+header {
+    background: var(--blue-dark);
+    color: var(--grey3);
+    padding: 1.6rem;
+    border-radius: 0;
+}
+
+a:link {
+    text-decoration: none;
+    color: var(--grey3);
+}
+
+a:visited {
+    color: var(--grey3);
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 6.4rem;
+    padding: 3.2rem;    
+}
+
+h2 {
+    font-size: 4.8rem;
+    padding: 1.6rem;
+    text-align: center;
+}
+
+p {
+    padding: 1.6rem;
+    line-height: 6.4rem;
+}
+
+
+
+button{
+    font-family: 'Montserrat', sans-serif;
+    color: var(--grey3);
+    background-color: var(--blue1);
+    padding: 1.4rem;
+}
+
+button:hover {
+    text-shadow:0px 0px 2px var(--grey3);
+    background-color: var(--blue-dark);
+}
+
