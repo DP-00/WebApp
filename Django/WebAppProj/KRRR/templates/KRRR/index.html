@@ -51,6 +51,8 @@ logo svg
 
 -->
 
+{% load static %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -59,12 +61,9 @@ logo svg
     
     <link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet"> 
-    <style>  
-      @import url(style.css);
-      @import url(base.css);
-      
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   </head>
 
   <body>
