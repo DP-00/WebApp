@@ -1,5 +1,8 @@
 # Final project for courses Web Technologies & Application Development, spring 2022 NTNU
-### KRRR - Keep Roling Roling Roling
+
+## Project description
+The project covers both frontend and backend for a bicycle rental website. The company is called KRRR - Keep Roling Roling Roling.
+
 
 ## User groups
 1. Customer, can do the following:
