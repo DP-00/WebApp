@@ -1,3 +1,8 @@
+h2{
+  letter-spacing: 0.3em;
+}
+
+
 section {
   border-radius: 0;
   padding: 6.4rem 12.8rem;
@@ -17,53 +22,100 @@ section:nth-child(even) {
   background-color: var(--blue2);
 }
 
-/* HERO */  
-  
+/* HERO */
+
 #hero {
-  min-width: 100rem;
-  height: 40vw;
-  background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.8) 30%, rgba(0,50,50, 0.98)), url("images/test.jpg");
-  background-size: 100%;
+  overflow: hidden;
+  position: relative;
+  
+  width: 100%;
+  height: 50vw;
   min-height: 42rem;
   max-height: 60rem;
-  position: relative;
   padding: 0;
 }
 
-#hero h1 {
-  margin: 10% 10rem;
+.overlay{
+  width: 100%;
+  height: 100%;
+  border-radius:0;
+  background: linear-gradient(to bottom, rgba(53, 57, 61, 0.8) 30%, rgba(0,50,50, 0.98));
+  z-index: 2;
+}
+
+.inner {
   position: absolute;
+}
+
+#hero div img{
+  padding: 0;
+  border-radius:0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+} 
+  
+#hero h1 {
+  margin-left: 16.4rem;
+  margin-top: 12.8rem;
+  padding: 0;
+  position: absolute;
+  text-align: left;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 #hero p {
-  margin: 20% 10rem;
+  margin-left: 16.4rem;
+  margin-top: 32rem;
+  padding: 0;
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 #hero .cta {
   position: absolute;
+  margin-top: 44.8rem;
   top: 0;
   left: 0;
-  margin-left: 8rem;
-  margin-top: 28%;
+  margin-left: 16.4rem;
   font-size: 2.4rem;
   padding: 1.5rem 2rem;
+  z-index: 2;
 }  
 
 /*SECTION GRID*/
-.section-container{
+#about-us .section-container{
   display: grid;
   
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 60% 40%;
   grid-gap: 6.4rem;
   max-width: 166rem;
   min-width: 82rem;
-  align-items: center;
+  place-items: center;
 }
+
+#places-to-explore .section-container{
+  display: grid;
+  
+  grid-template-columns: 40% 60%;
+  grid-gap: 6.4rem;
+  max-width: 166rem;
+  min-width: 82rem;
+  place-items: center;
+}
+
+.section-container img {
+ 
+  width: 90%;
+  height: 90%;
+  border-radius:5rem;
+
+}
+
 
 /* MODAL */ 
   /* The Modal (background) */
@@ -141,11 +193,11 @@ section:nth-child(even) {
  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
  .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 40rem);
+  grid-template-columns: repeat(auto-fit, 34rem);
   grid-gap: 2rem;
   max-width: 166rem;
   min-width: 82rem;
-
+  padding: 5rem;
   }
   
   /* This container is needed to position the front and back side */
@@ -160,6 +212,7 @@ section:nth-child(even) {
     perspective: 1000px;  /*Remove this if you don't want the 3D effect */
     background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.3) 30%, rgba(0,50,50, 0.8)), url("images/test.jpg");  
   }
+  /*w html miec dwaobiekty jeden na zdj i jeden n grdient i mienic pth w html, djeci tryzmac na serverzez nie w bazie*/
     
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .card:hover{
@@ -173,17 +226,33 @@ section:nth-child(even) {
     background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.8), rgba(0,50,50, 0.98)), url("images/test.jpg");
   }
 */
-
-  .card h3{
-    margin-top: 40rem;
-    
+.card img{
+  padding: 0;
+  border-radius:0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  left: 0;
+  top: 0;
+} 
+  .card-text{
+    z-index: 2;
+    position: absolute;
+    justify-items: center;
+    text-align: center;
+    margin-left: 10rem;
+    margin-bottom: 5rem;
+    left: 4.2rem;
+    bottom: 4.2rem;
   }
+
+
+  
   .card-front {
     position: absolute;
     width: 100%;
     height: 100%; 
     overflow: hidden;  
-    
   }
   .card li{
     list-style-type: square;
@@ -221,6 +290,7 @@ section:nth-child(even) {
     transform: rotateY(180deg);
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    z-index: 2;
   }
 
   nav li {
@@ -229,3 +299,4 @@ section:nth-child(even) {
       margin: 16px;
 
   }
+

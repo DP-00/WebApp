@@ -13,19 +13,22 @@ Ogolne
 Navigation bar
 Hero - dodac gradient
 
+wyrownywanie sekcji all
+  cards
+Cards
+  zdj do html
+  guziki wyrownac
+  cene wpisac
+Wybrac zdjecia i przygotowac kilka wersji (hero, about, products)
+dodac responsywnosc
+  menu sie chowa
+  breakpointy
+    sekcje rozlamac
+    marginesy zminiejszyc
 Modals
   x w oknie
   sformatowac wyrownanie do bokow
   biale pole na inny kolor
-
-wyrownywanie sekcji
-Cards
-  czy da sie mie rozne zdj w css?
-  guziki wyrownac
-  cene wpisac
-Wybrac zdjecia i przygotowac kilka wersji (hero, about, products)
-
-Dodac rsponsywnosc
 Sprawdzic lighthouse i html validator
 
 
@@ -64,6 +67,15 @@ logo svg
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
+
   </head>
 
   <body>
@@ -117,21 +129,25 @@ logo svg
 
     <main>
       <section id="hero">
-        <div class="color-overlay"></div>
-        <h1>Bicycle rentals for modern folks</h1>
-        <p>Choose {changing word} lifestyle!</p>
+        <div class="bacg">
+          <div class="overlay inner"></div>
+          <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
+        </div>
+        <h1>Bicycle rentals for<br> modern folks</h1>
+        <p> Choose {changing word} lifestyle!</p>
         <button onclick="location.href='#our-products'" class="cta">Call to action</button>
       </section>
 
       <section id="about-us">
-        <h2>About us</h2>
         <div class="section-container">
-          <p><img src="{% static 'images/2.jpg' %}" alt="?"></p>
+          <img src="{% static 'images/about1.jpg' %}" alt="?">
+          <div><h2>About us</h2>
           <p class="textSection">Life is too short to not add kick out on pedals. Our service 
           makes it fast and easy to rent a bike in seconds and leave 
           it at any place convenient to you. We clean up after you - 
           our service-guys pick up all the bikes within 2 hours 
-          (median pickup time: 37 minutes).</p>
+          (median pickup time: 37 minutes).</p></div>
+         
         </div>
         
       </section>
@@ -143,19 +159,16 @@ logo svg
           new electric bikes waiting for you! We are true to the 
           BYOWT concept: Bring Your Own Winter Tires! Nothing 
           brings a warm home feeling better than BYOWT!</p>
-
-
-
-        
+  
         <div class="card-container">
-
           <div class="card">
             <div class="card-front">
               <div class="card-image">
-                <img src="{% static 'images/3.jpg' %}" alt="Bike to rent">
+                  <div class="overlay inner"></div>
+                  <img class="inner" src="{% static 'images/1.jpg' %}" alt="?">
               </div>
               <div class="card-text">
-                <h3>Bike rental</h3>
+                <h3 id="h3cardtext">Bike rental</h3>
               </div>               
             </div>
             <div class="card-back">
@@ -254,11 +267,32 @@ logo svg
       </section>
 
       <section id="places-to-explore">
-        <h2>Places to explore</h2>
+        
         <div class="section-container">
-          <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
+          <div>
+            <h2>Places to explore</h2> 
+            <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
           Well, there is! Check the map to see where you can go from our renting points.</p>
-          <p><img src="{% static 'images/6.jpg' %}" alt="Map of places to explore"></p>
+          </div>
+          <div id="map" class="map"></div>
+          <script type="text/javascript">
+            var map = new ol.Map({
+              target: 'map',
+              layers: [
+                new ol.layer.Tile({
+                  source: new ol.source.OSM()
+                })
+              ],
+              view: new ol.View({
+                center: ol.proj.fromLonLat([6.22, 62.47]),
+                zoom: 12
+              })
+            });
+            map.on('postcompose',function(e){
+    document.querySelector('canvas').style.filter="grayscale(90%)";
+  });
+          </script>
+          
         </div>
         
       </section>
