@@ -13,11 +13,9 @@
         <nav>
             <ul>
                 <li><img src="{% static 'images/2.jpg' %}" alt="Keep roling roling roling"></li>
-                <li><a href="#about-us">About us</a></li>
-                <li><a href="#our-products">Products</a></li>
-                <li><a href="#places-to-explore">Trips</a></li>
-                <li><a href="#featured-in">Opinions</a></li>
-                <li><a href="#contact">Contact</a></li>
+                {% block menu %}
+
+                {% endblock menu %}
                 <li><button onclick="document.getElementById('login').style.display='block'">Login</button></li>
             </ul>
         </nav>
