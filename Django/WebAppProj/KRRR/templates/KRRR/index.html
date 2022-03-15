@@ -51,71 +51,15 @@ logo svg
 
 -->
 
+{% extends 'KRRR/main.html' %}
 {% load static %}
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-      <title>KRRR</title>
-    
-    <link href="https://fonts.googleapis.com/css?family=Stint+Ultra+Expanded" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-  </head>
+{% block extra_head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock extra_head %}
 
-  <body>
 
-    <header>
-      <nav>        
-        <ul>
-          <li><img src="images/world.svg" alt="Keep roling roling roling"></li>
-          <li><a href="#about-us">About us</a></li>
-          <li><a href="#our-products">Products</a></li>
-          <li><a href="#places-to-explore">Trips</a></li>
-          <li><a href="#featured-in">Opinions</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><button onclick="document.getElementById('login').style.display='block'">Login</button></li>
-        </ul>
-      </nav>   
-
-      <!-- Login window-->
-      <div id="login" class="modal">
-        
-        
-
-        <form class="modal-content animate" action="file.py">
-
-          <div class="container"></div>
-            <button onclick="document.getElementById('login').style.display='none'" class="close" title="Close window">&times;</button>
-            <label><strong>Username</strong>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            </label>
-            <br>
-
-            <label><strong>Password</strong>
-            <input type="password" placeholder="Enter Password" name="psw" required>
-            </label>
-            <br>
-
-            <button type="submit">Log in</button>
-            
-            <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-            
-            <br>
-
-            <span>Forgot password?</span>
-            <span>Create account</span>
-
-        </form>
-      </div> 
-    </header>
-
-    <main>
+{% block content %}
       <section id="hero">
         <div class="color-overlay"></div>
         <h1>Bicycle rentals for modern folks</h1>
@@ -296,20 +240,4 @@ logo svg
         <a href="#our-products">Choose your companion!</a>
       </section>
 
-
-    </main>
-
-    <footer>
-      <ul>
-        <li><a href="#about-us">About us</a></li>
-        <li><a href="#our-products">Products</a></li>
-        <li><a href="#places-to-explore">Trips</a></li>
-        <li><a href="#featured-in">Opinions</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.6675411038773!2d6.1595391501548455!3d62.47505369465827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4616db5238b7a445%3A0xaf5df0231694efbe!2sFjellstua%20utsiktspunkt!5e0!3m2!1spl!2sno!4v1644447888656!5m2!1spl!2sno"
-       width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </footer>
-
-  </body>
-</html>
+{% endblock content %}

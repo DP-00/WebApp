@@ -1,56 +1,13 @@
+{% extends 'KRRR/main.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock extra_head %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="HTML, CSS">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
-    <title>KRRR</title>
+{% block content %}
 
-</head>
-
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><img src="Images/world.svg" alt="Keep roling roling roling"></li>
-                <li><a href="cart.html">Your shopping cart</a></li>
-                <li><button onclick="document.getElementById('login').style.display='block'">Login</button></li>
-            </ul>
-        </nav>
-
-        <!-- Login window-->
-        <div id="login" class="modal">
-
-            <button onclick="document.getElementById('login').style.display='none'" class="close" title="Close window">&times;</button>
-
-            <form class="modal-content animate" action="file.py">
-
-                <label><strong>Username</strong>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                </label>
-
-                <label><strong>Password</strong>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-                </label>
-
-                <button type="submit">Log in</button>
-
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-
-                <span>Forgot password?</span>
-                <span>Create account</span>
-
-            </form>
-        </div>
-    </header>
-    <main>
     <section>
         <h1 class="headline">Our Products</h1>
         <p class="textSection">We have 120 bikes available in Ålesund. New bikes
@@ -62,7 +19,7 @@
     
     <h2>Bicycles</h2>
     
-        <div class="images-total">
+        <div class="card">
 
                 <a href="Bicycles/bicycle1.html">
                     <img src="{% static 'images/2.jpg' %}">
@@ -78,7 +35,7 @@
                 </div>
         </div>
     
-        <div class="images-total">
+        <div class="card">
     
             <a href="Bicycles/bicycle2.html">
                 <img src="{% static 'images/3.jpg' %}">
@@ -94,7 +51,7 @@
             </div>
         </div>
 
-        <div class="images-total">
+        <div class="card">
     
             <a href="Bicycles/bicycle3.html">
                 <img src="{% static 'images/4.jpg' %}">
@@ -110,7 +67,7 @@
             </div>
         </div>  
 
-        <div class="images-total">
+        <div class="card">
     
             <a href="Bicycles/bicycle4.html">
                 <img src="{% static 'images/5.jpg' %}">
@@ -125,7 +82,4 @@
                 <a href="Comments/Edit_comment.html">Edit comment</a>
             </div>
         </div>
-    </main>
-</body>
-
-</html>
+{% endblock content %}
