@@ -31,23 +31,8 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
-
-/* NAVIGATION BAR */
-nav button{
-    background-color: var(--blue2);
-}
-
-nav {
-    text-align: right;
-}
-
-nav img{
-    width:10rem;
-    height:10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 1rem;
+body {
+    font-size: 3rem;
 }
 
 header, footer {
@@ -57,16 +42,50 @@ header, footer {
     border-radius: 0;
 }
 
+/* GENERAL TEXT SETTINGS */
+h1 {
+    font-size: 6.4rem;
+    padding: 3.2rem;
+}
+
+h2 {
+    font-size: 4.8rem;
+    padding: 3.2rem;
+    text-align: center;
+    letter-spacing: 0.3em;
+}
+
+p {
+    padding: 1.6rem;
+    line-height: 6.4rem;
+}
+
+/* NAVIGATION BAR */
+nav {
+    text-align: right;
+}
+
+nav button{
+    background-color: var(--blue2);
+}
+
+nav img{
+    width:10rem;
+    height:10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+}
+
 nav li {
     list-style-type: none;
     display: inline-block;
     margin: 16px;
 }
 
-body {
-    font-size: 3rem;
-}
 
+/* STYLING LINKS */
 
 a:link {
     text-decoration: none;
@@ -78,25 +97,11 @@ a:visited {
 }
 
 a:hover {
-    font-weight: bold;
+    text-shadow:0 0 2px var(--grey3);
 }
 
-h1 {
-    font-size: 6.4rem;
-    padding: 3.2rem;    
-}
 
-h2 {
-    font-size: 4.8rem;
-    padding: 3.2rem;
-    text-align: center;
-}
-
-p {
-    padding: 1.6rem;
-    line-height: 6.4rem;
-}
-
+/* BUTTON STYLING */
 button{
     font-family: 'Montserrat', sans-serif;
     color: var(--grey3);
@@ -109,3 +114,24 @@ button:hover {
     background-color: var(--blue-dark);
 }
 
+.modal button{
+    background-color: var(--blue2);
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+    background: none;
+    border: none;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(109, 7, 7);
+}
