@@ -2,12 +2,15 @@
 {% load static %}
 
 {% block extra_head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
 {% endblock extra_head %}
 
-{% block content %}
+{% block menu %}
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'cart' %}">Cart</a></li>
+{% endblock menu %}
 
+{% block content %}
     <section>
         <h1 class="headline">Our Products</h1>
         <p class="textSection">We have 120 bikes available in Ålesund. New bikes
@@ -19,67 +22,56 @@
     
     <h2>Bicycles</h2>
     
-        <div class="card">
+    <div class="card">
 
-                <a href="Bicycles/bicycle1.html">
-                    <img src="{% static 'images/2.jpg' %}">
-                </a>
-                <div class="text-container" >
-                    <p class="name">Name</p>
-                    <p><em>ONLY</em> 20.000 nok</p>
-                    Select: <input type="checkbox" name="basket" value="bicycle1" >
-                    <input type="button" name="basket" value="Put to basket"  /><br /><br>
-                    <a href="Comments/Read_comment.html">Read comment</a>
-                    <a href="Comments/Write_comment.html">Write comment</a>
-                    <a href="Comments/Edit_comment.html">Edit comment</a>
-                </div>
+        <a href="Bicycles/bicycle1.html"><img src="{% static 'images/2.jpg' %}"></a>
+        <div class="text-container" >
+            <p class="name">Name</p>
+            <p><em>ONLY</em> 20.000 nok</p>
+            Select: <input type="checkbox" name="basket" value="bicycle1" >
+            <input type="button" name="basket" value="Put to basket"  /><br /><br>
+            <a href="Comments/Read_comment.html">Read comment</a>
+            <a href="Comments/Write_comment.html">Write comment</a>
+            <a href="Comments/Edit_comment.html">Edit comment</a>
         </div>
+    </div>
     
-        <div class="card">
-    
-            <a href="Bicycles/bicycle2.html">
-                <img src="{% static 'images/3.jpg' %}">
-            </a>
-            <div class="text-container" >
-                <p class="name">Name</p>
-                <p><em>ONLY</em> 20.000 nok</p>
-                Select: <input type="checkbox" name="basket" value="bicycle1" >
-                <input type="button" name="basket" value="Put to basket"  /><br /><br>
-                <a href="Comments/Read_comment.html">Read comment</a>
-                <a href="Comments/Write_comment.html">Write comment</a>
-                <a href="Comments/Edit_comment.html">Edit comment</a>
-            </div>
+    <div class="card">
+        <a href="Bicycles/bicycle2.html"><img src="{% static 'images/3.jpg' %}"></a>
+        <div class="text-container" >
+            <p class="name">Name</p>
+            <p><em>ONLY</em> 20.000 nok</p>
+            Select: <input type="checkbox" name="basket" value="bicycle1" >
+            <input type="button" name="basket" value="Put to basket"  /><br /><br>
+            <a href="Comments/Read_comment.html">Read comment</a>
+            <a href="Comments/Write_comment.html">Write comment</a>
+            <a href="Comments/Edit_comment.html">Edit comment</a>
         </div>
+    </div>
 
-        <div class="card">
-    
-            <a href="Bicycles/bicycle3.html">
-                <img src="{% static 'images/4.jpg' %}">
-            </a>
-            <div class="text-container" >
-                <p class="name">Name</p>
-                <p><em>ONLY</em> 20.000 nok</p>
-                Select: <input type="checkbox" name="basket" value="bicycle1" >
-                <input type="button" name="basket" value="Put to basket"  /><br /><br>
-                <a href="Comments/Read_comment.html">Read comment</a>
-                <a href="Comments/Write_comment.html">Write comment</a>
-                <a href="Comments/Edit_comment.html">Edit comment</a>
-            </div>
-        </div>  
-
-        <div class="card">
-    
-            <a href="Bicycles/bicycle4.html">
-                <img src="{% static 'images/5.jpg' %}">
-            </a>
-            <div class="text-container" >
-                <p class="name">Name</p>
-                <p><em>ONLY</em> 20.000 nok</p>
-                Select: <input type="checkbox" name="basket" value="bicycle1" >
-                <input type="button" name="basket" value="Put to basket"  /><br /><br>
-                <a href="Comments/Read_comment.html">Read comment</a>
-                <a href="Comments/Write_comment.html">Write comment</a>
-                <a href="Comments/Edit_comment.html">Edit comment</a>
-            </div>
+    <div class="card">
+        <a href="Bicycles/bicycle3.html"><img src="{% static 'images/4.jpg' %}"></a>
+        <div class="text-container" >
+            <p class="name">Name</p>
+            <p><em>ONLY</em> 20.000 nok</p>
+            Select: <input type="checkbox" name="basket" value="bicycle1" >
+            <input type="button" name="basket" value="Put to basket"  /><br /><br>
+            <a href="Comments/Read_comment.html">Read comment</a>
+            <a href="Comments/Write_comment.html">Write comment</a>
+            <a href="Comments/Edit_comment.html">Edit comment</a>
         </div>
+    </div>
+
+    <div class="card">
+        <a href="Bicycles/bicycle4.html"><img src="{% static 'images/5.jpg' %}"></a>
+        <div class="text-container" >
+            <p class="name">Name</p>
+            <p><em>ONLY</em> 20.000 nok</p>
+            Select: <input type="checkbox" name="basket" value="bicycle1" >
+            <input type="button" name="basket" value="Put to basket"  /><br /><br>
+            <a href="Comments/Read_comment.html">Read comment</a>
+            <a href="Comments/Write_comment.html">Write comment</a>
+            <a href="Comments/Edit_comment.html">Edit comment</a>
+        </div>
+    </div>
 {% endblock content %}

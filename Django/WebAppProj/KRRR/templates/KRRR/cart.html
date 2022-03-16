@@ -3,57 +3,61 @@
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock extra_head %}
+
+{% block menu %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'shop' %}">Shop</a></li>
+{% endblock menu %}
 
 {% block content %}
     <div class="container">
         <h1 class="headline">Shopping Cart</h1>
-            <div class="cart">
-                <div class="products">
-                    <div class="product">
-                        <img src="{% static 'images/2.jpg' %}">
-                        <div class="product-info">
-                            <h3 class="product-name">Bicycle 1</h3>
-                            <h4 class="product-price">NOK 1,000</h4>
-                            <h4 class="product-offer">50%</h4>
-                            <p class="product-quantity">Qnt: <input value="1" name="">
-                            <p class="product-remove">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                <span class="remove">Remove</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <img src="{% static 'images/3.jpg' %}">
-                        <div class="product-info">
-                            <h3 class="product-name">Bicycle 2</h3>
-                            <h4 class="product-price">NOK 2,000</h4>
-                            <h4 class="product-offer">40%</h4>
-                            <p class="product-quantity">Qnt: <input value="1" name="">
-                            <p class="product-remove">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                <span class="remove">Remove</span>
-                            </p>
-                        </div>
+        <div class="cart">
+            <div class="products">
+                <div class="product">
+                    <img src="{% static 'images/2.jpg' %}">
+                    <div class="product-info">
+                        <h3 class="product-name">Bicycle 1</h3>
+                        <h4 class="product-price">NOK 1,000</h4>
+                        <h4 class="product-offer">50%</h4>
+                        <p class="product-quantity">Qnt: <input value="1" name="">
+                        <p class="product-remove">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <span class="remove">Remove</span>
+                        </p>
                     </div>
                 </div>
-                <div class="cart-total">
-                    <p>
-                        <span>Total Price</span>
-                        <span>NOK 3,000</span>
-                    </p>
-                    <p>
-                        <span>Number of Items</span>
-                        <span>2</span>
-                    </p>
-                    <p>
-                        <span>You Save</span>
-                        <span>NOK 1,000</span>
-                    </p>
-                    <a href="#">Proceed to Checkout</a>
+                <div class="product">
+                    <img src="{% static 'images/3.jpg' %}">
+                    <div class="product-info">
+                        <h3 class="product-name">Bicycle 2</h3>
+                        <h4 class="product-price">NOK 2,000</h4>
+                        <h4 class="product-offer">40%</h4>
+                        <p class="product-quantity">Qnt: <input value="1" name="">
+                        <p class="product-remove">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <span class="remove">Remove</span>
+                        </p>
+                    </div>
                 </div>
             </div>
+            <div class="cart-total">
+                <p>
+                    <span>Total Price</span>
+                    <span>NOK 3,000</span>
+                </p>
+                <p>
+                    <span>Number of Items</span>
+                    <span>2</span>
+                </p>
+                <p>
+                    <span>You Save</span>
+                    <span>NOK 1,000</span>
+                </p>
+                <a href="#">Proceed to Checkout</a>
+            </div>
         </div>
+    </div>
 {% endblock content %}
 

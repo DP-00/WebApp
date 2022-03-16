@@ -71,162 +71,161 @@ logo svg
 {% endblock extra_head %}
 
 {% block menu %}
-<li><a href="#about-us">About us</a></li>
-<li><a href="#our-products">Products</a></li>
-<li><a href="#places-to-explore">Trips</a></li>
-<li><a href="#featured-in">Opinions</a></li>
-<li><a href="#contact">Contact</a></li>
+  <li><a href="#about-us">About us</a></li>
+  <li><a href="#our-products">Products</a></li>
+  <li><a href="#places-to-explore">Trips</a></li>
+  <li><a href="#featured-in">Opinions</a></li>
+  <li><a href="#contact">Contact</a></li>
 {% endblock menu %}
 
 {% block content %}
-      <section id="hero">
-        <div class="bacg">
-          <div class="overlay inner"></div>
-          <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
-        </div>
-        <h1>Bicycle rentals for<br> modern folks</h1>
-        <p> Choose {changing word} lifestyle!</p>
-        <button onclick="location.href='#our-products'" class="cta">Call to action</button>
-      </section>
+  <section id="hero">
+    <div class="bacg">
+      <div class="overlay inner"></div>
+        <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
+    </div>
+    <h1>Bicycle rentals for<br> modern folks</h1>
+    <p> Choose {changing word} lifestyle!</p>
+    <button onclick="location.href='#our-products'" class="cta">Call to action</button>
+  </section>
 
-      <section id="about-us">
-        <div class="section-container">
-          <img src="{% static 'images/about1.jpg' %}" alt="?">
-          <div><h2>About us</h2>
-          <p class="textSection">Life is too short to not add kick out on pedals. Our service 
+  <section id="about-us">
+    <div class="section-container">
+      <img src="{% static 'images/about1.jpg' %}" alt="?">
+      <div><h2>About us</h2>
+        <p class="textSection">Life is too short to not add kick out on pedals. Our service
           makes it fast and easy to rent a bike in seconds and leave 
           it at any place convenient to you. We clean up after you - 
           our service-guys pick up all the bikes within 2 hours 
-          (median pickup time: 37 minutes).</p></div>
-         
-        </div>
-        
-      </section>
+          (median pickup time: 37 minutes).</p>
+      </div>
+    </div>
+  </section>
 
-      <section id="our-products">
-        <h2>Our Products</h2>
-        <p class="textSection">We have 120 bikes available in Ålesund. New bikes 
+  <section id="our-products">
+    <h2>Our Products</h2>
+    <p class="textSection">We have 120 bikes available in Ålesund. New bikes
           upgraded every month according to latest trends. 20 brand 
           new electric bikes waiting for you! We are true to the 
           BYOWT concept: Bring Your Own Winter Tires! Nothing 
           brings a warm home feeling better than BYOWT!</p>
-  
-        <div class="card-container">
-          <div class="card">
-            <div class="card-front">
-              <div class="card-image">
-                  <div class="overlay inner"></div>
-                  <img class="inner" src="{% static 'images/1.jpg' %}" alt="?">
-              </div>
-              <div class="card-text">
-                <h3 id="h3cardtext">Bike rental</h3>
-              </div>               
-            </div>
-            <div class="card-back">
-              <ul>
-                <li>Classy bike from 80s</li>
-                <li>Available in brown, green and yellow</li>
-                <li>Customizable seat height</li>
-                <li>Helmet included in price</li>
-                <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-                <li>Price: 1 NOK/min</li>
-              </ul>
-              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-            </div>
-          </div>
 
-          <div class="card">
-            <div class="card-front">
-              <div class="card-image">
-                <img src="{% static 'images/4.jpg' %}" alt="E-Bike to rent">
-              </div>
-              <div class="card-text">
-                <h3>E-Bike rental</h3>
-              </div>               
-            </div>
-            <div class="card-back">
-              <ul>
-                <li>Modern bike</li>
-                <li>Available in brown, green and yellow</li>
-                <li>Customizable seat height</li>
-                <li>Helmet included in price</li>
-                <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-                <li><div>1</div> <div>NOK<br>per min</div></li>
-              </ul>
-              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-            </div>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
+            <div class="overlay inner"></div>
+            <img class="inner" src="{% static 'images/1.jpg' %}" alt="?">
           </div>
+          <div class="card-text">
+            <h3 id="h3cardtext">Bike rental</h3>
+          </div>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Classy bike from 80s</li>
+            <li>Available in brown, green and yellow</li>
+            <li>Customizable seat height</li>
+            <li>Helmet included in price</li>
+            <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+            <li>Price: 1 NOK/min</li>
+          </ul>
+          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+        </div>
+      </div>
 
-          <div class="card">
-            <div class="card-front">
-              <div class="card-image">
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="{% static 'images/4.jpg' %}" alt="E-Bike to rent">
+          </div>
+          <div class="card-text">
+            <h3>E-Bike rental</h3>
+          </div>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Modern bike</li>
+            <li>Available in brown, green and yellow</li>
+            <li>Customizable seat height</li>
+            <li>Helmet included in price</li>
+            <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+            <li><div>1</div> <div>NOK<br>per min</div></li>
+          </ul>
+          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
                 
-              </div>
-              <div class="card-text">
-                <h3>Personalization option</h3>
-              </div>               
-            </div>
-            <div class="card-back">
-              <ul>
-                <li>Use our non-permanent colors to paint a sketch of your own style across the bike</li>
-                <li>16 different color tones available</li>
-                <li>Pick up at Moa bus station</li>
-                <li>Color holds on for 30 minutes when it is not raining</li>
-                <li>Price: 150 NOK</li>
-              </ul>
-              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-            </div>
           </div>
-
-          <div class="card">
-            <div class="card-front">
-              <div class="card-image">
-                <img src="{% static 'images/5.jpg' %}" alt="Textile bag">
-              </div>
-              <div class="card-text">
-                <h3>Textile bag</h3>
-              </div>               
-            </div>
-            <div class="card-back">
-              <ul>
-                <li>Eco-cotton</li>
-                <li>Fair trade</li>
-                <li>Impress your friends</li>
-                <li>Buy today and get sunglasses for free</li>
-                <li>Pick up when renting a bike</li>
-                <li>Price: 250 NOK</li>
-              </ul>
-              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-            </div>
+          <div class="card-text">
+            <h3>Personalization option</h3>
           </div>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Use our non-permanent colors to paint a sketch of your own style across the bike</li>
+            <li>16 different color tones available</li>
+            <li>Pick up at Moa bus station</li>
+            <li>Color holds on for 30 minutes when it is not raining</li>
+            <li>Price: 150 NOK</li>
+          </ul>
+          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+        </div>
+      </div>
 
-          <div id="product-comments" class="modal">
-            <div class="modal-content animate">
-            <p>User: Comment</p>
-            <button onclick="document.getElementById('product-comments').style.display='none'" class="close" title="Close window">&times;</button>
-            </div>
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="{% static 'images/5.jpg' %}" alt="Textile bag">
           </div>
+          <div class="card-text">
+            <h3>Textile bag</h3>
+          </div>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Eco-cotton</li>
+            <li>Fair trade</li>
+            <li>Impress your friends</li>
+            <li>Buy today and get sunglasses for free</li>
+            <li>Pick up when renting a bike</li>
+            <li>Price: 250 NOK</li>
+          </ul>
+          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+        </div>
+      </div>
 
-        </div> 
+      <div id="product-comments" class="modal">
+        <div class="modal-content animate">
+          <p>User: Comment</p>
+          <button onclick="document.getElementById('product-comments').style.display='none'" class="close" title="Close window">&times;</button>
+        </div>
+      </div>
+
+    </div>
 
 
 
-      </section>
+  </section>
 
-      <section id="places-to-explore">
+  <section id="places-to-explore">
         
-        <div class="section-container">
-          <div>
-            <h2>Places to explore</h2> 
-            <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
+    <div class="section-container">
+      <div>
+        <h2>Places to explore</h2>
+        <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
           Well, there is! Check the map to see where you can go from our renting points.</p>
-          </div>
-          <div id="map" class="map"></div>
-          <script type="text/javascript">
+      </div>
+      <div id="map" class="map"></div>
+      <script type="text/javascript">
             var map = new ol.Map({
               target: 'map',
               layers: [
@@ -240,45 +239,45 @@ logo svg
               })
             });
             map.on('postcompose',function(e){
-    document.querySelector('canvas').style.filter="grayscale(90%)";
-  });
-          </script>
+            document.querySelector('canvas').style.filter="grayscale(90%)";
+            });
+      </script>
           
-        </div>
+    </div>
         
-      </section>
+  </section>
 
-      <section id="gallery">
-        <h2>Gallery</h2>
-        <p><img src="{% static 'images/1.jpg' %}" alt="picture 1" width="200" height="200">
-        <img src="{% static 'images/2.jpg' %}" alt="picture 2" width="200" height="200">
-        <img src="{% static 'images/3.jpg' %}" alt="picture 3" width="200" height="200">
-        <img src="{% static 'images/4.jpg' %}" alt="picture 4" width="200" height="200">
-        <img src="{% static 'images/5.jpg' %}" alt="picture 5" width="200" height="200">
-        <img src="{% static 'images/6.jpg' %}" alt="picture 6" width="200" height="200">
-        <img src="{% static 'images/7.jpg' %}" alt="picture 7" width="200" height="200">
-        <img src="{% static 'images/8.jpg' %}" alt="picture 8" width="200" height="200">
-        <img src="{% static 'images/1.jpg' %}" alt="picture 9" width="200" height="200"></p>
-      </section>
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <p><img src="{% static 'images/1.jpg' %}" alt="picture 1" width="200" height="200">
+      <img src="{% static 'images/2.jpg' %}" alt="picture 2" width="200" height="200">
+      <img src="{% static 'images/3.jpg' %}" alt="picture 3" width="200" height="200">
+      <img src="{% static 'images/4.jpg' %}" alt="picture 4" width="200" height="200">
+      <img src="{% static 'images/5.jpg' %}" alt="picture 5" width="200" height="200">
+      <img src="{% static 'images/6.jpg' %}" alt="picture 6" width="200" height="200">
+      <img src="{% static 'images/7.jpg' %}" alt="picture 7" width="200" height="200">
+      <img src="{% static 'images/8.jpg' %}" alt="picture 8" width="200" height="200">
+      <img src="{% static 'images/1.jpg' %}" alt="picture 9" width="200" height="200"></p>
+  </section>
 
-      <section id="featured-in">
-        <h2>Featured in...</h2>
-        <p>
-          <img src="{% static 'images/2.jpg' %}" alt="logo 1" width="40" height="40">
-          <img src="{% static 'images/2.jpg' %}" alt="logo 2" width="40" height="40">
-          <img src="{% static 'images/2.jpg' %}" alt="logo 3" width="40" height="40">
-        </p>
-      </section>
+  <section id="featured-in">
+    <h2>Featured in...</h2>
+    <p>
+      <img src="{% static 'images/2.jpg' %}" alt="logo 1" width="40" height="40">
+      <img src="{% static 'images/2.jpg' %}" alt="logo 2" width="40" height="40">
+      <img src="{% static 'images/2.jpg' %}" alt="logo 3" width="40" height="40">
+    </p>
+  </section>
 
-      <section id="comments">
-        <h2>What our customers say about us:</h2>
-        <p>{a random comment from the base}</p>
+  <section id="comments">
+    <h2>What our customers say about us:</h2>
+    <p>{a random comment from the base}</p>
 
-      </section>
+  </section>
 
-      <section id="reminder">
-        <h2>What are you waiting for?</h2>
-        <a href="#our-products">Choose your companion!</a>
-      </section>
+  <section id="reminder">
+    <h2>What are you waiting for?</h2>
+    <a href="#our-products">Choose your companion!</a>
+  </section>
 
 {% endblock content %}

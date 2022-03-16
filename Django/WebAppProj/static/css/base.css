@@ -57,6 +57,12 @@ header, footer {
     border-radius: 0;
 }
 
+nav li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 16px;
+}
+
 body {
     font-size: 3rem;
 }
