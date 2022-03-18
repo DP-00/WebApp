@@ -6,6 +6,13 @@ section {
   color: var(--grey3);
 }
 
+@media (max-width: 960px) {
+  section {
+    padding: 6.4rem;
+  }
+  
+}
+
 section:nth-child(odd) {
   background: var(--blue1);
 }
@@ -57,6 +64,13 @@ section:nth-child(even) {
     z-index: 2;
 }
 
+#heroText {
+  display: inline-block;
+  width: 16rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
 #hero .cta {
     position: absolute;
     margin-top: 44.8rem;
@@ -74,7 +88,7 @@ section:nth-child(even) {
   width: 100%;
   height: 100%;
   border-radius:0;
-  background: linear-gradient(to bottom, rgba(53, 57, 61, 0.8) 30%, rgba(0,50,50, 0.98));
+  background: linear-gradient(to bottom, rgba(53, 57, 61, 0.7) 40%, rgba(0,50,50, 0.98));
   z-index: 2;
 }
 
@@ -85,6 +99,7 @@ section:nth-child(even) {
 
 
 /*SECTION GRID*/
+
 #about-us .section-container{
   display: grid;
   
@@ -93,6 +108,11 @@ section:nth-child(even) {
   max-width: 166rem;
   min-width: 82rem;
   place-items: center;
+}
+@media (max-width: 960px) {
+  .section-container {
+    grid-template-columns: 100% 0%;
+  }
 }
 
 #places-to-explore .section-container{
@@ -106,12 +126,63 @@ section:nth-child(even) {
 }
 
 .section-container img {
- 
+  box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
   width: 90%;
   height: 90%;
   border-radius:5rem;
 
 }
+
+/* MAP */
+.map{
+  height:80%;
+  width: 100%;
+  box-shadow: 0 0 5rem 0 rgb(0, 0, 0, 0.5);   
+}
+
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+}
+.ol-popup:after, .ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.ol-popup:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+.ol-popup-closer:after {
+  content: "✖";
+}
+
+
 
 
 /* MODAL */ 
@@ -168,20 +239,45 @@ input {
 
 
 
+  /* CARDS */
 
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 34rem);
+    grid-gap: 3rem;
+    max-width: 166rem;
+    min-width: 82rem;
+    padding: 5rem;
+    place-items: center;
+    }
 
-
- /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
- .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 34rem);
-  grid-gap: 2rem;
-  max-width: 166rem;
-  min-width: 82rem;
-  padding: 5rem;
+  @media (max-width: 1280px) {
+    .card-container {
+      grid-template-columns: repeat(auto-fit, 34rem);
+      grid-gap: 1rem;
+    }
   }
-  
-  /* This container is needed to position the front and back side */
+
+  @media (max-width: 960px) {
+    .card-container {
+      grid-template-columns: repeat(auto-fit, 34rem);
+      grid-gap: 2rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .card-container {
+      grid-template-columns: repeat(auto-fit, 34rem);
+      grid-gap: 1rem;
+    }
+  }
+
+  .card-container>button{
+    width: 50%;
+    height: 20%;
+    background: var(--blue2);
+  }
+
   .card {
     width: 30rem;
     height: 50rem;
@@ -191,73 +287,44 @@ input {
     transform-style: preserve-3d;
     box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
     perspective: 1000px;  /*Remove this if you don't want the 3D effect */
-    background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.3) 30%, rgba(0,50,50, 0.8)), url("images/test.jpg");  
+    /* background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.3) 30%, rgba(0,50,50, 0.8)), url("images/test.jpg");   */
   }
-  /*w html miec dwaobiekty jeden na zdj i jeden n grdient i mienic pth w html, djeci tryzmac na serverzez nie w bazie*/
-    
+     
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .card:hover{
     transform: rotateY(180deg);
   }
 
-
-  /*
-  .card img{   
-    height: 100%;    
-    background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.8), rgba(0,50,50, 0.98)), url("images/test.jpg");
-  }
-*/
-.card img{
-  padding: 0;
-  border-radius:0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  left: 0;
-  top: 0;
-} 
-  .card-text{
-    z-index: 2;
-    position: absolute;
-    justify-items: center;
-    text-align: center;
-    margin-left: 10rem;
-    margin-bottom: 5rem;
-    left: 4.2rem;
-    bottom: 4.2rem;
-  }
-
-
-  
   .card-front {
     position: absolute;
     width: 100%;
     height: 100%; 
     overflow: hidden;  
   }
-  .card li{
-    list-style-type: square;
-    list-style-image: url("images/world1.svg");
-    list-style-position: inside;
-    display: list-item;
-    font-size: 1.6rem;   
-    padding: 1.2rem;
-   
 
+  .card-image .overlay{
+    background: linear-gradient(to top, rgba(53, 57, 61, 0.3) 1%, rgba(0,50,50, 1));
   }
 
-  .card li::marker{
-        text-align: end;
-  }
+  .card img{
+    padding: 0;
+    border-radius:0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    left: 0;
+    top: 0;
+  } 
 
-  .card-back li:last-child{
-    list-style-type:none;
-    display:block;
-    font-size: 3.2rem;
-  }
-
-  .card-back button{
-    margin-bottom: 10%;
+  .card-text{
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2.4em;
+    text-align: center;
+    font-size: 1.6em;
+    text-shadow:0 0 10px black;
   }
 
   .card-back {
@@ -273,6 +340,36 @@ input {
     z-index: 2;
   }
 
+  .card li{
+    list-style-type: square;
+    list-style-image: url("../../static/images/world1.svg");
+    list-style-position: inside;
+    display: list-item;
+    font-size: 1.6rem;   
+    padding: 1.2rem;
+  }
+
+  .card li::marker{
+    text-align: end;
+  }
+
+  .card-back li:last-child{
+    list-style-type:none;
+    display:block;
+    font-size: 3.2rem;
+  }
+
+  .card-back button{
+    margin-bottom: 10%;
+    /* position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 2.4em;
+    place-items: center;
+    align-items: center; */
+  }
+
+
 
 /* GALLERY STYLING */
 #images {
@@ -287,3 +384,5 @@ input {
     height: 300px;
     aspect-ratio: 1;
 }
+
+

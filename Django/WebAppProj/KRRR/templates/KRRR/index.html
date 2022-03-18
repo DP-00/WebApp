@@ -5,11 +5,11 @@ For content that appears on hover and focus – it should be dismissible with Es
 aria labels
 vlidte n koniec: https://validator.w3.org/
 
+Modals
+  x w oknie
+  sformatowac wyrownanie do bokow
+  biale pole na inny kolor
 
-Cards
-  guziki wyrownac
-  cene wpisac
-  siatka
 responsywnosc
   menu sie chowa
   breakpointy
@@ -17,15 +17,11 @@ responsywnosc
     marginesy zminiejszyc
 wiecej wersji zdjec
 
-Modals
-  x w oknie
-  sformatowac wyrownanie do bokow
-  biale pole na inny kolor
-Sprawdzic lighthouse i html validator
-
 Dodać mape z miejscami
-Dodać ruchomy tekst do hero
+
 Zmienic static dane (cena i info o produktach) na pobierane z bazy
+format karty tył
+Sprawdzic lighthouse i html validator
 -->
 
 {% extends 'KRRR/main.html' %}
@@ -34,12 +30,6 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
 {% block extra_head %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css" type="text/css">
-  <style>
-    .map {
-      height: 400px;
-      width: 100%;
-    }
-  </style>
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
   <link rel="stylesheet" href="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.css" />
   <script type="text/javascript" src="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
@@ -61,7 +51,17 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
         <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
     </div>
     <h1>Bicycle rentals for<br> modern folks</h1>
-    <p> Choose {changing word} lifestyle!</p>
+    <script>
+      let i = 0;
+      function heroText(){
+        let text=["modern", "healthy", "urban", "individual", "free", "hipster", "authentic", "modern", "modern", "modern", "modern"];
+        let textLen = text.length;
+        document.getElementById('heroText').innerText = text[i%textLen];
+        i++;            
+     }
+      setInterval(heroText, 500);
+    </script>
+    <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
     <button onclick="location.href='#our-products'" class="cta">Call to action</button>
   </section>
 
@@ -94,7 +94,7 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
                   <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?">
               </div>
               <div class="card-text">
-                <h3 id="h3cardtext">Bike rental</h3>
+                <h3>Bike rental</h3>
               </div>               
           </div>
           <div class="card-back">
@@ -106,15 +106,16 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
                 <li>Price: 1 NOK/min</li>
               </ul>
-              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+              <button onclick="location.href='#about-us'">See details</button>
           </div>
       </div>     
 
       <div class="card">
         <div class="card-front">
           <div class="card-image">
-            <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent">
+            <div class="overlay inner"></div>
+            <img class="inner" src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent">
+            <!-- <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent"> -->
           </div>
           <div class="card-text">
             <h3>E-Bike rental</h3>
@@ -129,15 +130,15 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
             <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
             <li><div>1</div> <div>NOK<br>per min</div></li>
           </ul>
-          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+          <button onclick="location.href='#about-us'">See details ></button>
         </div>
       </div>
         
       <div class="card">
         <div class="card-front">
           <div class="card-image">
-                
+            <div class="overlay inner"></div>
+            <img class="inner" src="{% static 'images/5.jpg' %}" alt="?">
           </div>
           <div class="card-text">
             <h3>Personalization option</h3>
@@ -151,41 +152,11 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
             <li>Color holds on for 30 minutes when it is not raining</li>
             <li>Price: 150 NOK</li>
           </ul>
-          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
+            <button onclick="location.href='#about-us'">See details</button>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-front">
-          <div class="card-image">
-            <img src="{% static 'images/5.jpg' %}" alt="Textile bag">
-          </div>
-          <div class="card-text">
-            <h3>Textile bag</h3>
-          </div>
-        </div>
-        <div class="card-back">
-          <ul>
-            <li>Eco-cotton</li>
-            <li>Fair trade</li>
-            <li>Impress your friends</li>
-            <li>Buy today and get sunglasses for free</li>
-            <li>Pick up when renting a bike</li>
-            <li>Price: 250 NOK</li>
-          </ul>
-          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-        </div>
-      </div>
-
-      <div id="product-comments" class="modal">
-        <div class="modal-content animate">
-          <p>User: Comment</p>
-          <button onclick="document.getElementById('product-comments').style.display='none'" class="close" title="Close window">&times;</button>
-        </div>
-      </div>
-
+      <button onclick="location.href='#about-us'">See details ></button>
     </div>
 
 
@@ -201,42 +172,102 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
           Well, there is! Check the map to see where you can go from our renting points.</p>
       </div>
       <div id="map" class="map"></div>
-      <script type="text/javascript">
-            var map = new ol.Map({
-              target: 'map',
-              layers: [
-                new ol.layer.Tile({
-                  source: new ol.source.OSM()
-                })
-              ],
-              view: new ol.View({
-                center: ol.proj.fromLonLat([6.20, 62.47]),
-                zoom: 12
-              })
-            });
-            map.on('postcompose',function(e){
-    document.querySelector('canvas').style.filter="grayscale(90%)";
-  });
-  // Vector layer
-var vector = new ol.layer.Vector({ source: new ol.source.Vector() });
-var pt = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([6.22, 62.47])));
-vector.getSource().addFeature(pt);
+      <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+      </div>
 
-var hidden = new ol.style.Style({});
-var photoStyle = new ol.style.Style({
-  image: new ol.style.Photo ({
-    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
-    radius: 30,
-    shadow: true,
-    stroke: new ol.style.Stroke({
-      width: 3,
-      color: '#fff'
-    })
-  })
-});
-pt.setStyle(photoStyle);
-map.addLayer(vector);
-          </script>
+      <script type="text/javascript">
+
+        // basemap
+        var map = new ol.Map({
+          target: 'map',
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([6.20, 62.47]),
+            zoom: 12
+          })
+        });
+
+        // adding grey overlay
+        map.on('postcompose',function(e){
+        document.querySelector('canvas').style.filter="grayscale(40%)";
+        });
+
+        // // adding points to the map
+        // var vector = new ol.layer.Vector({ source: new ol.source.Vector() });
+        // var pt = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([6.22, 62.47])));
+        // vector.getSource().addFeature(pt);
+
+        // var hidden = new ol.style.Style({});
+        // var photoStyle = new ol.style.Style({
+        //   image: new ol.style.Photo ({
+        //     src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
+        //     radius: 30,
+        //     shadow: true,
+        //     stroke: new ol.style.Stroke({
+        //       width: 3,
+        //       color: '#fff'
+        //     })
+        //   })
+        // });
+        // pt.setStyle(photoStyle);
+        // map.addLayer(vector);
+
+
+        var vectorPhoto = new ol.layer.Vector({ source: new ol.source.Vector(
+          {
+            url:"../../static/map.geojson",
+            format: new ol.format.GeoJSON(),
+          }
+        ) });
+
+        var photoStyle = new ol.style.Style({
+          image: new ol.style.Photo ({
+            src: "../../static/images/1.jpg",
+            radius: 10,
+            shadow: true,
+            stroke: new ol.style.Stroke({
+              width: 3,
+              color: '#fff'
+            })
+          })
+        });
+        
+        vectorPhoto.setStyle(photoStyle);
+        map.addLayer(vectorPhoto);
+
+
+        var vectorShop= new ol.layer.Vector({ source: new ol.source.Vector(
+          {
+            url:"../../static/map.geojson",
+            format: new ol.format.GeoJSON(),
+          }
+        ) });
+
+        var shopStyle = new ol.style.Style({
+          image: new ol.style.Photo ({
+            src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
+            radius: 1,
+            shadow: true,
+            stroke: new ol.style.Stroke({
+              width: 3,
+              color: '#fff'
+            })
+          })
+        });
+        
+        vectorShop.setStyle(shopStyle);
+        map.addLayer(vectorShop);
+
+
+
+
+        </script>
           
     </div>
         
