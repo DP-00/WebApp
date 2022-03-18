@@ -5,53 +5,27 @@ For content that appears on hover and focus – it should be dismissible with Es
 aria labels
 vlidte n koniec: https://validator.w3.org/
 
-DP
-Ogolne
-  kolory
-  czcionka
-  guziki - brak powiekszania
-Navigation bar
-Hero - dodac gradient
 
-wyrownywanie sekcji all
-  cards
 Cards
-  zdj do html
   guziki wyrownac
   cene wpisac
-Wybrac zdjecia i przygotowac kilka wersji (hero, about, products)
-dodac responsywnosc
+  siatka
+responsywnosc
   menu sie chowa
   breakpointy
     sekcje rozlamac
     marginesy zminiejszyc
+wiecej wersji zdjec
+
 Modals
   x w oknie
   sformatowac wyrownanie do bokow
   biale pole na inny kolor
 Sprawdzic lighthouse i html validator
 
-
-
 Dodać mape z miejscami
-
 Dodać ruchomy tekst do hero
 Zmienic static dane (cena i info o produktach) na pobierane z bazy
-
------- Backend ------
-Stworzyc projekt w Django
-Dodac model na podstawie E/R
-Stworzenie odpowiednich URL
-
-MS
-Gallery
-Future in
-Customers
-Footer
-Skopiowac karty do klienta potym jak DP je skonczy
-Stworzyc koszyk
-logo svg
-
 -->
 
 {% extends 'KRRR/main.html' %}
@@ -67,6 +41,8 @@ logo svg
     }
   </style>
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
+  <link rel="stylesheet" href="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.css" />
+  <script type="text/javascript" src="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
 
 {% endblock extra_head %}
 
@@ -116,7 +92,7 @@ logo svg
             <div class="card-front">
               <div class="card-image">
                   <div class="overlay inner"></div>
-                  <img class="inner" src="{% static 'images/1.jpg' %}" alt="?">
+                  <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?">
               </div>
               <div class="card-text">
                 <h3 id="h3cardtext">Bike rental</h3>
@@ -139,7 +115,7 @@ logo svg
           <div class="card">
             <div class="card-front">
               <div class="card-image">
-                <img src="{% static 'images/4.jpg' %}" alt="E-Bike to rent">
+                <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent">
               </div>
               <div class="card-text">
                 <h3>E-Bike rental</h3>
@@ -235,13 +211,32 @@ logo svg
                 })
               ],
               view: new ol.View({
-                center: ol.proj.fromLonLat([6.22, 62.47]),
+                center: ol.proj.fromLonLat([6.20, 62.47]),
                 zoom: 12
               })
             });
             map.on('postcompose',function(e){
     document.querySelector('canvas').style.filter="grayscale(90%)";
   });
+  // Vector layer
+var vector = new ol.layer.Vector({ source: new ol.source.Vector() });
+var pt = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([6.22, 62.47])));
+vector.getSource().addFeature(pt);
+
+var hidden = new ol.style.Style({});
+var photoStyle = new ol.style.Style({
+  image: new ol.style.Photo ({
+    src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
+    radius: 30,
+    shadow: true,
+    stroke: new ol.style.Stroke({
+      width: 3,
+      color: '#fff'
+    })
+  })
+});
+pt.setStyle(photoStyle);
+map.addLayer(vector);
           </script>
           
         </div>
