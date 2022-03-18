@@ -86,9 +86,9 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
           BYOWT concept: Bring Your Own Winter Tires! Nothing 
           brings a warm home feeling better than BYOWT!</p>
   
-        <div class="card-container">
-          <div class="card">
-            <div class="card-front">
+    <div class="card-container">
+      <div class="card">
+          <div class="card-front">
               <div class="card-image">
                   <div class="overlay inner"></div>
                   <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?">
@@ -96,8 +96,8 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
               <div class="card-text">
                 <h3 id="h3cardtext">Bike rental</h3>
               </div>               
-            </div>
-            <div class="card-back">
+          </div>
+          <div class="card-back">
               <ul>
                 <li>Classy bike from 80s</li>
                 <li>Available in brown, green and yellow</li>
@@ -108,36 +108,32 @@ Zmienic static dane (cena i info o produktach) na pobierane z bazy
               </ul>
               <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
               <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-            </div>
           </div>
+      </div>     
+
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
+            <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent">
+          </div>
+          <div class="card-text">
+            <h3>E-Bike rental</h3>
+          </div>               
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Modern bike</li>
+            <li>Available in brown, green and yellow</li>
+            <li>Customizable seat height</li>
+            <li>Helmet included in price</li>
+            <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+            <li><div>1</div> <div>NOK<br>per min</div></li>
+          </ul>
+          <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
+          <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
         </div>
       </div>
-
-          <div class="card">
-            <div class="card-front">
-              <div class="card-image">
-                <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent">
-              </div>
-              <div class="card-text">
-                <h3>E-Bike rental</h3>
-              </div>               
-            </div>
-            <div class="card-back">
-              <ul>
-                <li>Modern bike</li>
-                <li>Available in brown, green and yellow</li>
-                <li>Customizable seat height</li>
-                <li>Helmet included in price</li>
-                <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-                <li><div>1</div> <div>NOK<br>per min</div></li>
-              </ul>
-              <button onclick="document.getElementById('product-comments').style.display='block'">Show comments</button>
-              <button onclick="document.getElementById('login').style.display='block'">Go to cart</button>
-            </div>
-          </div>
-        </div>
-
-
+        
       <div class="card">
         <div class="card-front">
           <div class="card-image">
