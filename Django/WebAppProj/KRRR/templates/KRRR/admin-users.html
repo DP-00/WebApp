@@ -1,0 +1,67 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="side-bar">
+    <fieldset>
+        <legend>Admin View</legend>
+        <a href="users.html">Users</a>
+        <a href="#">Tours</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
+        <a href="#">About us</a>
+        <a href="#">Opinions</a>
+    </fieldset>
+</div>
+
+<!-- Depends on site what is visable here. All users, detailed view, supplies etc -->
+<div class="content">
+<fieldset>
+    <legend>Content</legend>
+    <div class="user">
+        <p>Name: John Doe</p>
+        <email>Email: johndoe@hotmail.com</email>
+        <form action="#">
+            <button type="submit">Details</button>
+            <button type="submit" class="warning">Delete</button>
+        </form>
+        
+
+    </div>
+    <div class="user">
+        <p>Name: Helen Parr</p>
+        <email>Email: hp@gmail.com</email>
+        <form action="#">
+            <button type="submit">Details</button>
+            <button type="submit" class="warning">Delete</button>
+        </form>
+
+    </div>
+    <div class="user">
+        <p>Name: Sam Smith</p>
+        <email>Email: samsmith@company.no</email>
+        <form action="#">
+            <button type="submit">Details</button>
+            <button type="submit" class="warning">Delete</button>
+        </form>
+
+    </div>
+    <div class="user">
+        <p>Name: Elizabeth Warren</p>
+        <email>Email: ewarren@mail.com</email>
+        <form action="#">
+            <button type="submit">Details</button>
+            <button type="submit" class="warning">Delete</button>
+        </form>
+
+    </div>
+</fieldset>
+</div>
+
+
+{% endblock content %}

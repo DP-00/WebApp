@@ -21,3 +21,10 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request, 'KRRR/checkout.html', context)
+
+
+def adminAdmin(request):
+    return render(request, 'KRRR/admin-admin.html', {})
+
+def adminUsers(request):
+    return render(request, 'KRRR/admin-users.html', {})
