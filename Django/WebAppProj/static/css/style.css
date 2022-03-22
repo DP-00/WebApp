@@ -339,4 +339,6 @@ section:nth-child(even) {
     aspect-ratio: 1;
 }
 
-
+#comments, #featured-in, #reminder > p {
+  text-align: center;
+}
