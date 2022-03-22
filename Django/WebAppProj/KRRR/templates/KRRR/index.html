@@ -171,10 +171,12 @@ Sprawdzic lighthouse i html validator
         <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
           Well, there is! Check the map to see where you can go from our renting points.</p>
       </div>
-      <div id="map" class="map"></div>
-      <div id="popup" class="ol-popup">
+      <div id="map" class="map">
+             <!-- <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>
+        <div id="popup-content"></div>  -->
+      </div>
+
       </div>
 
       <script type="text/javascript">
@@ -229,7 +231,7 @@ Sprawdzic lighthouse i html validator
         var photoStyle = new ol.style.Style({
           image: new ol.style.Photo ({
             src: "../../static/images/1.jpg",
-            radius: 10,
+            radius: 50,
             shadow: true,
             stroke: new ol.style.Stroke({
               width: 3,
@@ -252,7 +254,7 @@ Sprawdzic lighthouse i html validator
         var shopStyle = new ol.style.Style({
           image: new ol.style.Photo ({
             src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
-            radius: 1,
+            radius: 0,
             shadow: true,
             stroke: new ol.style.Stroke({
               width: 3,
