@@ -27,4 +27,4 @@ def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
 def adminUsers(request):
-    return render(request, 'KRRR/admin-users.html', {})
+    return render(request, 'KRRR/admin-users.html', { "users": Customer.objects.all() })

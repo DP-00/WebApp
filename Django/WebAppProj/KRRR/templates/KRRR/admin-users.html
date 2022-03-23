@@ -10,7 +10,7 @@
 <div class="side-bar">
     <fieldset>
         <legend>Admin View</legend>
-        <a href="users.html">Users</a>
+        <a href="#">Users</a>
         <a href="#">Tours</a>
         <a href="#">Gallery</a>
         <a href="#">Contact</a>
@@ -19,47 +19,25 @@
     </fieldset>
 </div>
 
-<!-- Depends on site what is visable here. All users, detailed view, supplies etc -->
+
 <div class="content">
 <fieldset>
-    <legend>Content</legend>
+    <legend>USERS</legend>
+
+    {% for user in users %}
+    
     <div class="user">
-        <p>Name: John Doe</p>
-        <email>Email: johndoe@hotmail.com</email>
+        <p>Name: {{ user.name }} {{ user.surname }}</p>
+        <p>Nickname: {{ user.nickname }}</p>
+        <email>Email: {{ user.email }}</email>
         <form action="#">
             <button type="submit">Details</button>
             <button type="submit" class="warning">Delete</button>
         </form>
-        
-
     </div>
-    <div class="user">
-        <p>Name: Helen Parr</p>
-        <email>Email: hp@gmail.com</email>
-        <form action="#">
-            <button type="submit">Details</button>
-            <button type="submit" class="warning">Delete</button>
-        </form>
+    
+    {% endfor %}
 
-    </div>
-    <div class="user">
-        <p>Name: Sam Smith</p>
-        <email>Email: samsmith@company.no</email>
-        <form action="#">
-            <button type="submit">Details</button>
-            <button type="submit" class="warning">Delete</button>
-        </form>
-
-    </div>
-    <div class="user">
-        <p>Name: Elizabeth Warren</p>
-        <email>Email: ewarren@mail.com</email>
-        <form action="#">
-            <button type="submit">Details</button>
-            <button type="submit" class="warning">Delete</button>
-        </form>
-
-    </div>
 </fieldset>
 </div>
 
