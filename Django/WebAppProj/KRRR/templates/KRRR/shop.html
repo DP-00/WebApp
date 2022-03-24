@@ -19,59 +19,13 @@
             BYOWT concept: Bring Your Own Winter Tires! Nothing
             brings a warm home feeling better than BYOWT!</p>
     </section>
-    
-    <h2>Bicycles</h2>
-    
     <div class="card">
-
-        <a href="Bicycles/bicycle1.html"><img src="{% static 'images/2.jpg' %}"></a>
-        <div class="text-container" >
-            <p class="name">Name</p>
-            <p><em>ONLY</em> 20.000 nok</p>
-            Select: <input type="checkbox" name="basket" value="bicycle1" >
-            <input type="button" name="basket" value="Put to basket"  /><br /><br>
-            <a href="Comments/Read_comment.html">Read comment</a>
-            <a href="Comments/Write_comment.html">Write comment</a>
-            <a href="Comments/Edit_comment.html">Edit comment</a>
-        </div>
-    </div>
-    
-    <div class="card">
-        <a href="Bicycles/bicycle2.html"><img src="{% static 'images/3.jpg' %}"></a>
-        <div class="text-container" >
-            <p class="name">Name</p>
-            <p><em>ONLY</em> 20.000 nok</p>
-            Select: <input type="checkbox" name="basket" value="bicycle1" >
-            <input type="button" name="basket" value="Put to basket"  /><br /><br>
-            <a href="Comments/Read_comment.html">Read comment</a>
-            <a href="Comments/Write_comment.html">Write comment</a>
-            <a href="Comments/Edit_comment.html">Edit comment</a>
+        <img src="{% static 'images/2.jpg' %}">
+        <p>Name</p>
+        <p>20.000 nok</p>
+        <button name="cart">Add to cart</button>
+        <button name="more">More</button>
         </div>
     </div>
 
-    <div class="card">
-        <a href="Bicycles/bicycle3.html"><img src="{% static 'images/4.jpg' %}"></a>
-        <div class="text-container" >
-            <p class="name">Name</p>
-            <p><em>ONLY</em> 20.000 nok</p>
-            Select: <input type="checkbox" name="basket" value="bicycle1" >
-            <input type="button" name="basket" value="Put to basket"  /><br /><br>
-            <a href="Comments/Read_comment.html">Read comment</a>
-            <a href="Comments/Write_comment.html">Write comment</a>
-            <a href="Comments/Edit_comment.html">Edit comment</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <a href="Bicycles/bicycle4.html"><img src="{% static 'images/5.jpg' %}"></a>
-        <div class="text-container" >
-            <p class="name">Name</p>
-            <p><em>ONLY</em> 20.000 nok</p>
-            Select: <input type="checkbox" name="basket" value="bicycle1" >
-            <input type="button" name="basket" value="Put to basket"  /><br /><br>
-            <a href="Comments/Read_comment.html">Read comment</a>
-            <a href="Comments/Write_comment.html">Write comment</a>
-            <a href="Comments/Edit_comment.html">Edit comment</a>
-        </div>
-    </div>
 {% endblock content %}
