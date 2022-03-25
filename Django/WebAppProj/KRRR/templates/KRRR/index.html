@@ -243,43 +243,46 @@ Sprawdzic lighthouse i html validator
         vectorPhoto.setStyle(photoStyle);
         map.addLayer(vectorPhoto);
 
-        // var vector = new ol.layer.Vector({ source: new ol.source.Vector() });
-        // var pt = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([6.22, 62.47])));
-        // vector.getSource().addFeature(pt);
-
-
-        var vectorShop= new ol.layer.Vector({ source: new ol.source.Vector(
-
-        ) });
-
-        var iconFeature = new ol.Feature({
-          geometry: new ol.geom.Point(ol.proj.transform([6.22, 62.47], 'EPSG:4326' , 'EPSG:3857')),
+        var vectorShop = new ol.layer.Vector({ source: new ol.source.Vector() });
+ 
+        var shopMoa = new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.fromLonLat([6.20, 62.47])),
           name: 'Moa',
         });
 
+        vectorShop.getSource().addFeature(shopMoa);
+
+        var shopCentrum = new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.fromLonLat([6.25, 62.47])),
+          name: 'centrum',
+        });
+
+        vectorShop.getSource().addFeature(shopCentrum);
+
         var iconStyle = new ol.style.Style({
           image: new ol.style.Icon({
-            opacity: 0.75,
-            src: 'flag.png',
+            opacity: 1,
+            src: '../../static/images/world1.svg',
             height:10,
             width:10,
           })
         });
-        iconFeature.setStyle(iconStyle);
+        shopMoa.setStyle(iconStyle);
+        shopCentrum.setStyle(iconStyle);
 
-        var shopStyle = new ol.style.Style({
-          image: new ol.style.Photo ({
-            src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
-            radius: 0,
-            shadow: true,
-            stroke: new ol.style.Stroke({
-              width: 3,
-              color: '#fff'
-            })
-          })
-        });
+        // var shopStyle = new ol.style.Style({
+        //   image: new ol.style.Photo ({
+        //     src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
+        //     radius: 0,
+        //     shadow: true,
+        //     stroke: new ol.style.Stroke({
+        //       width: 3,
+        //       color: '#fff'
+        //     })
+        //   })
+        // });
         
-        vectorShop.setStyle(shopStyle);
+        // vectorShop.setStyle(shopStyle);
         map.addLayer(vectorShop);
 
 
