@@ -164,20 +164,13 @@ Sprawdzic lighthouse i html validator
   </section>
 
   <section id="places-to-explore">
-        
-    <div class="section-container">
-      <div>
-        <h2>Places to explore</h2>
-        <p class="text-section">The city offers many places to explore! If only there was a way to move faster to see them all.
-          Well, there is! Check the map to see where you can go from our renting points.</p>
-      </div>
-      <div id="map" class="map">
-             <!-- <div id="popup" class="ol-popup">
-        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-        <div id="popup-content"></div>  -->
-      </div>
+    <h2>Places to explore</h2>  
+    <div id="map-container">
+      <div id="map" class="map"></div>
+      <div id="map-info">The city offers many places to explore! If only there was a way to move faster to see them all.
+        Well, there is! Check the map to see where you can go from our renting points. Select the point or the photo to know more</div>
+    </div>
 
-      </div>
 
       <script type="text/javascript">
 
@@ -190,8 +183,8 @@ Sprawdzic lighthouse i html validator
             })
           ],
           view: new ol.View({
-            center: ol.proj.fromLonLat([6.20, 62.47]),
-            zoom: 12
+            center: ol.proj.fromLonLat([6.30, 62.47]),
+            zoom: 12.7
           })
         });
 
@@ -200,37 +193,13 @@ Sprawdzic lighthouse i html validator
         document.querySelector('canvas').style.filter="grayscale(40%)";
         });
 
-        // // adding points to the map
-        // var vector = new ol.layer.Vector({ source: new ol.source.Vector() });
-        // var pt = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([6.22, 62.47])));
-        // vector.getSource().addFeature(pt);
-
-        // var hidden = new ol.style.Style({});
-        // var photoStyle = new ol.style.Style({
-        //   image: new ol.style.Photo ({
-        //     src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
-        //     radius: 30,
-        //     shadow: true,
-        //     stroke: new ol.style.Stroke({
-        //       width: 3,
-        //       color: '#fff'
-        //     })
-        //   })
-        // });
-        // pt.setStyle(photoStyle);
-        // map.addLayer(vector);
-
-
-        var vectorPhoto = new ol.layer.Vector({ source: new ol.source.Vector(
-          {
-            url:"../../static/map.geojson",
-            format: new ol.format.GeoJSON(),
-          }
-        ) });
-
-        var photoStyle = new ol.style.Style({
-          image: new ol.style.Photo ({
-            src: "../../static/images/1.jpg",
+        var customStyleFunction = function(feature) {
+          const name = feature.get('name');
+          const path = "../../static/images/" + name +".jpg";
+          
+          return [new ol.style.Style({
+            image: new ol.style.Photo ({
+            src: path,
             radius: 50,
             shadow: true,
             stroke: new ol.style.Stroke({
@@ -238,22 +207,31 @@ Sprawdzic lighthouse i html validator
               color: '#fff'
             })
           })
+        })];
+        };
+
+
+        var vectorPhoto = new ol.layer.Vector({
+          source: new ol.source.Vector({
+            url:"../../static/alesund.geojson",
+            format: new ol.format.GeoJSON(),
+          }),
+          style: customStyleFunction
         });
-        
-        vectorPhoto.setStyle(photoStyle);
+
         map.addLayer(vectorPhoto);
 
         var vectorShop = new ol.layer.Vector({ source: new ol.source.Vector() });
  
         var shopMoa = new ol.Feature({
-          geometry: new ol.geom.Point(ol.proj.fromLonLat([6.20, 62.47])),
+          geometry: new ol.geom.Point(ol.proj.fromLonLat([6.35, 62.467])),
           name: 'Moa',
         });
 
         vectorShop.getSource().addFeature(shopMoa);
 
         var shopCentrum = new ol.Feature({
-          geometry: new ol.geom.Point(ol.proj.fromLonLat([6.25, 62.47])),
+          geometry: new ol.geom.Point(ol.proj.fromLonLat([6.127, 62.467])),
           name: 'centrum',
         });
 
@@ -265,32 +243,53 @@ Sprawdzic lighthouse i html validator
             src: '../../static/images/world1.svg',
             height:10,
             width:10,
-          })
+          }),
+          text: new ol.style.Text(
+            {
+              text: 'Bicycle store',
+              scale: [2, 2],
+              textAlign: 'center',
+              textBaseline: 'top',
+            }
+          )
         });
         shopMoa.setStyle(iconStyle);
         shopCentrum.setStyle(iconStyle);
 
-        // var shopStyle = new ol.style.Style({
-        //   image: new ol.style.Photo ({
-        //     src: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/683826/profile/profile-80.jpg?1",
-        //     radius: 0,
-        //     shadow: true,
-        //     stroke: new ol.style.Stroke({
-        //       width: 3,
-        //       color: '#fff'
-        //     })
-        //   })
-        // });
-        
-        // vectorShop.setStyle(shopStyle);
         map.addLayer(vectorShop);
 
 
+        // display window on click
+        map.on('click', function (evt) {
+          const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+            return feature;
+          });
 
+          const namePhoto = feature.get('name');
+          let hello = document.getElementById('map-info');
+
+          if (feature) {
+
+            hello.innerText = namePhoto; 
+
+            //title
+            
+          }
+          // else{
+          //   hello.innerText = "nic"; 
+          //   // document.getElementById('select').style.display='block';
+          // }
+        });
+
+// var info = $("#select").html("<p>Selection:</p>");
+//       var el = e.element;
+//       $("<img>").attr('src',el.get("img")).appendTo(info);
+//       $("<p>").text(el.get("text")).appendTo(info);
+//       $("<p>").text(el.get("commune")+" ("+el.get("region")+" - "+el.get("date").replace(".","/")+")").appendTo(info);
+//       $("<p>").addClass('copy').html("&copy; "+el.get("copy")+" - "+el.get("author")).appendTo(info);
 
         </script>
-          
-    </div>
+
         
   </section>
 
