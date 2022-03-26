@@ -31,6 +31,20 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
+@media (max-width: 960px) {
+    html {
+        font-size: 50%;
+    }
+  }
+
+@media (max-width: 640px) {
+html {
+    font-size: 30%;
+    }
+}
+
+  
+
 body {
     font-size: 3rem;
 }
@@ -45,28 +59,46 @@ header, footer {
 /* GENERAL TEXT SETTINGS */
 h1 {
     font-size: 6.4rem;
-    padding: 3.2rem;
+    padding: 3.2rem 0;
 }
 
 h2 {
     font-size: 4.8rem;
-    padding: 3.2rem;
+    padding: 3.2rem 0;
     text-align: center;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.3rem;
 }
 
 p {
-    padding: 1.6rem;
+    padding: 1.6rem 0;
     line-height: 6.4rem;
 }
 
 /* NAVIGATION BAR */
+header{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 5;
+}
+
 nav {
     text-align: right;
 }
 
+#menu-list{
+    display: inline-block;
+}
+
+#menu-button{
+    display: none;
+}
+
+
+
 nav button{
     background-color: var(--blue2);
+    display: inline-block;
 }
 
 nav img{
@@ -83,6 +115,32 @@ nav li {
     display: inline-block;
     margin: 16px;
 }
+
+@media (max-width: 960px) {
+    #menu-list{
+        display: none;
+        float: right;
+    }
+
+    #menu-button{
+        display: inline-block;
+    }
+
+    nav li {
+        display: block;
+        margin: 16px;
+    }
+
+    nav img{
+        width:10rem;
+        height:10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 1rem;
+    }
+  }
+  
 
 
 /* STYLING LINKS */
@@ -151,38 +209,37 @@ input {
     padding: 12px 20px;
   }
 
-.modal span{
-    font-size: smaller;
+.modal input{
+    margin-bottom: 3.6rem;
 }
 
-  /* input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  } */
-  
-
-.modal button{
-    background-color: none;
+.modal a{
+   font-size: 2.4rem;
 }
+
+#login-button {
+    float: right;
+    font-weight: bold;
+    font-size: 2.4rem;
+    background-color: var(--blue2);
+ }
+
 
 /* The Close Button */
 .close {
-    position: absolute;
-    right: 45rem;
-    top:11rem;
-    color: #000;
+    float: right;
+    color: var(--grey3);
     font-size: 5rem;
     font-weight: bold;
     border: none;
+    padding: 0;
+
 }
 
 .close:hover,
 .close:focus {
     color: rgb(109, 7, 7);
+    background-color: var(--blue1);
 }
 
   /* Add Zoom Animation */

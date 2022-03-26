@@ -1,20 +1,19 @@
 <!--
 TODO
 
-For content that appears on hover and focus – it should be dismissible with Esc key
-aria labels
-vlidte n koniec: https://validator.w3.org/
+hero: photo responsive
+map: add responsivnes
+images: add smaller versions and more sizes and aspects ratio
+mobile: hamburger menu
 
-responsywnosc
-  menu sie chowa
-  breakpointy
-    sekcje rozlamac
-    marginesy zminiejszyc
-wiecej wersji zdjec
 
-Zmienic static dane (cena) na pobierane z bazy
 
-Sprawdzic lighthouse i html validator
+dynamic data: price in cards
+database: add constraint
+
+js: move from html
+validation: lighthouse and https://validator.w3.org/
+attributions: <a href="https://www.flaticon.com/free-icons/tire" title="tire icons">Tire icons created by Those Icons - Flaticon</a>
 -->
 
 {% extends 'KRRR/main.html' %}
@@ -26,7 +25,6 @@ Sprawdzic lighthouse i html validator
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
   <link rel="stylesheet" href="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.css" />
   <script type="text/javascript" src="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
-  <!-- <script src="{% static 'map.js' %}"></script> -->
 
 {% endblock extra_head %}
 
@@ -44,19 +42,24 @@ Sprawdzic lighthouse i html validator
       <div class="overlay inner"></div>
         <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
     </div>
-    <h1>Bicycle rentals for<br> modern folks</h1>
-    <script>
-      let i = 0;
-      function heroText(){
-        let text=["modern", "healthy", "urban", "individual", "free", "hipster", "authentic", "modern", "modern", "modern", "modern"];
-        let textLen = text.length;
-        document.getElementById('heroText').innerText = text[i%textLen];
-        i++;            
-     }
-      setInterval(heroText, 500);
-    </script>
-    <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
-    <button onclick="location.href='#our-products'" class="cta">Call to action</button>
+    <div id="hero-container">
+       <h1>Bicycle rentals for<br> modern folks</h1>
+      <script>
+        let i = 0;
+        function heroText(){
+          let text=["modern", "healthy", "urban", "individual", "free", "hipster", "authentic", "modern", "modern", "modern", "modern"];
+          let textLen = text.length;
+          document.getElementById('heroText').innerText = text[i%textLen];
+          i++;            
+      }
+        setInterval(heroText, 500);
+      </script>
+      <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
+      <button onclick="location.href='#our-products'">Choose now!</button>
+    </div>
+           
+
+
   </section>
 
   <section id="about-us">
@@ -100,7 +103,6 @@ Sprawdzic lighthouse i html validator
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
                 <li>Price: 1 NOK/min</li>
               </ul>
-              <button onclick="location.href='#about-us'">See details</button>
           </div>
       </div>     
 
@@ -124,7 +126,6 @@ Sprawdzic lighthouse i html validator
             <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
             <li><div>1</div> <div>NOK<br>per min</div></li>
           </ul>
-          <button onclick="location.href='#about-us'">See details ></button>
         </div>
       </div>
         
@@ -146,7 +147,6 @@ Sprawdzic lighthouse i html validator
             <li>Color holds on for 30 minutes when it is not raining</li>
             <li>Price: 150 NOK</li>
           </ul>
-            <button onclick="location.href='#about-us'">See details</button>
         </div>
       </div>
 

@@ -17,11 +17,6 @@ var map = new ol.Map({
     })
 });
 
-// adding grey overlay
-map.on('postcompose',function(e){
-document.querySelector('canvas').style.filter="grayscale(40%)";
-});
-
 var customStyleFunction = function(feature) {
     const file = feature.get('file');
     const path = srcPath + file +".jpg";
@@ -29,10 +24,10 @@ var customStyleFunction = function(feature) {
     return [new ol.style.Style({
     image: new ol.style.Photo ({
     src: path,
-    radius: 50,
+    radius: 30,
     shadow: true,
     stroke: new ol.style.Stroke({
-        width: 3,
+        width: 1,
         color: '#fff'
     })
     })
@@ -71,9 +66,10 @@ vectorShop.getSource().addFeature(shopCentrum);
 var iconStyle = new ol.style.Style({
     image: new ol.style.Icon({
     opacity: 1,
-    src: '../../static/images/world1.svg',
-    height:10,
-    width:10,
+    src: "../../static/images/bicycle.png",
+    // <a href="https://www.flaticon.com/free-icons/bike" title="bike icons">Bike icons created by Those Icons - Flaticon</a>
+    height:0.1,
+    width:0.1,
     }),
     text: new ol.style.Text(
     {

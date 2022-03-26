@@ -12,15 +12,28 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="{% url 'index' %}"><img src="{% static 'images/2.jpg' %}" alt="Keep roling roling roling"></a></li>
+            <a href="{% url 'index' %}"><img src="{% static 'images/2.jpg' %}" alt="Keep roling roling roling"></a>
+
+            <ul id="menu-list">
                 {% block menu %}
 
                 {% endblock menu %}
-                <li><button onclick="document.getElementById('login').style.display='block'">
-                    <ion-icon name="person"></ion-icon>
-                </button></li>
+     
             </ul>
+            <button id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
+            <script>
+                function hamburgerFunction(){
+                    const menu = document.getElementById("menu-list")
+                    if (menu.style.display === "block") {
+                        menu.style.display = "none";
+                    } else {
+                        menu.style.display = "block";
+                    }
+                }
+            </script>
+            <button  onclick="document.getElementById('login').style.display='block'">
+                <ion-icon name="person"></ion-icon>
+            </button>
         </nav>
 
         <!-- Login window-->
@@ -28,27 +41,19 @@
             <form class="modal-content animate" action="file.py">
 
                 <div class="container">
-                <button onclick="document.getElementById('login').style.display='none'" class="close" title="Close window">&times;</button>
-                <label><strong>Username</strong>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
-                </label>
-                <br>
+                    <button onclick="document.getElementById('login').style.display='none'" class="close" title="Close window">&times;</button>
+                    <label><strong>Username</strong>
+                        <input type="text" placeholder="Enter Username" name="uname" required>
+                    </label>
 
-                <label><strong>Password</strong>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-                </label>
-                <br>
 
-                <button type="submit">Log in</button>
+                    <label><strong>Password</strong>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+                    </label>
 
-                <!-- <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label> -->
+                    <a href="{% url 'index' %}">Create account</a>
+                    <button id="login-button" type="submit">Log in</button>
 
-                <br>
-
-                <span>Forgot password?</span>
-                <span>Create account</span>
                 </div>
             </form>
         </div>

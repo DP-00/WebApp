@@ -10,7 +10,6 @@ section {
   section {
     padding: 6.4rem;
   }
-  
 }
 
 section:nth-child(odd) {
@@ -29,10 +28,18 @@ section:nth-child(even) {
   position: relative;
   
   width: 100%;
-  height: 50vw;
-  min-height: 42rem;
-  max-height: 60rem;
+  height: 60vw;
+  height: 70rem;
   padding: 0;
+}
+
+#hero-container{
+  margin: 16.4rem;
+  z-index: 2;
+  position: absolute;
+  text-align: left;
+  top: 0;
+  left: 0;
 }
 
 #hero div img{
@@ -43,7 +50,8 @@ section:nth-child(even) {
     z-index: 0;
 }
 
-#hero h1 {
+
+/* #hero h1 {
     margin-left: 16.4rem;
     margin-top: 12.8rem;
     padding: 0;
@@ -62,7 +70,7 @@ section:nth-child(even) {
     top: 0;
     left: 0;
     z-index: 2;
-}
+} */
 
 #heroText {
   display: inline-block;
@@ -71,7 +79,14 @@ section:nth-child(even) {
   text-align: center;
 }
 
-#hero .cta {
+#hero button{
+  margin-top: 4.8rem;
+  padding: 2.4rem;
+  font-weight: bolder;
+  letter-spacing: 0.2em;
+}
+
+/* #hero .cta {
     position: absolute;
     margin-top: 44.8rem;
     top: 0;
@@ -80,7 +95,7 @@ section:nth-child(even) {
     font-size: 2.4rem;
     padding: 1.5rem 2rem;
     z-index: 2;
-}
+} */
 
 
 /* GRADIENT OVERLAY */
@@ -100,21 +115,18 @@ section:nth-child(even) {
 
 /*SECTION GRID*/
 
-#about-us .section-container{
+.section-container{
   display: grid;
   
+  /* grid-template-columns: 60% 40%; */
   grid-template-columns: 60% 40%;
   grid-gap: 6.4rem;
-  max-width: 166rem;
-  min-width: 82rem;
+  /* max-width: 166rem;
+  min-width: 82rem; */
   place-items: center;
 }
-@media (max-width: 960px) {
-  .section-container {
-    grid-template-columns: 100% 0%;
-  }
-}
 
+/* 
 #places-to-explore .section-container{
   display: grid;
   
@@ -123,7 +135,7 @@ section:nth-child(even) {
   max-width: 166rem;
   min-width: 82rem;
   place-items: center;
-}
+} */
 
 .section-container img {
   box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
@@ -133,38 +145,39 @@ section:nth-child(even) {
 
 }
 
+@media (max-width: 960px) {
+  .section-container {
+    grid-template-columns: 100%;
+    order: column-reverse;
+  }
+  .section-container img {
+    order: 2;
+  
+  }
+
+}
+
   /* CARDS */
 
   .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 34rem);
-    grid-gap: 3rem;
-    max-width: 166rem;
-    min-width: 82rem;
-    padding: 5rem;
-    place-items: center;
+    grid-template-columns: repeat(auto-fit, 30rem);
+    grid-gap: 6.4rem;
+    /* max-width: 166rem;
+    min-width: 82rem; */
+    padding: 3.2rem 0;
+    align-items: center;
+    justify-content: center;
+    justify-items: center
     }
 
-  @media (max-width: 1280px) {
+    /* avoiding 3 plus one grid*/
+  @media (max-width: 110rem) and  (min-width: 96rem){
     .card-container {
-      grid-template-columns: repeat(auto-fit, 34rem);
-      grid-gap: 1rem;
+      grid-template-columns: repeat(2, 34rem);
     }
   }
 
-  @media (max-width: 960px) {
-    .card-container {
-      grid-template-columns: repeat(auto-fit, 34rem);
-      grid-gap: 2rem;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .card-container {
-      grid-template-columns: repeat(auto-fit, 34rem);
-      grid-gap: 1rem;
-    }
-  }
 
   .card-container>button{
     width: 50%;
@@ -177,7 +190,7 @@ section:nth-child(even) {
     height: 50rem;
     text-align: center;
     font-size: 2rem;
-    transition: 0.8s;
+    transition: 0.8s 0.5s; 
     transform-style: preserve-3d;
     box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
     perspective: 1000px;  /*Remove this if you don't want the 3D effect */
@@ -273,7 +286,8 @@ section:nth-child(even) {
   .map{
     height:50%;
     width: 100%;
-    box-shadow: 0 0 5rem 0 rgb(0, 0, 0, 0.5);   
+    box-shadow: 0 0 5rem 0 rgb(0, 0, 0, 0.5);  
+    filter: grayscale(15%); 
   }
 
   #map-info{
