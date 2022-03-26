@@ -133,34 +133,6 @@ section:nth-child(even) {
 
 }
 
-  /* MAP */
-
-  #map-container{
-    position: relative;
-  } 
-
-
-  .map{
-    height:50%;
-    width: 100%;
-    box-shadow: 0 0 5rem 0 rgb(0, 0, 0, 0.5);   
-  }
-
-  #map-info{
-    position: absolute;
-    right: 5rem;
-    bottom: 2rem;
-    z-index: 3;
-    background-color: var(--blue1);
-    margin: 50px auto; /* 15% from the top and centered */
-    padding: 5rem;
-    border: 1px solid var(--blue2);
-    width: 30%; /* Could be more or less, depending on screen size */
-    height: 80%;
-    line-height: 6.4rem;
-  }
-
-
   /* CARDS */
 
   .card-container {
@@ -290,6 +262,38 @@ section:nth-child(even) {
     place-items: center;
     align-items: center; */
   }
+
+
+  /* MAP */
+
+  #map-container{
+    position: relative;
+  } 
+
+  .map{
+    height:50%;
+    width: 100%;
+    box-shadow: 0 0 5rem 0 rgb(0, 0, 0, 0.5);   
+  }
+
+  #map-info{
+    position: absolute;
+    right: 5rem;
+    bottom: 2rem;
+    z-index: 3;
+    background-color: var(--blue1);
+    margin: 50px auto; /* 15% from the top and centered */
+    padding: 3rem;
+    border: 1px solid var(--blue2);
+    width: 30%; /* Could be more or less, depending on screen size */
+    height: 80%;
+    line-height: 6.4rem;
+  }
+
+  #map-info-content img{
+    width: 100%; 
+  }
+
 
 
 
