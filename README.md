@@ -3,7 +3,7 @@
 
 ## TO DO
 1. Main:
-- [ ] autenication (https://www.youtube.com/watch?v=6PWTxRGh_dk&list=PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu&index=10)
+- [ ] autenication
 - [ ] publish to the server
 2. Dagmara:
 - [ ] main page responsiveness
