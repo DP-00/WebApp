@@ -11,8 +11,8 @@
 3. Marcelina:
 - [ ] polish up frontend for shop & cart
 - [ ] add contact form to the footer on the main page
-- [ ] style the gallery
-- [ ] add responsiveness to the gallery
+- [x] style the gallery
+- [x] add responsiveness to the gallery
 4. Szymon:
 
 
