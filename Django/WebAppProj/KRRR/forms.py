@@ -15,7 +15,7 @@ class CustomerRegistrationModel(UserCreationForm):
         fields = ['name','surname','nickname','email','password1','password2']
 
 
-class CustomerRegistrationModel(forms.ModelForm):
+class CustomerUpdateModel(forms.ModelForm):
     email = forms.EmailField()
     nickname = forms.CharField(max_length=50)
 
