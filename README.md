@@ -1,5 +1,23 @@
 # Final project for courses Web Technologies & Application Development, spring 2022 NTNU
 
+
+## TO DO
+1. Main:
+- [ ] autenication
+- [ ] publish to the server
+2. Dagmara:
+- [ ] main page responsiveness
+- [ ] database constrains
+3. Marcelina:
+- [ ] polish up frontend for shop & cart
+- [ ] add contact form to the footer on the main page
+- [ ] style the gallery
+- [ ] add responsiveness to the gallery
+4. Szymon:
+
+
+
+
 ## Project description
 The project covers both frontend and backend for a bicycle rental website. The company is called KRRR - Keep Roling Roling Roling.
 
