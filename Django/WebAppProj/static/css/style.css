@@ -337,3 +337,10 @@ picture {
 #comments, #featured-in, #reminder > p {
   text-align: center;
 }
+
+#featured-in img {
+  height: 6rem;
+  width: auto;
+  margin: 0 5%;
+  border-radius: 0;
+}
