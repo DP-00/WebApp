@@ -1,15 +1,17 @@
 <!--
 TODO
 
+nav: logo, modal in mobile
 hero: photo responsive
-map: add responsivnes
-images: add smaller versions and more sizes and aspects ratio
-mobile: hamburger menu
+about: photo responsive
+card: photos responsive, wheel icon, dynamic price, style price, content stays in the card, see details button format + never 3
+map: add desc, bike icons and text, add responsivnes to the info
 
-dynamic data: price in cards
+
 database: add constraint
 
-attributions: <a href="https://www.flaticon.com/free-icons/tire" title="tire icons">Tire icons created by Those Icons - Flaticon</a>
+add credentials and attributions
+<a href="https://www.flaticon.com/free-icons/tire" title="tire icons">Tire icons created by Those Icons - Flaticon</a>
 -->
 
 {% extends 'KRRR/main.html' %}
@@ -51,7 +53,7 @@ attributions: <a href="https://www.flaticon.com/free-icons/tire" title="tire ico
         setInterval(heroText, 500);
       </script>
       <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
-      <button onclick="location.href='#our-products'">Choose now!</button>
+      <button onclick="location.href='shop/'">Choose now!</button>
     </div>
            
 
@@ -60,7 +62,11 @@ attributions: <a href="https://www.flaticon.com/free-icons/tire" title="tire ico
 
   <section id="about-us">
     <div class="section-container">
-      <img src="{% static 'images/about1.jpg' %}" alt="?">
+      <picture>
+        <source media="(min-width: 760px)" srcset="{% static 'images/about.jpg' %}">
+        <img src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
+      </picture>
+      <!-- <img src="{% static 'images/about.jpg' %}" alt="?"> -->
       <div><h2>About us</h2>
         <p class="textSection">Life is too short to not add kick out on pedals. Our service
           makes it fast and easy to rent a bike in seconds and leave 
@@ -84,6 +90,10 @@ attributions: <a href="https://www.flaticon.com/free-icons/tire" title="tire ico
           <div class="card-front">
               <div class="card-image">
                   <div class="overlay inner"></div>
+                  <!-- <picture class="inner">
+                    <source media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
+                    <img src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
+                  </picture> -->
                   <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?">
               </div>
               <div class="card-text">
@@ -146,7 +156,7 @@ attributions: <a href="https://www.flaticon.com/free-icons/tire" title="tire ico
         </div>
       </div>
 
-      <button onclick="location.href='#about-us'">See details ></button>
+      <button onclick="location.href='shop/'">See details ></button>
     </div>
   </section>
 
