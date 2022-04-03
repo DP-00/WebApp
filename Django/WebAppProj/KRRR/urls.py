@@ -10,4 +10,5 @@ urlpatterns = [
     path('admin-users/', views.adminUsers, name="admin-users"),
 
     path('register/', views.register, name='register'),
+    path('customer/', views.customer, name='customer'),
 ]

@@ -41,7 +41,7 @@ def register(request):
 
 
 @login_required
-def user(request):
+def customer(request):
     if request.method == "POST":
         updated_form = CustomerUpdateModel(request.POST, instance=request.user)
         if updated_form.is_valid():
