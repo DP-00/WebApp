@@ -32,10 +32,17 @@ add credentials and attributions
   <li><a href="#places-to-explore">Trips</a></li>
   <li><a href="#featured-in">Opinions</a></li>
   <li><a href="#contact">Contact</a></li>
+
+  
   {% if user.is_authenticated %}
     <li><a href="{% url 'customer' %}">{{ user.username }}</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+  {% else %}
+    <li><a href="{% url 'login' %}">Login</a></li>
   {% endif %}
-{% endblock menu %}
+
+
+  {% endblock menu %}
 
 {% block content %}
   <section id="hero">
