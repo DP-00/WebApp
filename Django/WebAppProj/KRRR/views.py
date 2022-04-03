@@ -25,16 +25,19 @@ def checkout(request):
     return render(request, 'KRRR/checkout.html', context)
 
 
+
+
+
 def register(request):
     if request.method == 'POST':
         form = CustomerRegistrationModel(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("shop")
+            return redirect("index")
     else:
         form = CustomerRegistrationModel()
-    return render(request, "register.html", {form:'form'})
+    return render(request, "KRRR/register.html", {'form':form})
 
 
 @login_required
@@ -43,11 +46,11 @@ def user(request):
         updated_form = CustomerUpdateModel(request.POST, instance=request.user)
         if updated_form.is_valid():
             updated_form.save()
-            return redirect("user")
+            return redirect("customer")
     else:
         updated_form = CustomerUpdateModel(instance=request.user)
 
-    return render(request, "user/user.html", {'updated_form':updated_form})
+    return render(request, "KRRR/customer.html", {'updated_form':updated_form})
 
 
 def adminAdmin(request):
