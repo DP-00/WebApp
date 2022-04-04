@@ -1,11 +1,25 @@
+#background {
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vW;
+  padding: 0;
+  border-radius: 0;
+}
+
 form {
     background-color: var(--blue1);
-    margin: 50px auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 5rem;
     /* border: 1px solid var(--blue2); */
     width: 66%; /* Could be more or less, depending on screen size */
     line-height: 6.4rem;
     color: var(--grey3);
+    position: relative;
+    z-index: 1;
   }
 
 fieldset {
@@ -19,7 +33,9 @@ input {
     border: 1px solid #ccc;
     box-sizing: border-box;
     padding: 12px 20px;
-    margin-bottom: 3.6rem;
+    margin-bottom: 2rem;
+    color: var(--grey3);
+    font-size: large;
 }
 
 a{
@@ -31,4 +47,35 @@ button {
     font-weight: bold;
     font-size: 2.4rem;
     background-color: var(--blue2);
+    width: 100%;
+    margin-top: 2rem;
+ }
+
+ h1 {
+     text-align: center;
+     font-size: 5rem;
+ }
+
+ #options {
+     margin: 5%;
+     text-align: center;
+ }
+
+ a {
+     margin: 5%;
+ }
+
+ .helptext, ul {
+     margin: 0;
+     font-size: small;
+ }
+
+ ul {
+   list-style-type: none;
+   text-align: center;
+ }
+
+ li { 
+     display: inline-block;
+     padding: 0.5rem;
  }

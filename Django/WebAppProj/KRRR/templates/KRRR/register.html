@@ -1,17 +1,19 @@
-{% extends 'KRRR/main.html' %}
 {% load static %}
-
-
-{% block extra-head %}
-
-{% endblock extra-head %}
-
-{% block content %}
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KRRR</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <img id="background" src="{% static 'images/heroBig.png' %}" alt="?">
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-            <legend>Join Today</legend>
+            <legend hidden>Create an account</legend>
+            <h1>Join KRRR</h1>
             {{ form.as_p }}
         </fieldset>
         <div>
@@ -19,5 +21,4 @@
             <p>Already have an account?<a href="{% url 'login' %}">Sign In</a></p>
         </div>
     </form>
-
-{% endblock content %}
+</body>
