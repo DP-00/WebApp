@@ -19,7 +19,7 @@ var map = new ol.Map({
 
 var customStyleFunction = function(feature) {
     const file = feature.get('file');
-    const path = srcPath + file +".jpg";
+    const path = srcPath + file +"Icon.jpg";
     
     return [new ol.style.Style({
     image: new ol.style.Photo ({
@@ -49,16 +49,16 @@ var vectorShop = new ol.layer.Vector({ source: new ol.source.Vector() });
 
 var shopMoa = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([6.35, 62.467])),
-    name: 'Moa',
-    description: "aaaaaaaa",
+    name: 'Moa station',
+    description: "Our rental point in Moa shop centre in the south building. We are open every day between 8:00 and 18:00, You can reserve bike via our page or buy on the place.",
 });
 
 vectorShop.getSource().addFeature(shopMoa);
 
 var shopCentrum = new ol.Feature({
     geometry: new ol.geom.Point(ol.proj.fromLonLat([6.127, 62.467])),
-    name: 'centrum',
-    description: "bbbbbbb",
+    name: 'Centrum station',
+    description: "Our rental point in city centre right next to the harbour. We are open every day between 8:00 and 18:00, You can reserve bike via our page or buy on the place.",
 });
 
 vectorShop.getSource().addFeature(shopCentrum);
@@ -66,19 +66,11 @@ vectorShop.getSource().addFeature(shopCentrum);
 var iconStyle = new ol.style.Style({
     image: new ol.style.Icon({
     opacity: 1,
-    src: "../../static/images/bicycle.png",
+    src: "../../static/images/bike-shop.png",
     // <a href="https://www.flaticon.com/free-icons/bike" title="bike icons">Bike icons created by Those Icons - Flaticon</a>
     height:0.1,
     width:0.1,
     }),
-    text: new ol.style.Text(
-    {
-        text: 'Bicycle store',
-        scale: [2, 2],
-        textAlign: 'center',
-        textBaseline: 'top',
-    }
-    )
 });
 shopMoa.setStyle(iconStyle);
 shopCentrum.setStyle(iconStyle);
@@ -98,7 +90,7 @@ map.on('click', function (evt) {
 
     if (feature) {
     const name = feature.get('name');
-    if (name == "Moa" || name == "centrum")
+    if (name == "Moa station" || name == "Centrum station")
     {
         mapInfo.innerHTML=null;
         const h3 = document.createElement("h3");
@@ -107,6 +99,7 @@ map.on('click', function (evt) {
         p.innerText = feature.get('description');
         mapInfo.appendChild(h3)
         mapInfo.appendChild(p)
+        mapInfo.classList.add("no-grid");
 
     }
     else{
@@ -117,6 +110,7 @@ map.on('click', function (evt) {
         mapInfo.innerHTML=null;
 
         const img = document.createElement("img");
+        const div = document.createElement("div");
         const h3 = document.createElement("h3");
         const p = document.createElement("p");
 
@@ -125,8 +119,11 @@ map.on('click', function (evt) {
         p.innerText = desc;
 
         mapInfo.appendChild(img)
-        mapInfo.appendChild(h3)
-        mapInfo.appendChild(p)
+        mapInfo.appendChild(div)
+        div.appendChild(h3)
+        div.appendChild(p)
+
+        mapInfo.classList.remove("no-grid");
     }
     
 

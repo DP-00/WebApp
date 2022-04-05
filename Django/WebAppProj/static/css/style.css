@@ -49,28 +49,6 @@ section:nth-child(even) {
     z-index: 0;
 }
 
-
-/* #hero h1 {
-    margin-left: 16.4rem;
-    margin-top: 12.8rem;
-    padding: 0;
-    position: absolute;
-    text-align: left;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-#hero p {
-    margin-left: 16.4rem;
-    margin-top: 32rem;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-} */
-
 #heroText {
   display: inline-block;
   width: 16rem;
@@ -84,17 +62,6 @@ section:nth-child(even) {
   font-weight: bolder;
   letter-spacing: 0.2em;
 }
-
-/* #hero .cta {
-    position: absolute;
-    margin-top: 44.8rem;
-    top: 0;
-    left: 0;
-    margin-left: 16.4rem;
-    font-size: 2.4rem;
-    padding: 1.5rem 2rem;
-    z-index: 2;
-} */
 
 
 /* GRADIENT OVERLAY */
@@ -125,37 +92,19 @@ section:nth-child(even) {
   /* place-items: center; */
   align-items: center;
   justify-content: center;
-  justify-items: center
+  justify-items: center;
 }
 
-/* 
-#places-to-explore .section-container{
-  display: grid;
-  
-  grid-template-columns: 40% 60%;
-  grid-gap: 6.4rem;
-  max-width: 166rem;
-  min-width: 82rem;
-  place-items: center;
-} */
-
-/* .section-container img {
-  box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
-  width: 90%;
-  height: 90%;
-  border-radius:5rem;
-
-} */
 
 .section-container img{
   box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
-  width: 90%;
-  /* height: 90%; */
+  width: 100%;
+  height: 90%;
   border-radius:5rem;
 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .section-container {
     grid-template-columns: 100%;
     order: column-reverse;
@@ -308,31 +257,70 @@ section:nth-child(even) {
 
   #map-container{
     position: relative;
-  } 
-
-  .map{
-    height:50%;
+    height:60%;
     width: 100%;
-    box-shadow: 0 0 5rem 0 rgb(0, 0, 0, 0.5);  
-    filter: grayscale(15%); 
-  }
+  } 
 
   #map-info{
     position: absolute;
-    right: 5rem;
-    bottom: 2rem;
+    right: 0;
+    bottom: 0;
     z-index: 3;
-    background-color: var(--blue1);
-    margin: 50px auto; /* 15% from the top and centered */
-    padding: 3rem;
-    border: 1px solid var(--blue2);
-    width: 30%; /* Could be more or less, depending on screen size */
-    height: 80%;
+    background-color: rgba(14,36,36, 0.85);
+    padding: 2.4rem;
+    margin: 2.4rem;
+    height: auto;
+    width: 30%; 
+
     line-height: 6.4rem;
+    font-size: 2.4rem;
   }
 
   #map-info-content img{
     width: 100%; 
+    padding-bottom: 2.4rem;
+  }
+
+  #bike-icon {
+    height: 5rem;
+    width: auto;
+  }
+
+  
+  @media (max-width: 1200px) {
+
+    #map-container{
+      height:80%;
+    } 
+
+    #map-info{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 95%; 
+      /* height: 45%; */
+
+
+    }
+
+    .map-info-content{
+      display: grid;
+      grid-template-columns: 60% 30%;
+      grid-gap: 6.4rem;
+      align-items: center;
+      text-align: left;
+    }
+
+    .no-grid {
+      display: block;
+    }
+  
+
+    #map-info-content img{
+      padding-bottom: 0;
+    }
+
+
   }
 
 
@@ -350,7 +338,7 @@ section:nth-child(even) {
   grid-template-rows: 1fr 1fr 1fr;
 }
 
-picture {
+#gallery picture {
   text-align: center;
   aspect-ratio: 1;
 }

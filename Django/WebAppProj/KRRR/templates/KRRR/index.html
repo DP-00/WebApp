@@ -2,11 +2,10 @@
 TODO
 
 nav: logo, modal in mobile
-hero: photo responsive
-about: photo responsive
+hero: photo responsive + button bigger
 card: photos responsive, wheel icon, dynamic price, style price, content stays in the card, see details button format + never 3
-map: add desc, bike icons and text, add responsivnes to the info
 
+less roundenss
 
 database: add constraint
 
@@ -71,7 +70,7 @@ add credentials and attributions
     <div class="section-container">
       <picture>
         <source media="(min-width: 760px)" srcset="{% static 'images/about.jpg' %}">
-        <img src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
+        <img id="about-photo" src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
       </picture>
       <!-- <img src="{% static 'images/about.jpg' %}" alt="?"> -->
       <div><h2>About us</h2>
@@ -172,9 +171,10 @@ add credentials and attributions
     <div id="map-container">
       <div id="map" class="map"></div>
       <div id="map-info">
-        <div id="map-info-content">
-          The city offers many places to explore! If only there was a way to move faster to see them all.
-           Well, there is! Check the map to see where you can go from our renting points. Select the point or the photo to know more
+        <div id="map-info-content" class="map-info-content no-grid">
+            The city offers many places to explore! Check the map to see where you can go from our renting points. 
+            Select a point or a photo to know more.
+          </div>
         </div>
       </div>
     </div>
