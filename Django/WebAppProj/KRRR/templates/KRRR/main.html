@@ -12,7 +12,7 @@
 <body>
     <header>
         <nav>
-            <a href="{% url 'index' %}"><img src="{% static 'images/2.jpg' %}" alt="Keep roling roling roling"></a>
+            <a href="{% url 'index' %}"><img src="{% static 'images/wheel.png' %}" alt="Keep roling roling roling"></a>
 
             <ul id="menu-list">
                 {% block menu %}
@@ -31,13 +31,13 @@
                     }
                 }
             </script>
-            <button  onclick="document.getElementById('login').style.display='block'">
+            <button  onclick="location.href='login/'">
                 <ion-icon name="person"></ion-icon>
             </button>
         </nav>
 
         <!-- Login window-->
-        <div id="login" class="modal">
+        <!-- <div id="login" class="modal">
             <form class="modal-content animate" action="file.py">
 
                 <div class="container">
@@ -56,7 +56,7 @@
 
                 </div>
             </form>
-        </div>
+        </div> -->
     </header>
 
     <main>

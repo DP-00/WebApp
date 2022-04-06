@@ -7,16 +7,45 @@
 # to create those model tables in your database (run every time the model is changed)
 # >python manage.py migrate
 
+from unicodedata import category
 from django.db import models
 from datetime import datetime
+from django.db.models import Min
 
 
 class Product(models.Model):
-    label = models.CharField(max_length=50)
-    price = models.FloatField
+    name = models.CharField(max_length=50)
+    CATEGORY_TYPE = (
+        ('E-bike', 'E-bike'),
+        ('Bike', 'Bike'),
+        ('Other', 'Other')
+    )
+    category = models.CharField(max_length=10, choices=CATEGORY_TYPE, default='Bike')
+    price = models.FloatField()
     description = models.CharField(max_length=250)
-    photo = models.BinaryField
-    sale_price = models.FloatField
+    photo = models.FileField(blank=True)
+    sale_price = models.FloatField(blank=True, null=True)
+
+    def test1(self):
+        return 42
+    
+    def test2(self):
+        cheapestPrice = self.objects.all().aggregate(Min('price'))
+        return cheapestPrice
+        
+
+    def cheapestBike(self):
+        cheapestPrice = self.objects.filter(self__category="Bike").all().aggregate(Min('price'))
+        return cheapestPrice
+    
+    def cheapestEBike(self):
+        cheapestPrice = self.objects.filter(self__category="Bike").all().aggregate(Min('price'))
+        return cheapestPrice
+    
+    def personalizationPrice(self):
+        cheapestPrice = self.objects.filter(self__name="Personalization option").all().aggregate(Min('price'))
+        return cheapestPrice
+
 
 
 class Customer(models.Model):

@@ -115,7 +115,7 @@ nav li {
     margin: 16px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
     #menu-list{
         display: none;
         float: right;
@@ -164,6 +164,8 @@ button{
     color: var(--grey3);
     background-color: var(--blue1);
     padding: 1.4rem;
+    font-weight: bold;
+    font-size: 2.4rem;
 }
 
 button:hover {

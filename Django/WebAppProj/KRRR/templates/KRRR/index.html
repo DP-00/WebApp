@@ -1,9 +1,9 @@
 <!--
 TODO
 
-nav: logo, modal in mobile
-hero: photo responsive + button bigger
-card: photos responsive, wheel icon, dynamic price, style price, content stays in the card, see details button format + never 3
+nav: logo
+hero: photo responsive
+card:  dynamic price
 
 less roundenss
 
@@ -100,7 +100,11 @@ add credentials and attributions
                     <source media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
                     <img src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
                   </picture> -->
-                  <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?">
+                  <picture>
+                    <source media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
+                    <img id="about-photo" class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
+                  </picture>
+                  <!-- <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?"> -->
               </div>
               <div class="card-text">
                 <h3>Bike rental</h3>
@@ -113,8 +117,14 @@ add credentials and attributions
                 <li>Customizable seat height</li>
                 <li>Helmet included in price</li>
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-                <li>from <span id="price">1</span>NOK/min</li>
+                <!-- <li>from <span id="price">1</span>NOK/min</li> -->
               </ul>
+              <div id="price">from <div id="price-num">
+                {{ product.cheapestBike }}
+                {{ product.test1 }}
+                {{ product.test2 }}
+                {{ product.name }}
+                 NOK</div>per minute</div>
           </div>
       </div>     
 
@@ -122,7 +132,11 @@ add credentials and attributions
         <div class="card-front">
           <div class="card-image">
             <div class="overlay inner"></div>
-            <img class="inner" src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent">
+            <picture>
+              <source media="(min-width: 760px)" srcset="{% static 'images/electric.jpg' %}">
+              <img id="about-photo" class="inner" src="{% static 'images/electricPhone.jpg' %}" alt="E-Bike to rent">
+            </picture>
+            <!-- <img class="inner" src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent"> -->
             <!-- <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent"> -->
           </div>
           <div class="card-text">
@@ -136,8 +150,9 @@ add credentials and attributions
             <li>Customizable seat height</li>
             <li>Helmet included in price</li>
             <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-            <li>from <span id="price">1</span>NOK/min</li>
+            <!-- <li>from <span id="price">1</span>NOK/min</li> -->
           </ul>
+          <div id="price">from <div id="price-num">3 NOK</div>per minute</div>
         </div>
       </div>
         
@@ -145,7 +160,11 @@ add credentials and attributions
         <div class="card-front">
           <div class="card-image">
             <div class="overlay inner"></div>
-            <img class="inner" src="{% static 'images/5.jpg' %}" alt="?">
+            <picture>
+              <source media="(min-width: 760px)" srcset="{% static 'images/personalization.jpg' %}">
+              <img id="about-photo" class="inner" src="{% static 'images/personalizationPhone.jpg' %}" alt="Bike with colorful background">
+            </picture>
+            <!-- <img class="inner" src="{% static 'images/5.jpg' %}" alt="?"> -->
           </div>
           <div class="card-text">
             <h3>Personalization option</h3>
@@ -157,12 +176,13 @@ add credentials and attributions
             <li>16 different color tones available</li>
             <li>Pick up at Moa bus station</li>
             <li>Color holds on for 30 minutes when it is not raining</li>
-            <li><span id="price">150</span>NOK</li>
+            <!-- <li><span id="price">150</span>NOK</li> -->
           </ul>
+          <div id="price"><div id="price-num">250 NOK</div>per rental</div>
         </div>
       </div>
 
-      <button onclick="location.href='shop/'">See details ></button>
+      <button onclick="location.href='shop/'">Go to cart</button>
     </div>
   </section>
 
