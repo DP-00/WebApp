@@ -1,0 +1,25 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock extra_head %}
+
+{% block menu %}
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'cart' %}">Cart</a></li>
+{% endblock menu %}
+
+{% block content %}
+    <div class="card">
+        <img src="{% static 'images/2.jpg' %}">
+        <p>{{product.name}}</p>
+        <p>{{product.price}} NOK</p>
+        <p>{{product.category}}</p>
+        <p>{{product.description}}</p>
+        <button name="cart">Add to cart</button>
+        <button name="more">More</button>
+        </div>
+    </div>
+
+{% endblock content %}
