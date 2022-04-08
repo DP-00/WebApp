@@ -1,0 +1,33 @@
+.product {
+    margin: 10%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 80% 20%;
+}
+
+.product img {
+    object-fit: cover;
+    max-width: 100%;
+    place-self: center;
+}
+
+.content {
+    padding: 10%;
+}
+
+.name, .price, .category {
+    text-align: center;
+    padding: 0;
+}
+
+.options {
+    place-self: center;
+}
+
+.comments {
+    padding: 2rem;
+}
+
+.comment > p {
+    display: inline-block;
+}

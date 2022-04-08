@@ -16,7 +16,8 @@ def shop(request):
 
 def product(request, id):
     product = Product.objects.get(id = id)
-    return render(request, 'KRRR/product.html', {'product': product})
+    comments = Comment.objects.filter(product=product)
+    return render(request, 'KRRR/product.html', {'product': product, 'comments': comments})
 
 
 def cart(request):
