@@ -1,6 +1,7 @@
 {% extends 'KRRR/main.html' %}
 {% load static %}
 {% load humanize %}
+{% load mathfilters %}
 
 {% block extra_head %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
@@ -31,7 +32,16 @@
             <div class="comment">
             <p class="date">{{comment.comment_date|naturaltime}}</p>
             <p class="customer">{{comment.customer}}</p>
-            <p class="stars">{{comment.stars}}</p>
+            <p class="stars">
+                {% with full=comment.stars empty=5|sub:comment.stars %}
+                {% for star in ""|ljust:full %}
+                <ion-icon name="star"></ion-icon>
+                {% endfor %}
+                {% for star in ""|ljust:empty %}
+                <ion-icon name="star-outline"></ion-icon>
+                {% endfor %}
+                {% endwith %}
+            </p>
             <p class="comment">{{comment.content}}</p>
             </div>
             {% endfor %}
