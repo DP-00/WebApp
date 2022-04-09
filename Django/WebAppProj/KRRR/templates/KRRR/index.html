@@ -53,12 +53,14 @@ to. I.e., describe the goal of the image, not the illustrative motive
 
   
   {% if user.is_authenticated %}
-    <li><a href="{% url 'customer' %}">{{ user.username }}</a></li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% if user.is_staff %}
+      <li><a href="{% url 'admin-admin' %}">Admin</a></li>
+    {% endif %}
+      <li><a href="{% url 'customer' %}">{{ user.username }}</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
   {% else %}
-    <li><a href="{% url 'login' %}">Login</a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
   {% endif %}
-
 
 {% endblock menu %}
 
