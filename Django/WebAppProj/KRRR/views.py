@@ -14,6 +14,11 @@ def shop(request):
     context = {'products': products}
     return render(request, 'KRRR/shop.html', context)
 
+def product(request, id):
+    product = Product.objects.get(id = id)
+    comments = Comment.objects.filter(product=product)
+    return render(request, 'KRRR/product.html', {'product': product, 'comments': comments})
+
 
 def cart(request):
     context = {}

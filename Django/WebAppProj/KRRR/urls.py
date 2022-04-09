@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', views.index, name="index"),
     path('shop/', views.shop, name="shop"),
+    path('shop/<int:id>/', views.product, name='product'),
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
     path('admin-admin/', views.adminAdmin, name="admin-admin"),

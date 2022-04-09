@@ -1,0 +1,41 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+{% endblock extra_head %}
+
+{% block menu %}
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'cart' %}">Cart</a></li>
+{% endblock menu %}
+
+{% block content %}
+    <div class="product">
+        <img src="{% static 'images/2.jpg' %}">
+        <div class="content">
+            <h1 class="name">{{product.name}}</h1>
+            <p class="price">{{product.price}} NOK</p>
+            <p class="category">{{product.category}}</p>
+            <p>{{product.description}}</p>
+        </div>
+        <div class="options">
+            <button name="cart">Add to cart</button>
+            <button name="more">More</button>
+        </div>
+        </div>
+        <div class="comments">
+            <h1>Comments</h1>
+            {% for comment in comments %}
+            <div class="comment">
+            <p class="date">{{comment.comment_date|naturaltime}}</p>
+            <p class="customer">{{comment.customer}}</p>
+            <p class="stars">{{comment.stars}}</p>
+            <p class="comment">{{comment.content}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}
