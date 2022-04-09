@@ -83,13 +83,8 @@ section:nth-child(even) {
 
 .section-container{
   display: grid;
-  
-  /* grid-template-columns: 60% 40%; */
   grid-template-columns: 60% 40%;
   grid-gap: 6.4rem;
-  /* max-width: 166rem;
-  min-width: 82rem; */
-  /* place-items: center; */
   align-items: center;
   justify-content: center;
   justify-items: center;
@@ -109,17 +104,11 @@ section:nth-child(even) {
     grid-template-columns: 100%;
     order: column-reverse;
   }
-  /* .section-container img {
-    order: 2;
-  
-  } */
 
   .section-container picture {
     order: 2;
   
   }
-
-
 }
 
   /* CARDS */
@@ -128,15 +117,14 @@ section:nth-child(even) {
     display: grid;
     grid-template-columns: repeat(4, 30rem);
     grid-gap: 16.4rem;
-    /* max-width: 166rem;
-    min-width: 82rem; */
+
     padding: 3.2rem 0;
     align-items: center;
     justify-content: center;
     justify-items: center
     }
 
-    /* avoiding 3 plus one grid*/
+  /* avoiding 3 plus one grid*/
 
   @media (max-width:2200px){
     .card-container {
@@ -180,11 +168,9 @@ section:nth-child(even) {
     transition: 0.8s 0.4s; 
     transform-style: preserve-3d;
     box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
-    perspective: 1000px;  /*Remove this if you don't want the 3D effect */
-    /* background-image: linear-gradient(to bottom, rgba(53, 57, 61, 0.3) 30%, rgba(0,50,50, 0.8)), url("images/test.jpg");   */
+    perspective: 1000px;
   }
      
-  /* Do an horizontal flip when you move the mouse over the flip box container */
   .card:hover{
     transform: rotateY(180deg);
   }
@@ -235,12 +221,6 @@ section:nth-child(even) {
     backface-visibility: hidden;
     z-index: 2;
 
- 
-/* 
-    display: grid;
-    grid-template-rows: 60% 30%;
-    grid-gap: 6.4rem;
-    align-items: center; */
   }
 
   .card ul {
@@ -249,24 +229,18 @@ section:nth-child(even) {
 
   .card li{
     list-style-type: none;
-    /* list-style-image: url("../../static/images/wheelIcon.png"); */
     list-style-position: inside;
-    /* display: list-item; */
     font-size: 1.6rem;   
     padding: 1.2rem;
 
   }
-/* 
-  .card li::marker{
-    text-align: center;
-  } */
 
-  #price {
+  .price {
     padding-top: 3rem;
     font-size: 2.4rem;
   }
 
-  #price-num {
+  .price-num {
     font-size: 3.2rem;
     font-weight: bold;
     letter-spacing: 0.2em;
@@ -318,9 +292,6 @@ section:nth-child(even) {
       left: 0;
       bottom: 0;
       width: 95%; 
-      /* height: 45%; */
-
-
     }
 
     .map-info-content{
@@ -342,7 +313,6 @@ section:nth-child(even) {
 
 
   }
-
 
 
 

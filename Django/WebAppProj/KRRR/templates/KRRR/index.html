@@ -11,6 +11,25 @@ database: constrints
 
 add credentials and attributions
 <a href="https://www.flaticon.com/free-icons/tire" title="tire icons">Tire icons created by Those Icons - Flaticon</a>
+
+? <!DOCTYPE html>
+Define spacing scale, f.ex, multiples of 16px (multiples of 4px for smaller
+padding)
+
+s line height good? 1.2-1.5 line spacing for small screens, 1.4 to 1.6 on large screens
+
+Does the text-column width make sense? Strive for text of 45 to 70 characters! Trick
+suggested in the book: put a span around 45th to 75th characters of the text, add
+background color to it
+
+3. Empty alt="" for purely illustrative images without any message/information.
+4. A describing text if a short alt-attribute does not suffice.
+5. aria-label="alt text here" for divs containing background images - Universal Design.
+6. If image contains a link to another page, alt text must describe where this link will lead
+to. I.e., describe the goal of the image, not the illustrative motive
+
+25. Use ARIA landmarks and labels to identify regions of a page.
+26. Meaningful labels for form inputs, in a consistent layout
 -->
 
 {% extends 'KRRR/main.html' %}
@@ -21,7 +40,7 @@ add credentials and attributions
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css" type="text/css">
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
   <link rel="stylesheet" href="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.css" />
-  <script type="text/javascript" src="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
+  <script src="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
 
 {% endblock extra_head %}
 
@@ -50,7 +69,8 @@ add credentials and attributions
         <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
     </div>
     <div id="hero-container">
-       <h1>Bicycle rentals for<br> modern folks</h1>
+       <h1>Bicycle rentals for<br>modern folks</h1>
+
       <script>
         let i = 0;
         function heroText(){
@@ -61,6 +81,7 @@ add credentials and attributions
       }
         setInterval(heroText, 500);
       </script>
+
       <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
       <button onclick="location.href='shop/'">Choose now!</button>
     </div>
@@ -96,15 +117,10 @@ add credentials and attributions
           <div class="card-front">
               <div class="card-image">
                   <div class="overlay inner"></div>
-                  <!-- <picture class="inner">
-                    <source media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
-                    <img src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
-                  </picture> -->
                   <picture>
                     <source media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
-                    <img id="about-photo" class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
+                    <img class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
                   </picture>
-                  <!-- <img class="inner" src="{% static 'images/bikeCard.jpg' %}" alt="?"> -->
               </div>
               <div class="card-text">
                 <h3>Bike rental</h3>
@@ -117,9 +133,8 @@ add credentials and attributions
                 <li>Customizable seat height</li>
                 <li>Helmet included in price</li>
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-                <!-- <li>from <span id="price">1</span>NOK/min</li> -->
               </ul>
-              <div id="price">from <div id="price-num">
+              <div class="price">from <div class="price-num">
                 {{ product.cheapestBike }}
                 {{ product.test1 }}
                 {{ product.test2 }}
@@ -134,10 +149,8 @@ add credentials and attributions
             <div class="overlay inner"></div>
             <picture>
               <source media="(min-width: 760px)" srcset="{% static 'images/electric.jpg' %}">
-              <img id="about-photo" class="inner" src="{% static 'images/electricPhone.jpg' %}" alt="E-Bike to rent">
+              <img class="inner" src="{% static 'images/electricPhone.jpg' %}" alt="E-Bike to rent">
             </picture>
-            <!-- <img class="inner" src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent"> -->
-            <!-- <img src="{% static 'images/electric.jpg' %}" alt="E-Bike to rent"> -->
           </div>
           <div class="card-text">
             <h3>E-Bike rental</h3>
@@ -150,9 +163,8 @@ add credentials and attributions
             <li>Customizable seat height</li>
             <li>Helmet included in price</li>
             <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
-            <!-- <li>from <span id="price">1</span>NOK/min</li> -->
           </ul>
-          <div id="price">from <div id="price-num">3 NOK</div>per minute</div>
+          <div class="price">from <div class="price-num">3 NOK</div>per minute</div>
         </div>
       </div>
         
@@ -162,9 +174,8 @@ add credentials and attributions
             <div class="overlay inner"></div>
             <picture>
               <source media="(min-width: 760px)" srcset="{% static 'images/personalization.jpg' %}">
-              <img id="about-photo" class="inner" src="{% static 'images/personalizationPhone.jpg' %}" alt="Bike with colorful background">
+              <img class="inner" src="{% static 'images/personalizationPhone.jpg' %}" alt="Bike with colorful background">
             </picture>
-            <!-- <img class="inner" src="{% static 'images/5.jpg' %}" alt="?"> -->
           </div>
           <div class="card-text">
             <h3>Personalization option</h3>
@@ -176,9 +187,8 @@ add credentials and attributions
             <li>16 different color tones available</li>
             <li>Pick up at Moa bus station</li>
             <li>Color holds on for 30 minutes when it is not raining</li>
-            <!-- <li><span id="price">150</span>NOK</li> -->
           </ul>
-          <div id="price"><div id="price-num">250 NOK</div>per rental</div>
+          <div class="price"><div class="price-num">250 NOK</div>per rental</div>
         </div>
       </div>
 
@@ -190,13 +200,14 @@ add credentials and attributions
     <h2>Places to explore</h2>  
     <div id="map-container">
       <div id="map" class="map"></div>
+
       <div id="map-info">
         <div id="map-info-content" class="map-info-content no-grid">
             The city offers many places to explore! Check the map to see where you can go from our renting points. 
             Select a point or a photo to know more.
-          </div>
         </div>
       </div>
+
     </div>
 
     <script src="../../../static/js/map.js"></script>      

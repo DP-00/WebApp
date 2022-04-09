@@ -4,6 +4,14 @@ from .forms import CustomerRegistrationModel, CustomerUpdateModel
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
+from rest_framework import viewsets
+from .serializers import ProductSerializer
+
+class ShopViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all().order_by('id')
+    serializer_class = ProductSerializer
+
+
 def index(request):
     context = {}
     return render(request, 'KRRR/index.html', context)
@@ -28,6 +36,8 @@ def cart(request):
 def checkout(request):
     context = {}
     return render(request, 'KRRR/checkout.html', context)
+
+
 
 
 
@@ -62,4 +72,4 @@ def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
 def adminUsers(request):
-    return render(request, 'KRRR/admin-users.html', { "users": Customer.objects.all() })
+    return render(request, 'KRRR/admin-users.html', { "users": User.objects.all() })

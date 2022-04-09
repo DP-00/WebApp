@@ -1,10 +1,16 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'shop', views.ShopViewSet)
 
 urlpatterns = [
-    path('', views.index, name="index"),
-    path('shop/', views.shop, name="shop"),
+    # path('', views.index, name="index"),
+    # path('shop/', views.shop, name="shop"),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('shop/<int:id>/', views.product, name='product'),
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
