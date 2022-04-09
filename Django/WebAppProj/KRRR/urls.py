@@ -7,9 +7,9 @@ router = routers.DefaultRouter()
 router.register(r'shop', views.ShopViewSet)
 
 urlpatterns = [
-    # path('', views.index, name="index"),
-    # path('shop/', views.shop, name="shop"),
-    path('', include(router.urls)),
+    path('', views.index, name="index"),
+    path('api/', include(router.urls)),
+    path('shop/', views.shop, name="shop"),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('shop/<int:id>/', views.product, name='product'),
     path('cart/', views.cart, name="cart"),

@@ -4,6 +4,7 @@ from .forms import CustomerRegistrationModel, CustomerUpdateModel
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
+import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
@@ -18,12 +19,13 @@ def index(request):
 
 
 def shop(request):
-    products = Product.objects.all()
+    products = requests.get("http://localhost:8000/api/shop")
     context = {'products': products}
     return render(request, 'KRRR/shop.html', context)
 
 def product(request, id):
     product = Product.objects.get(id = id)
+    # product = requests.get(f"http://localhost:8000/api/shop/{id}")
     comments = Comment.objects.filter(product=product)
     return render(request, 'KRRR/product.html', {'product': product, 'comments': comments})
 
