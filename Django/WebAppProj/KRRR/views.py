@@ -44,6 +44,9 @@ def checkout(request):
     return render(request, 'KRRR/checkout.html', context)
 
 
+def credits(request):
+    context = {}
+    return render(request, 'KRRR/credits.html', context)
 
 
 
