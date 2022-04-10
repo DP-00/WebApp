@@ -4,21 +4,15 @@ TODO
 hero: photo responsive
 database: constrints 
 less roundenss
-
-add credentials file
+style.css - cards check
 
 ? <!DOCTYPE html>
-Define spacing scale, f.ex, multiples of 16px (multiples of 4px for smaller
-padding)
-
-s line height good? 1.2-1.5 line spacing for small screens, 1.4 to 1.6 on large screens
 
 text-column width  45 to 70 characters! span around 45th to 75th characters of the text, add
 background color to it
 
 5. aria-label="alt text here" for divs containing background images - Universal Design.
 25. Use ARIA landmarks and labels to identify regions of a page.
-26. Meaningful labels for form inputs, in a consistent layout
 -->
 
 {% extends 'KRRR/main.html' %}
@@ -57,23 +51,14 @@ background color to it
 
 {% block content %}
   <section id="hero">
-    <div class="bacg">
+    <div>
       <div class="overlay inner"></div>
         <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
     </div>
     <div id="hero-container">
-       <h1>Bicycle rentals for<br>modern folks</h1>
+      <h1>Bicycle rentals for<br>modern folks</h1>
 
-      <script>
-        let i = 0;
-        function heroText(){
-          let text=["modern", "healthy", "urban", "individual", "free", "hipster", "authentic", "modern", "modern", "modern", "modern"];
-          let textLen = text.length;
-          document.getElementById('heroText').innerText = text[i%textLen];
-          i++;            
-      }
-        setInterval(heroText, 500);
-      </script>
+      <script src="../../../static/js/hero.js"></script>
 
       <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
       <button onclick="location.href='shop/'">Choose now!</button>
@@ -126,8 +111,7 @@ background color to it
                 <li>Helmet included in price</li>
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
               </ul>
-              <div class="price">from <div class="price-num"> {{cheapestBike.price__min}}
-                 NOK</div>per minute</div>
+              <div class="price">from <div class="price-num">{{cheapestBike.price__min}} NOK</div>per minute</div>
           </div>
       </div>     
 

@@ -1,6 +1,5 @@
 
-const srcPath = "../../static/images/";
-
+const srcPath = "../../static/images/map/";
 
 
 // basemap
@@ -66,8 +65,7 @@ vectorShop.getSource().addFeature(shopCentrum);
 var iconStyle = new ol.style.Style({
     image: new ol.style.Icon({
     opacity: 1,
-    src: "../../static/images/bike-shop.png",
-    // <a href="https://www.flaticon.com/free-icons/bike" title="bike icons">Bike icons created by Those Icons - Flaticon</a>
+    src: "../../static/images/map/bike-shop.png",
     height:0.1,
     width:0.1,
     }),
