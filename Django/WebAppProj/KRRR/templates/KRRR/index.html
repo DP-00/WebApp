@@ -1,16 +1,12 @@
 <!--
 TODO
 
-nav: logo
 hero: photo responsive
 card:  dynamic price
-
+database: constrints 
 less roundenss
 
-database: constrints 
-
-add credentials and attributions
-<a href="https://www.flaticon.com/free-icons/tire" title="tire icons">Tire icons created by Those Icons - Flaticon</a>
+add credentials file
 
 ? <!DOCTYPE html>
 Define spacing scale, f.ex, multiples of 16px (multiples of 4px for smaller
@@ -18,16 +14,10 @@ padding)
 
 s line height good? 1.2-1.5 line spacing for small screens, 1.4 to 1.6 on large screens
 
-Does the text-column width make sense? Strive for text of 45 to 70 characters! Trick
-suggested in the book: put a span around 45th to 75th characters of the text, add
+text-column width  45 to 70 characters! span around 45th to 75th characters of the text, add
 background color to it
 
-3. Empty alt="" for purely illustrative images without any message/information.
-4. A describing text if a short alt-attribute does not suffice.
 5. aria-label="alt text here" for divs containing background images - Universal Design.
-6. If image contains a link to another page, alt text must describe where this link will lead
-to. I.e., describe the goal of the image, not the illustrative motive
-
 25. Use ARIA landmarks and labels to identify regions of a page.
 26. Meaningful labels for form inputs, in a consistent layout
 -->
@@ -95,7 +85,6 @@ to. I.e., describe the goal of the image, not the illustrative motive
         <source media="(min-width: 760px)" srcset="{% static 'images/about.jpg' %}">
         <img id="about-photo" src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
       </picture>
-      <!-- <img src="{% static 'images/about.jpg' %}" alt="?"> -->
       <div><h2>About us</h2>
         <p class="textSection">Life is too short to not add kick out on pedals. Our service
           makes it fast and easy to rent a bike in seconds and leave 

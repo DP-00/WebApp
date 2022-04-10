@@ -74,6 +74,7 @@ p {
 }
 
 /* NAVIGATION BAR */
+
 header{
     position: fixed;
     top: 0;
@@ -101,12 +102,13 @@ nav button{
 }
 
 nav img{
-    width:10rem;
+
     height:10rem;
     position: absolute;
     top: 0;
-    left: 0;
+    left: 1rem;
     padding: 1rem;
+    border-radius: 0;
 }
 
 nav li {
@@ -130,14 +132,13 @@ nav li {
         margin: 16px;
     }
 
-    nav img{
-        width:10rem;
+    /* nav img{
         height:10rem;
         position: absolute;
         top: 0;
         left: 0;
         padding: 1rem;
-    }
+    } */
   }
   
 
