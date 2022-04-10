@@ -14,7 +14,8 @@ class ShopViewSet(viewsets.ModelViewSet):
 
 
 def index(request):
-    context = {}
+    comment = Comment.objects.filter(stars=5).order_by('?').first()
+    context = {'comment': comment}
     return render(request, 'KRRR/index.html', context)
 
 

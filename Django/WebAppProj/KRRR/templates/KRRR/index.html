@@ -35,6 +35,8 @@ to. I.e., describe the goal of the image, not the illustrative motive
 {% extends 'KRRR/main.html' %}
 {% load static %}
 
+{% load humanize %}
+
 {% block extra_head %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css" type="text/css">
@@ -278,7 +280,14 @@ to. I.e., describe the goal of the image, not the illustrative motive
 
   <section id="comments">
     <h2>What our customers say about us:</h2>
-    <p>{a random comment from the base}</p>
+    <div class="comment">
+      <p>{{comment.comment_date|naturaltime}} {{comment.customer}} said: </p>
+      <p>
+          {% for star in ""|ljust:comment.stars %}
+          <ion-icon name="star"></ion-icon>
+          {% endfor %}
+          "{{comment.content}}" about <a href="{% url 'product' comment.product.id %}">{{comment.product.name}}</a></p>
+      </div>
 
   </section>
 
