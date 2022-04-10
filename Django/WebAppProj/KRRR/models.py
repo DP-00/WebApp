@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from django.db.models import Min
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
-
+import math  
 class Product(models.Model):
     name = models.CharField(max_length=50)
     CATEGORY_TYPE = (
@@ -22,40 +22,13 @@ class Product(models.Model):
         ('Other', 'Other')
     )
     category = models.CharField(max_length=10, choices=CATEGORY_TYPE, default='Bike')
-    price = models.FloatField()
+    price = models.IntegerField()
     description = models.CharField(max_length=250)
     photo = models.FileField(blank=True)
     salePrice = models.FloatField(blank=True, null=True)
 
-    def test1(self):
-        return 42
-    
-    def test2(self):
-        cheapestPrice = self.objects.all().aggregate(Min('price'))
-        return cheapestPrice
-        
-
-    def cheapestBike(self):
-        cheapestPrice = self.objects.filter(self__category="Bike").all().aggregate(Min('price'))
-        return cheapestPrice
-    
-    def cheapestEBike(self):
-        cheapestPrice = self.objects.filter(self__category="Bike").all().aggregate(Min('price'))
-        return cheapestPrice
-    
-    def personalizationPrice(self):
-        cheapestPrice = self.objects.filter(self__name="Personalization option").all().aggregate(Min('price'))
-        return cheapestPrice
-
 # CheckConstraint(check=Product(salePrice__lt=Product('price'), name='discount'))
 # CheckConstraint(check=Product(price__gte=18), name='age_gte_18')
-
-# class Customer(models.Model):
-#     name = models.CharField(max_length=50)
-#     surname = models.CharField(max_length=50)
-#     nickname = models.CharField(max_length=50)
-#     email = models.CharField(max_length=100)
-#     password = models.CharField(max_length=50)
 
 
 class Order(models.Model):

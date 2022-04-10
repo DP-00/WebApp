@@ -2,7 +2,6 @@
 TODO
 
 hero: photo responsive
-card:  dynamic price
 database: constrints 
 less roundenss
 
@@ -127,11 +126,7 @@ background color to it
                 <li>Helmet included in price</li>
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
               </ul>
-              <div class="price">from <div class="price-num">
-                {{ product.cheapestBike }}
-                {{ product.test1 }}
-                {{ product.test2 }}
-                {{ product.name }}
+              <div class="price">from <div class="price-num"> {{cheapestBike.price__min}}
                  NOK</div>per minute</div>
           </div>
       </div>     
@@ -157,7 +152,7 @@ background color to it
             <li>Helmet included in price</li>
             <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
           </ul>
-          <div class="price">from <div class="price-num">3 NOK</div>per minute</div>
+          <div class="price">from <div class="price-num">{{cheapestEBike.price__min}} NOK</div>per minute</div>
         </div>
       </div>
         
@@ -181,7 +176,7 @@ background color to it
             <li>Pick up at Moa bus station</li>
             <li>Color holds on for 30 minutes when it is not raining</li>
           </ul>
-          <div class="price"><div class="price-num">250 NOK</div>per rental</div>
+          <div class="price"><div class="price-num">{{personalizationPrice.price__min}} NOK</div>per rental</div>
         </div>
       </div>
 

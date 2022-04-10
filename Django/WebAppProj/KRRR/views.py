@@ -15,7 +15,10 @@ class ShopViewSet(viewsets.ModelViewSet):
 
 def index(request):
     comment = Comment.objects.filter(stars=5).order_by('?').first()
-    context = {'comment': comment}
+    cheapestBike = Product.objects.filter(category='Bike').all().aggregate(Min('price'))
+    cheapestEBike = Product.objects.filter(category='E-bike').all().aggregate(Min('price'))
+    personalizationPrice = Product.objects.filter(name='Personalization').all().aggregate(Min('price'))
+    context = {'comment': comment, 'cheapestBike': cheapestBike, 'cheapestEBike':cheapestEBike, 'personalizationPrice':personalizationPrice}
     return render(request, 'KRRR/index.html', context)
 
 
