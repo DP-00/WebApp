@@ -1,0 +1,283 @@
+<!--
+TODO
+
+hero: photo responsive
+database: constrints 
+less roundenss
+
+add credentials file
+
+? <!DOCTYPE html>
+Define spacing scale, f.ex, multiples of 16px (multiples of 4px for smaller
+padding)
+
+s line height good? 1.2-1.5 line spacing for small screens, 1.4 to 1.6 on large screens
+
+text-column width  45 to 70 characters! span around 45th to 75th characters of the text, add
+background color to it
+
+5. aria-label="alt text here" for divs containing background images - Universal Design.
+25. Use ARIA landmarks and labels to identify regions of a page.
+26. Meaningful labels for form inputs, in a consistent layout
+-->
+
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+{% load humanize %}
+
+{% block extra_head %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css" type="text/css">
+  <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
+  <link rel="stylesheet" href="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.css" />
+  <script src="//cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"></script>
+
+{% endblock extra_head %}
+
+{% block menu %}
+  <li><a href="#about-us">About us</a></li>
+  <li><a href="#our-products">Products</a></li>
+  <li><a href="#places-to-explore">Trips</a></li>
+  <li><a href="#featured-in">Opinions</a></li>
+  <li><a href="#contact">Contact</a></li>
+
+  
+  {% if user.is_authenticated %}
+    {% if user.is_staff %}
+      <li><a href="{% url 'admin-admin' %}">Admin</a></li>
+    {% endif %}
+      <li><a href="{% url 'customer' %}">{{ user.username }}</a></li>
+      <li><a href="{% url 'logout' %}">Logout</a></li>
+  {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+  {% endif %}
+
+{% endblock menu %}
+
+{% block content %}
+  <section id="hero">
+    <div class="bacg">
+      <div class="overlay inner"></div>
+        <img class="inner" src="{% static 'images/heroBig.png' %}" alt="?">
+    </div>
+    <div id="hero-container">
+       <h1>Bicycle rentals for<br>modern folks</h1>
+
+      <script>
+        let i = 0;
+        function heroText(){
+          let text=["modern", "healthy", "urban", "individual", "free", "hipster", "authentic", "modern", "modern", "modern", "modern"];
+          let textLen = text.length;
+          document.getElementById('heroText').innerText = text[i%textLen];
+          i++;            
+      }
+        setInterval(heroText, 500);
+      </script>
+
+      <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
+      <button onclick="location.href='shop/'">Choose now!</button>
+    </div>
+  </section>
+
+  <section id="about-us">
+    <div class="section-container">
+      <picture>
+        <source media="(min-width: 760px)" srcset="{% static 'images/about.jpg' %}">
+        <img id="about-photo" src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
+      </picture>
+      <div><h2>About us</h2>
+        <p class="textSection">Life is too short to not add kick out on pedals. Our service
+          makes it fast and easy to rent a bike in seconds and leave 
+          it at any place convenient to you. We clean up after you - 
+          our service-guys pick up all the bikes within 2 hours 
+          (median pickup time: 37 minutes).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="our-products">
+    <h2>Our Products</h2>
+    <p class="textSection">We have 120 bikes available in Ålesund. New bikes
+          upgraded every month according to latest trends. 20 brand 
+          new electric bikes waiting for you! We are true to the 
+          BYOWT concept: Bring Your Own Winter Tires! Nothing 
+          brings a warm home feeling better than BYOWT!</p>
+  
+    <div class="card-container">
+      <div class="card">
+          <div class="card-front">
+              <div class="card-image">
+                  <div class="overlay inner"></div>
+                  <picture>
+                    <source media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
+                    <img class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
+                  </picture>
+              </div>
+              <div class="card-text">
+                <h3>Bike rental</h3>
+              </div>               
+          </div>
+          <div class="card-back">
+              <ul>
+                <li>Classy bike from 80s</li>
+                <li>Available in brown, green and yellow</li>
+                <li>Customizable seat height</li>
+                <li>Helmet included in price</li>
+                <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+              </ul>
+              <div class="price">from <div class="price-num"> {{cheapestBike.price__min}}
+                 NOK</div>per minute</div>
+          </div>
+      </div>     
+
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
+            <div class="overlay inner"></div>
+            <picture>
+              <source media="(min-width: 760px)" srcset="{% static 'images/electric.jpg' %}">
+              <img class="inner" src="{% static 'images/electricPhone.jpg' %}" alt="E-Bike to rent">
+            </picture>
+          </div>
+          <div class="card-text">
+            <h3>E-Bike rental</h3>
+          </div>               
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Modern bike</li>
+            <li>Available in brown, green and yellow</li>
+            <li>Customizable seat height</li>
+            <li>Helmet included in price</li>
+            <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
+          </ul>
+          <div class="price">from <div class="price-num">{{cheapestEBike.price__min}} NOK</div>per minute</div>
+        </div>
+      </div>
+        
+      <div class="card">
+        <div class="card-front">
+          <div class="card-image">
+            <div class="overlay inner"></div>
+            <picture>
+              <source media="(min-width: 760px)" srcset="{% static 'images/personalization.jpg' %}">
+              <img class="inner" src="{% static 'images/personalizationPhone.jpg' %}" alt="Bike with colorful background">
+            </picture>
+          </div>
+          <div class="card-text">
+            <h3>Personalization option</h3>
+          </div>
+        </div>
+        <div class="card-back">
+          <ul>
+            <li>Use our non-permanent colors to paint a sketch of your own style across the bike</li>
+            <li>16 different color tones available</li>
+            <li>Pick up at Moa bus station</li>
+            <li>Color holds on for 30 minutes when it is not raining</li>
+          </ul>
+          <div class="price"><div class="price-num">{{personalizationPrice.price__min}} NOK</div>per rental</div>
+        </div>
+      </div>
+
+      <button onclick="location.href='shop/'">Go to cart</button>
+    </div>
+  </section>
+
+  <section id="places-to-explore">
+    <h2>Places to explore</h2>  
+    <div id="map-container">
+      <div id="map" class="map"></div>
+
+      <div id="map-info">
+        <div id="map-info-content" class="map-info-content no-grid">
+            The city offers many places to explore! Check the map to see where you can go from our renting points. 
+            Select a point or a photo to know more.
+        </div>
+      </div>
+
+    </div>
+
+    <script src="../../../static/js/map.js"></script>      
+  </section>
+
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div id="images">
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/1-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/1.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/1-mobile.jpg' %}" alt="picture 1">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/2-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/2.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/2-mobile.jpg' %}" alt="picture 2">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/3-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/3.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/3-mobile.jpg' %}" alt="picture 3">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/4-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/4.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/4-mobile.jpg' %}" alt="picture 4">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/9-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/9.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/9-mobile.jpg' %}" alt="picture 9">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/6-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/6.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/6-mobile.jpg' %}" alt="picture 6">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/7-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/7.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/7-mobile.jpg' %}" alt="picture 7">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/8-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/8.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/8-mobile.jpg' %}" alt="picture 8">
+      </picture>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/9-square.jpg' %}">
+        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/9.jpg' %}">
+        <img src="{% static 'images/gallery/mobile/9-mobile.jpg' %}" alt="picture 9">
+      </picture>
+ 
+    </div>
+  </section>
+
+  <section id="featured-in">
+    <h2>Featured in</h2>
+    <p>
+      <img src="{% static 'images/nyt.svg' %}" alt="New York Times">
+      <img src="{% static 'images/cnn.svg' %}" alt="CNN">
+      <img src="{% static 'images/mtv3.svg' %}" alt="MTV3 Finland">
+    </p>
+  </section>
+
+  <section id="comments">
+    <h2>What our customers say about us:</h2>
+    <div class="comment">
+      <p>{{comment.comment_date|naturaltime}} {{comment.customer}} said: </p>
+      <p>
+          {% for star in ""|ljust:comment.stars %}
+          <ion-icon name="star"></ion-icon>
+          {% endfor %}
+          "{{comment.content}}" about <a href="{% url 'product' comment.product.id %}">{{comment.product.name}}</a></p>
+      </div>
+
+  </section>
+
+  <section id="reminder">
+    <h2>What are you waiting for?</h2>
+    <p><a href="{% url 'shop' %}">Choose your companion!</a></p>
+  </section>
+
+{% endblock content %}

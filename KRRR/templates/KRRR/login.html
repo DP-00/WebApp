@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KRRR</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <img id="background" src="{% static 'images/heroBig.png' %}" alt="?">
+    <form method="POST">
+    {% csrf_token %}
+        <fieldset>
+            <legend hidden>Log In</legend>
+            <h1>Welcome again!</h1>
+            {{ form.as_p }}
+        </fieldset>
+        <div>
+            <button type="submit">Log In</button>
+        </div>
+            <div id="options">
+            <a id="create-link" href="{% url 'register' %}">Create an account</a>
+            <a id="forgot-link" href="#">Forgot password</a>
+            </div>
+
+    </form>
+
+</body>

@@ -1,0 +1,125 @@
+@import url(base.css);
+
+body {
+   background: var(--blue1);
+}
+
+
+
+main {
+    display: flex;
+    margin: 2rem 0 2rem 0;
+    padding: 2rem 0 2rem 0;
+
+
+    /* border: 1px solid red; */
+    border-radius: 0;
+}
+
+.side-bar {
+    width: 20vw;
+    flex-direction: column;
+
+    /* border: 1px solid red; */
+    border-radius: 0;
+}
+
+.side-bar a{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 2rem;
+    padding: 1rem;
+    background: var(--blue1);
+
+    /* border: 1px solid greenyellow; */
+}
+
+fieldset {
+    background: var(--blue2);
+    margin: 1rem;
+}
+
+legend {
+    margin: 0 auto;
+    font-size: 4rem;
+    color: var(--grey3);
+    font-weight: 800;
+
+}
+
+.content {
+    width: 80vw;
+
+    border-radius: 0;
+}
+
+.content p {
+    margin: 1rem;
+    padding: 3rem;
+    font-size: 3rem;
+    border-radius: 0;
+    color: var(--grey3);
+
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    /* border: 1px solid red; */
+}
+
+footer ul {
+    display: flex;
+    list-style-type: none;
+}
+
+footer ul img {
+    max-width: 5vm;
+    max-height: 5vm;
+}
+
+.user {
+    margin: 2rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+}
+
+.user p {
+    margin: 0;
+    padding: 0 0 0 1rem;
+}
+
+email {
+    color: var(--grey3);
+    padding: 0 0 0 1rem;
+
+    border-radius: 0;
+}
+
+form {
+    padding: 0 0 0 1rem;
+    border-radius: 0;
+}
+
+button {
+    background: var(--blue1);
+    border: none;
+    color: var(--grey3);
+    padding: 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.warning {
+    background-color: red;
+}

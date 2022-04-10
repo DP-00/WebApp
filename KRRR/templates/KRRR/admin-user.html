@@ -1,0 +1,52 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="side-bar">
+
+    {% include "KRRR/includes/admin_side_bar.html" %}
+
+</div>
+
+
+<div class="content">
+<fieldset>
+    <legend>USER</legend>
+
+    <div class="user">
+        <form action="http://localhost:8000/api/users/{{user.id}}/" method="PUT">
+            <p>
+                <label for="id_first_name">First name:</label>
+                <input type="text" name="first_name" maxlength="50" required id="id_first_name" value="{{ user.first_name.capitalize }}">
+              </p>
+            
+              <p>
+                <label for="id_last_name">Last name:</label>
+                <input type="text" name="last_name" maxlength="50" required id="id_last_name" value="{{ user.last_name.capitalize }}">
+              </p>
+              
+              <p>
+                <label for="id_username">Username:</label>
+                <input type="text" name="username" maxlength="150" autofocus required id="id_username" value="{{ user.username }}">
+              </p>
+              
+              <p>
+                <label for="id_email">Email:</label>
+                <input type="email" name="email" maxlength="100" required id="id_email" value="{{ user.email }}">
+              </p>
+            
+            <button type="submit">Update</button>
+            <button type="submit" class="warning">Delete</button>
+        </form>
+    </div>
+    
+</fieldset>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+<div class="side-bar">
+
+    {% include "KRRR/includes/admin_side_bar.html" %}
+
+</div>
+
+
+<div class="content">
+<fieldset>
+    <legend>USERS</legend>
+
+    {% for user in users %}
+    
+    <div class="user">
+        <p>{{ user.username }}</p>
+        <form action="#">
+            <button><a href="{% url 'admin-user' user.id %}">Details</a></button>
+            <button type="submit" class="warning">Delete</button>
+        </form>
+    </div>
+    
+    {% endfor %}
+
+</fieldset>
+</div>
+
+
+{% endblock content %}

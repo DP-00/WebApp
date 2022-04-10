@@ -1,0 +1,31 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+{% endblock extra_head %}
+
+{% block menu %}
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'cart' %}">Cart</a></li>
+{% endblock menu %}
+
+{% block content %}
+    <section>
+        <h1 class="headline">Our Products</h1>
+        <p class="textSection">We have 120 bikes available in Ålesund. New bikes
+            upgraded every month according to latest trends. 20 brand
+            new electric bikes waiting for you! We are true to the
+            BYOWT concept: Bring Your Own Winter Tires! Nothing
+            brings a warm home feeling better than BYOWT!</p>
+    </section>
+    <div class="card">
+        <img src="{% static 'images/2.jpg' %}">
+        <p>Name</p>
+        <p>20.000 nok</p>
+        <button name="cart">Add to cart</button>
+        <button name="more">More</button>
+        </div>
+    </div>
+
+{% endblock content %}
