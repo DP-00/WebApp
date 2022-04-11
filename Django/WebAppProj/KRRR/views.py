@@ -23,7 +23,8 @@ def index(request):
 
 
 def shop(request):
-    products = requests.get("http://localhost:8000/api/shop")
+    # products = requests.get("http://localhost:8000/api/shop")
+    products = Product.objects.all()
     context = {'products': products}
     return render(request, 'KRRR/shop.html', context)
 

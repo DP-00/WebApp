@@ -19,13 +19,15 @@
             BYOWT concept: Bring Your Own Winter Tires! Nothing
             brings a warm home feeling better than BYOWT!</p>
     </section>
+    {% for product in products %}
     <div class="card">
         <img src="{% static 'images/2.jpg' %}">
-        <p>Name</p>
-        <p>20.000 nok</p>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price }}</p>
         <button name="cart">Add to cart</button>
-        <button name="more">More</button>
+        <a href="{% url 'product' product.id %}"><button name="more">More</button></a>
         </div>
     </div>
+    {% endfor %}
 
 {% endblock content %}
