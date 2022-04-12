@@ -1,9 +1,11 @@
 {% load static %}
 
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bike rental webpage as a final project">
     <title>KRRR</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {% block extra_head %}
@@ -21,9 +23,9 @@
                 {% endblock menu %}
      
             </ul>
-            <button id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
+            <button aria-label="menu" id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
             <script src="../../../static/js/hamburgerMenu.js"></script>
-            <button  onclick="location.href='login/'">
+            <button  aria-label="login" onclick="location.href='login/'">
                 <ion-icon name="person"></ion-icon>
             </button>
         </nav>
