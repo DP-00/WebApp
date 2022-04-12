@@ -95,14 +95,13 @@ section:nth-child(even) {
   align-items: center;
   justify-content: center;
   justify-items: center;
-  overflow: hidden;
+
 }
 
 .section-container img{
   box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
-  /* width: 100%; */
+  width: 100%;
   height: 90%;
-  overflow: hidden;
 }
 
 @media (max-width: 1400px) {
@@ -140,7 +139,6 @@ section:nth-child(even) {
   @media (max-width:1800px){
     .card-container {
       grid-template-columns: repeat(2, 30rem);
-      grid-gap: 8.4rem;
     }
   }
 
@@ -154,7 +152,6 @@ section:nth-child(even) {
   @media (max-width:460px) {
     .card-container {
       grid-template-columns: repeat(1, 30em);
-      grid-gap: 3.2rem;
     }
   }
 
@@ -172,7 +169,6 @@ section:nth-child(even) {
     transition: 0.8s 0.4s; 
     transform-style: preserve-3d;
     box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
-    perspective: 1000px;
   }
      
   .card:hover{
@@ -191,13 +187,10 @@ section:nth-child(even) {
   }
 
   .card img{
-    padding: 0;
-    border-radius:0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
     left: 0;
     top: 0;
+    width: 100%;
+    height: 100%;
   } 
 
   .card-text{
@@ -205,17 +198,13 @@ section:nth-child(even) {
     position: absolute;
     left: 0;
     right: 0;
-    top: 2.4em;
-    text-align: center;
+    top: 4.8rem;
     font-size: 1.6em;
     text-shadow:0 0 10px black;
   }
 
   .card-back {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
     height: 100%;
     padding: 2.4rem;   
     background-color: var(--blue2);
@@ -233,7 +222,6 @@ section:nth-child(even) {
 
   .card li{
     list-style-type: none;
-    list-style-position: inside;
     font-size: 1.6rem;   
     padding: 1.2rem;
 
