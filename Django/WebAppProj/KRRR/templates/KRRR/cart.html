@@ -22,9 +22,10 @@
                         <h3 class="product-name">{{product.product.name}}</h3>
                         <h4 class="product-price">NOK 1,000</h4>
                         <h4 class="product-offer">50%</h4>
-                        <p class="product-quantity">Qnt: <input value="1" name="">
-                        <p class="product-remove">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <form method="POST"> {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" value="Save" >
+                        </form>
                         <span class="remove">Remove</span>
                         </p>
                     </div>

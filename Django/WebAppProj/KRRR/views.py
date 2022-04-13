@@ -8,6 +8,8 @@ import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
+from .forms import CartItemForm
+
 class ShopViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
@@ -37,7 +39,15 @@ def cart(request):
     user = request.user
     order = Order.objects.get(customer=user)
     products = CartItem.objects.filter(order=order)
-    context = {'order': order, 'products': products}
+    form = CartItemForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {
+        'order': order, 
+        'products': products,
+        'form': form
+        }
     return render(request, 'KRRR/cart.html', context)
 
 

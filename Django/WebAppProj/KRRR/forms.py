@@ -4,6 +4,14 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from .models import CartItem
+
+class CartItemForm(forms.ModelForm):
+    class Meta:
+        model = CartItem
+        fields = [
+            'quantity'
+        ]
 
 
 class CustomerRegistrationModel(UserCreationForm):
