@@ -36,10 +36,22 @@ class Order(models.Model):
         ('city', 'city centre'),
         ('MOA', 'AMFI Moa'),
     )
+    ORDER_STATUS = (
+        ('cart', 'still shopping'),
+        ('paid', 'shopping compleated'),
+        ('done', 'order compleated'),
+    )
+
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)
+    # products = models.ManyToManyField(Product)
     order_date = models.DateTimeField(default=datetime.now())
     location = models.CharField(max_length=4, choices=LOCATION_TYPE)
+    status = models.CharField(max_length=4, choices=ORDER_STATUS, default='cart')
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
