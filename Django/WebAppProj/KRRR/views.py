@@ -26,7 +26,18 @@ def index(request):
 
 def shop(request):
     products = Product.objects.all()
-    context = {'products': products}
+    form = CartItemForm(request.POST or None)
+    if request.method == 'POST':
+        user = request.user
+        if not Order.objects.filter(customer=user).exists():
+            order = Order(customer=user)
+        else:
+            order = Order.objects.get(customer=user)
+        item = CartItem.objects.create(order=order, product=Product.objects.get(id=form.data['product']), quantity=form.data['quantity'])
+        item.save()
+
+    context = {'products': products, 'form': form}
+    
     return render(request, 'KRRR/shop.html', context)
 
 def product(request, id):
@@ -37,7 +48,10 @@ def product(request, id):
 @login_required
 def cart(request):
     user = request.user
-    order = Order.objects.get(customer=user)
+    if not Order.objects.filter(customer=user).exists():
+        order = Order(customer=user)
+    else:
+        order = Order.objects.get(customer=user)
     products = CartItem.objects.filter(order=order)
     form = CartItemForm(request.POST or None)
     if form.is_valid():

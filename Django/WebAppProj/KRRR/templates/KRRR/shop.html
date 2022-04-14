@@ -24,7 +24,10 @@
         <img src="{% static 'images/2.jpg' %}">
         <h2>{{ product.name }}</h2>
         <p>{{ product.price }}</p>
-        <button name="cart">Add to cart</button>
+        <form method="POST"> {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add to cart" >
+        </form>
         <a href="{% url 'product' product.id %}"><button name="more">More</button></a>
         </div>
     </div>
