@@ -8,6 +8,8 @@ import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
+from .forms import CartItemForm
+
 class ShopViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
@@ -23,21 +25,31 @@ def index(request):
 
 
 def shop(request):
-    # products = requests.get("http://localhost:8000/api/shop")
     products = Product.objects.all()
     context = {'products': products}
     return render(request, 'KRRR/shop.html', context)
 
 def product(request, id):
     product = Product.objects.get(id = id)
-    # product = requests.get(f"http://localhost:8000/api/shop/{id}")
     comments = Comment.objects.filter(product=product)
     return render(request, 'KRRR/product.html', {'product': product, 'comments': comments})
 
-
+@login_required
 def cart(request):
-    context = {}
+    user = request.user
+    order = Order.objects.get(customer=user)
+    products = CartItem.objects.filter(order=order)
+    form = CartItemForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context = {
+        'order': order, 
+        'products': products,
+        'form': form
+        }
     return render(request, 'KRRR/cart.html', context)
+
 
 
 def checkout(request):
