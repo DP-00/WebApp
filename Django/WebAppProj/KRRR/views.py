@@ -41,9 +41,19 @@ def shop(request):
     return render(request, 'KRRR/shop.html', context)
 
 def product(request, id):
+    form = CartItemForm(request.POST or None)
+    if request.method == 'POST':
+        user = request.user
+        if not Order.objects.filter(customer=user).exists():
+            order = Order(customer=user)
+        else:
+            order = Order.objects.get(customer=user)
+        item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
+        item.save()
+
     product = Product.objects.get(id = id)
     comments = Comment.objects.filter(product=product)
-    return render(request, 'KRRR/product.html', {'product': product, 'comments': comments})
+    return render(request, 'KRRR/product.html', {'product': product, 'comments': comments, 'form': form})
 
 @login_required
 def cart(request):

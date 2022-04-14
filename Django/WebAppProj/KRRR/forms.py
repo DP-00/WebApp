@@ -7,12 +7,16 @@ from django.contrib.auth.models import User
 from .models import CartItem
 
 class CartItemForm(forms.ModelForm):
+    
     class Meta:
         model = CartItem
         fields = [
             'product',
             'quantity'
         ]
+        labels = {
+            'product': ''
+        }
 
 
 class CustomerRegistrationModel(UserCreationForm):

@@ -21,11 +21,7 @@
                     <div class="product-info">
                         <h3 class="product-name">{{product.product.name}}</h3>
                         <h4 class="product-price">NOK 1,000</h4>
-                        <h4 class="product-offer">50%</h4>
-                        <form method="POST"> {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit" value="Save" >
-                        </form>
+                        <h4 class="product-offer">Quantity: {{product.quantity}}</h4>
                         <span class="remove">Remove</span>
                         </p>
                     </div>
