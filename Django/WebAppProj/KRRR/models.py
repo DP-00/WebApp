@@ -14,6 +14,7 @@ from datetime import datetime
 from django.db.models import Min
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
 import math  
+from django.db import IntegrityError
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -27,10 +28,10 @@ class Product(models.Model):
     description = models.CharField(max_length=250)
     photo = models.FileField(blank=True)
     salePrice = models.FloatField(blank=True, null=True)
-    # class Meta:
-    #     constraints = [
-    #     CheckConstraint(check=models.Q(salePrice__lt=models.F('price')), name='discount'),
-    # ]
+    class Meta:
+        constraints = [
+        CheckConstraint(check=models.Q(salePrice__lt=models.F('price')), name='discount'),
+    ]
 
 
 
@@ -70,10 +71,10 @@ class Comment(models.Model):
     comment_date = models.DateTimeField(default=datetime.now())
     stars = models.CharField(max_length=1, choices=STARS_TYPE, default='5')
     content = models.CharField(max_length=1000, blank=True)
-    # class Meta:
-    #     constraints = [
-    #         UniqueConstraint(fields=['customer', 'product','stars'], name='unique_stars'),
-    #         UniqueConstraint(fields=['customer', 'product','content'], name='unique_review') 
-    #     ]
+    class Meta:
+        constraints = [
+            UniqueConstraint(fields=['customer', 'product','stars'], name='unique_stars'),
+            UniqueConstraint(fields=['customer', 'product','content'], name='unique_review') 
+        ]
 
 
