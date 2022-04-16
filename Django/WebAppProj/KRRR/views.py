@@ -46,10 +46,12 @@ def product(request, id):
     form = CartItemForm(request.POST or None)
     if request.method == 'POST':
         user = request.user
-        if not Order.objects.filter(customer=user).exists():
-            order = Order(customer=user)
+        if not Order.objects.filter(customer=user, status='cart').exists():
+            order = Order(customer=user, status='cart')
+            order.save()
         else:
-            order = Order.objects.get(customer=user)
+            order = Order.objects.get(customer=user, status='cart')
+
         if not CartItem.objects.filter(order=order, product=Product.objects.get(id=id)).exists():
             item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
         else:
@@ -65,10 +67,11 @@ def product(request, id):
 @login_required
 def cart(request):
     user = request.user
-    if not Order.objects.filter(customer=user).exists():
-        order = Order(customer=user)
+    if not Order.objects.filter(customer=user, status='cart').exists():
+        order = Order(customer=user, status='cart')
+        order.save()
     else:
-        order = Order.objects.get(customer=user)
+        order = Order.objects.get(customer=user, status='cart')
     products = CartItem.objects.filter(order=order)
     form = CartItemForm(request.POST or None)
     if form.is_valid():
@@ -89,7 +92,18 @@ def cart(request):
 
 
 def checkout(request):
-    context = {}
+    order = Order.objects.get(customer=request.user, status='cart')
+    products = CartItem.objects.filter(order=order)
+    cart_total = sum([product.product.price*product.quantity for product in products])
+    cart_quantity = sum([product.quantity for product in products])
+    order.status = 'paid'
+    order.save()
+
+    context = {
+        'products': products,
+        'cart_total': cart_total,
+        'cart_quantity' : cart_quantity,
+        }
     return render(request, 'KRRR/checkout.html', context)
 
 

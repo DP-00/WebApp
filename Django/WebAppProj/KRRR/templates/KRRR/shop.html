@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/shop.css' %}">
 {% endblock extra_head %}
 
 {% block menu %}
@@ -11,22 +11,25 @@
 {% endblock menu %}
 
 {% block content %}
-    <section>
-        <h1 class="headline">Our Products</h1>
-        <p class="textSection">We have 120 bikes available in Ålesund. New bikes
+    <section id="intro">
+        <h1>Our Products</h1>
+        <p class="text-section">We have 120 bikes available in Ålesund. New bikes
             upgraded every month according to latest trends. 20 brand
             new electric bikes waiting for you! We are true to the
             BYOWT concept: Bring Your Own Winter Tires! Nothing
             brings a warm home feeling better than BYOWT!</p>
     </section>
-    {% for product in products %}
-    <div class="card">
-        <img src="{% static 'images/2.jpg' %}">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.price }}</p>
-        <a href="{% url 'product' product.id %}"><button name="more">More</button></a>
+    <section id="products">
+        {% for product in products %}
+        <div class="card">
+            <img src="{% static 'images/2.jpg' %}">
+            <div class="content">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.price }}NOK</p>
+                <a href="{% url 'product' product.id %}"><button name="more">More</button></a>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+    </section>
 
 {% endblock content %}
