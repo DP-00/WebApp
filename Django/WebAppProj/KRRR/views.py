@@ -10,6 +10,8 @@ from .serializers import ProductSerializer
 
 from .forms import CartItemForm
 
+from django.db.models import Sum
+
 class ShopViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
@@ -67,10 +69,13 @@ def cart(request):
     if form.is_valid():
         form.save()
 
+
+    cart_total = sum([product.product.price for product in products])
     context = {
         'order': order, 
         'products': products,
-        'form': form
+        'form': form,
+        'cart_total': cart_total
         }
     return render(request, 'KRRR/cart.html', context)
 
