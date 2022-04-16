@@ -50,7 +50,12 @@ def product(request, id):
             order = Order(customer=user)
         else:
             order = Order.objects.get(customer=user)
-        item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
+        if not CartItem.objects.filter(order=order, product=Product.objects.get(id=id)).exists():
+            item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
+        else:
+            item = CartItem.objects.get(order=order, product=Product.objects.get(id=id))
+            quantity = item.quantity + int(form.data['quantity'])
+            item.quantity = quantity
         item.save()
 
     product = Product.objects.get(id = id)
@@ -70,12 +75,14 @@ def cart(request):
         form.save()
 
 
-    cart_total = sum([product.product.price for product in products])
+    cart_total = sum([product.product.price*product.quantity for product in products])
+    cart_quantity = sum([product.quantity for product in products])
     context = {
         'order': order, 
         'products': products,
         'form': form,
-        'cart_total': cart_total
+        'cart_total': cart_total,
+        'cart_quantity' : cart_quantity,
         }
     return render(request, 'KRRR/cart.html', context)
 
