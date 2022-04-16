@@ -94,19 +94,18 @@ section:nth-child(even) {
 
 .section-container{
   display: grid;
-  grid-template-columns: 60% 40%;
-  grid-gap: 6.4rem;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
+  grid-template-columns: 6fr 4fr;
+  grid-gap: 12.8rem;
+  place-items: center;
 }
 
 .section-container picture{
-  /* height: 100%; */
   width: 100%;
   max-width: 200rem;
   overflow: hidden;
-  place-self: center;
+  display: flex;
+  justify-content: center;
+ 
 }
 
 @media (max-width: 1400px) {
@@ -120,10 +119,9 @@ section:nth-child(even) {
   }
 }
 
-  /* #our-products {
-    display: grid;
-    justify-items: center;
-  } */
+  #our-products .text-section{
+    margin: auto;
+  }
 
   /* CARDS */
 
