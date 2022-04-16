@@ -1,12 +1,9 @@
 <!--
 TODO
-about: Squoosh,  aspect ratio, size, webP
 hero: Squoosh,  aspect ratio, size, webP
-hamburger menu - first links, then buttons
-text-column width  45 to 70 characters
-less roundenss
 credits.html
 
+our product text cener when min
 handling constraints
 ? <!DOCTYPE html>
 aria-hidden="true" for map?
@@ -60,11 +57,13 @@ aria-hidden="true" for map?
   <section id="about-us">
     <div class="section-container">
       <picture>
-        <source media="(min-width: 760px)" srcset="{% static 'images/about.jpg' %}">
-        <img id="about-photo" src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
+        <source type="image/webp" media="(min-width: 760px)" srcset="{% static 'images/about.webp' %}">
+        <source type="image/jpg" media="(min-width: 760px)" srcset="{% static 'images/about.jpg' %}">
+        <source type="image/webp" srcset="{% static 'images/aboutPhone.webp' %}">
+        <img src="{% static 'images/aboutPhone.jpg' %}" alt="collection of bike to rent">
       </picture>
       <div><h2>About us</h2>
-        <p class="textSection">Life is too short to not add kick out on pedals. Our service
+        <p class="text-section">Life is too short to not add kick out on pedals. Our service
           makes it fast and easy to rent a bike in seconds and leave 
           it at any place convenient to you. We clean up after you - 
           our service-guys pick up all the bikes within 2 hours 
@@ -75,7 +74,7 @@ aria-hidden="true" for map?
 
   <section id="our-products">
     <h2>Our Products</h2>
-    <p class="textSection">We have 120 bikes available in Ålesund. New bikes
+    <p class="text-section">We have 120 bikes available in Ålesund. New bikes
           upgraded every month according to latest trends. 20 brand 
           new electric bikes waiting for you! We are true to the 
           BYOWT concept: Bring Your Own Winter Tires! Nothing 
@@ -86,12 +85,14 @@ aria-hidden="true" for map?
           <div class="card-front">
               <div class="card-image">
                   <div class="overlay inner"></div>
-                  <picture>
-                    <source type="image/webp" media="(min-width: 760px)" srcset="{% static 'images/bikeCard.webp' %}">
-                    <source type="image/jpg" media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
-                    <source type="image/webp" srcset="{% static 'images/bikeCardPhone.webp' %}">
-                    <img class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
-                  </picture>
+                    <picture>
+                      <source type="image/webp" media="(min-width: 760px)" srcset="{% static 'images/bikeCard.webp' %}">
+                      <source type="image/jpg" media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
+                      <source type="image/webp" srcset="{% static 'images/bikeCardPhone.webp' %}">
+                      <img class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
+                    </picture>
+
+
               </div>
               <div class="card-text">
                 <h3>Bike rental</h3>
