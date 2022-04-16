@@ -65,10 +65,10 @@ def product(request, id):
 @login_required
 def cart(request):
     user = request.user
-    if not Order.objects.filter(customer=user).exists():
+    if not Order.objects.filter(customer=user, status='cart').exists():
         order = Order(customer=user)
     else:
-        order = Order.objects.get(customer=user)
+        order = Order.objects.get(customer=user, status='cart')
     products = CartItem.objects.filter(order=order)
     form = CartItemForm(request.POST or None)
     if form.is_valid():
@@ -89,6 +89,17 @@ def cart(request):
 
 
 def checkout(request):
+    order = Order.objects.get(customer=request.user)
+    order.status = 'paid'
+    products = CartItem.objects.filter(order=order)
+    cart_total = sum([product.product.price*product.quantity for product in products])
+    cart_quantity = sum([product.quantity for product in products])
+    context = {
+        'products': products,
+        'cart_total': cart_total,
+        'cart_quantity' : cart_quantity,
+        }
+
     context = {}
     return render(request, 'KRRR/checkout.html', context)
 
