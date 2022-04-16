@@ -26,7 +26,7 @@ html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
     color: var(--grey3);
-    background: var(--blue-dark);
+    background: var(--blue1);
 }
 
 @media (max-width: 960px) {
