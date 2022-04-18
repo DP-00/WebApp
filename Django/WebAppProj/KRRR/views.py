@@ -12,11 +12,8 @@ from .forms import CartItemForm
 
 from django.db.models import Sum
 
-class ShopViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all().order_by('id')
-    serializer_class = ProductSerializer
 
-
+#  index - main page
 def index(request):
     comment = Comment.objects.filter(stars=5).order_by('?').first()
     cheapestBike = Product.objects.filter(category='Bike').all().aggregate(Min('price'))
@@ -26,6 +23,13 @@ def index(request):
     return render(request, 'KRRR/index.html', context)
 
 
+# API
+class ShopViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all().order_by('id')
+    serializer_class = ProductSerializer
+
+
+# shopping
 def shop(request):
     products = Product.objects.all()
     form = CartItemForm(request.POST or None)
@@ -38,9 +42,12 @@ def shop(request):
         item = CartItem.objects.create(order=order, product=Product.objects.get(id=form.data['product']), quantity=form.data['quantity'])
         item.save()
 
-    context = {'products': products, 'form': form}
-    
+    context = {
+        'products': products, 
+        'form': form
+        }
     return render(request, 'KRRR/shop.html', context)
+
 
 def product(request, id):
     form = CartItemForm(request.POST or None)
@@ -62,7 +69,12 @@ def product(request, id):
 
     product = Product.objects.get(id = id)
     comments = Comment.objects.filter(product=product)
-    return render(request, 'KRRR/product.html', {'product': product, 'comments': comments, 'form': form})
+    context = {
+        'product': product, 
+        'comments': comments, 
+        'form': form
+    }
+    return render(request, 'KRRR/product.html', context)
 
 @login_required
 def cart(request):
@@ -90,7 +102,6 @@ def cart(request):
     return render(request, 'KRRR/cart.html', context)
 
 
-
 def checkout(request):
     order = Order.objects.get(customer=request.user, status='cart')
     products = CartItem.objects.filter(order=order)
@@ -107,14 +118,7 @@ def checkout(request):
     return render(request, 'KRRR/checkout.html', context)
 
 
-def credits(request):
-    context = {}
-    return render(request, 'KRRR/credits.html', context)
-
-
-
-
-
+# customer and account management
 def register(request):
     if request.method == 'POST':
         form = CustomerRegistrationModel(request.POST)
@@ -128,7 +132,7 @@ def register(request):
 
 
 @login_required
-def customer(request):
+def account(request):
     if request.method == "POST":
         updated_form = CustomerUpdateModel(request.POST, instance=request.user)
         if updated_form.is_valid():
@@ -137,11 +141,18 @@ def customer(request):
     else:
         updated_form = CustomerUpdateModel(instance=request.user)
 
-    return render(request, "KRRR/customer.html", {'updated_form':updated_form})
+    return render(request, "KRRR/account.html", {'updated_form':updated_form})
 
 
+# admin
 def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
 def adminUsers(request):
     return render(request, 'KRRR/admin-users.html', { "users": User.objects.all() })
+
+
+# credits
+def credits(request):
+    context = {}
+    return render(request, 'KRRR/credits.html', context)
