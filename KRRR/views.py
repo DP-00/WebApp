@@ -96,5 +96,11 @@ def adminUsers(request):
     
 
 def adminUserDetail(request, id):
-    user = requests.get(f"http://localhost:8000/api/users/{id}/").json()
+    if request.method == "GET":
+        user = requests.get(f"http://localhost:8000/api/users/{id}/").json()
+    
+    if request.method == "PUT":
+        user = requests.put(f"http://localhost:8000/api/users/{id}/").json()
+    
+    
     return render(request, 'KRRR/admin-user.html', { "user": user })
