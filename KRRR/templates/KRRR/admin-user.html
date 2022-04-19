@@ -1,4 +1,4 @@
-{% extends 'KRRR/admin_layout.html' %}
+{% extends 'KRRR/admin-layout.html' %}
 {% load static %}
 
 {% block extra_head %}
@@ -13,7 +13,7 @@
     <legend>USER</legend>
 
     <div class="user">
-        <form action="http://localhost:8000/api/users/{{user.id}}/" method="put">
+        <form action="http://localhost:8000/api/users/{{user.id}}/" method="PUT">
             <p>
                 <label for="id_first_name">First name:</label>
                 <input type="text" name="first_name" maxlength="50" required id="id_first_name" value="{{ user.first_name.capitalize }}">
