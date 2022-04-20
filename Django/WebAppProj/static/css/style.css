@@ -6,7 +6,7 @@
   padding: 0;
 
   height: 40vw;
-  background-image: url("../images/heroL.png");
+  background-image: url("../images/heroL.jpg");
   background-size: cover;
 }
 
@@ -33,14 +33,14 @@
  @media (max-width: 2000px) {
   #hero {
     height: 45vw;
-    background-image: url("../images/heroM.png");
+    background-image: url("../images/heroM.jpg");
   }
 }
 
  @media (max-width: 1300px) {
   #hero {
     height: 62vw;
-    background-image: url("../images/heroS.png");
+    background-image: url("../images/heroS.jpg");
   }
 }
 
@@ -48,7 +48,7 @@
 @media (max-width: 800px) {
   #hero {
     height: 83vw;
-    background-image: url("../images/heroXS.png");
+    background-image: url("../images/heroXS.jpg");
   }
 
 }
@@ -57,8 +57,8 @@
 
   #hero {
     height: 80vw;
-    background-image: url("../images/heroXS.png");
-    min-width: 350px;
+    background-image: url("../images/heroXS.jpg");
+    min-width: 250px;
   }
 
   #hero-container{
