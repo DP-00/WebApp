@@ -1,3 +1,5 @@
+from turtle import mode
+from attr import fields
 from django.http import Http404
 from django.shortcuts import redirect, render
 from yaml import serialize_all
@@ -5,8 +7,7 @@ from .models import *
 from .forms import UserRegistrationForm, UserUpdateForm
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 from django.contrib.auth.models import User
-from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
 
 import requests
 from rest_framework import viewsets, status
@@ -67,8 +68,7 @@ class UserProfileView(UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'KRRR/customer.html'
-    success_url = 'customer'
-
+    success_url = reverse_lazy('index')
 
 
 
