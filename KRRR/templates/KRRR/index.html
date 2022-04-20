@@ -36,22 +36,8 @@ background color to it
 {% endblock extra_head %}
 
 {% block menu %}
-  <li><a href="#about-us">About us</a></li>
-  <li><a href="#our-products">Products</a></li>
-  <li><a href="#places-to-explore">Trips</a></li>
-  <li><a href="#featured-in">Opinions</a></li>
-  <li><a href="#contact">Contact</a></li>
-
   
-  {% if user.is_authenticated %}
-    {% if user.is_staff %}
-      <li><a href="{% url 'admin-admin' %}">Admin</a></li>
-    {% endif %}
-      <li><a href="{% url 'customer' user.id %}">{{ user.username }}</a></li>
-      <li><a href="{% url 'logout' %}">Logout</a></li>
-  {% else %}
-      <li><a href="{% url 'login' %}">Login</a></li>
-  {% endif %}
+  {% include 'KRRR/includes/menu_bar.html' %}
 
 {% endblock menu %}
 

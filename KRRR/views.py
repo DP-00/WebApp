@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 import requests
 from rest_framework import viewsets, status
-from .serializers import ProductSerializer, UserSerializer
+from .serializers import ProductSerializer
 
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -18,10 +18,6 @@ from rest_framework.decorators import api_view
 class ShopViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all().order_by('id')
     serializer_class = ProductSerializer
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 
 def index(request):
