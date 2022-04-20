@@ -80,9 +80,3 @@ class AdminUsersView(ListView):
     template_name = 'KRRR/admin-users.html'
     context_object_name = 'users'
     paginate_by = 5
-
-
-class AdminUserView(DetailView):
-    model = User
-    template_name = 'KRRR/admin-user.html'
-    context_object_name = 'user'

@@ -17,7 +17,7 @@
         <div class="user">
             <p>{{ user.username }}</p>
             <form action="#">
-                <button><a href="{% url 'admin-user' user.id %}">Details</a></button>
+                <button><a href="{% url 'customer' user.id %}">Details</a></button>
                 <button type="submit" class="warning">Delete</button>
             </form>
         </div>
