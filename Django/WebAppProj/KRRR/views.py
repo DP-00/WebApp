@@ -8,7 +8,7 @@ import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
-from .forms import CartItemForm
+from .forms import CartItemForm, LocationForm
 
 from django.db.models import Sum
 
@@ -85,10 +85,10 @@ def cart(request):
     else:
         order = Order.objects.get(customer=user, status='cart')
     products = CartItem.objects.filter(order=order)
-    form = CartItemForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-
+    form = LocationForm(request.POST or None)
+    if request.method == 'POST':
+        order.location = form.data['location']
+        order.save()
 
     cart_total = sum([product.product.price*product.quantity for product in products])
     cart_quantity = sum([product.quantity for product in products])
@@ -97,7 +97,7 @@ def cart(request):
         'products': products,
         'form': form,
         'cart_total': cart_total,
-        'cart_quantity' : cart_quantity,
+        'cart_quantity' : cart_quantity
         }
     return render(request, 'KRRR/cart.html', context)
 
@@ -133,15 +133,16 @@ def register(request):
 
 @login_required
 def account(request):
+    orders = Order.objects.filter(customer=request.user)
     if request.method == "POST":
         updated_form = CustomerUpdateModel(request.POST, instance=request.user)
         if updated_form.is_valid():
             updated_form.save()
-            return redirect("customer")
+            return redirect("account")
     else:
         updated_form = CustomerUpdateModel(instance=request.user)
 
-    return render(request, "KRRR/account.html", {'updated_form':updated_form})
+    return render(request, "KRRR/account.html", {'updated_form':updated_form, 'orders': orders})
 
 
 # admin

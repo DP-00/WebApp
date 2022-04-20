@@ -4,10 +4,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import CartItem
+from .models import CartItem, Order
 
 class CartItemForm(forms.ModelForm):
-    
     class Meta:
         model = CartItem
         fields = [
@@ -18,6 +17,15 @@ class CartItemForm(forms.ModelForm):
             'product': ''
         }
 
+class LocationForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = [
+            'location'
+        ]
+        widgets = {
+            'location': forms.Select(attrs={'onchange': 'submit();'})
+        }
 
 class CustomerRegistrationModel(UserCreationForm):
     email = forms.EmailField(max_length=100)
