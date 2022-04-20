@@ -21,7 +21,7 @@ urlpatterns = [
 
 # customer urls
     path('register/', views.register, name='register'),
-    path('customer/', views.customer, name='customer'),
+    path('account/', views.account, name='account'),
     path('login/', auth_views.LoginView.as_view(template_name="KRRR/login.html"), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name="KRRR/logout.html"), name='logout'),
 

@@ -1,0 +1,37 @@
+{% extends 'KRRR/main.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+
+{% endblock extra_head %}
+
+{% block content %}
+<h1> dzieńdberek</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>{{ user.username }} userdata:</legend>
+                {{ updated_form.as_p }}
+            </fieldset>
+            <div class="form-func">
+                <button type="submit">Save changes</button>
+            </div>
+        </form>
+        <h2>Your orders</h2>
+        <table>
+            <tr>
+                <th>Order date</th>
+                <th>Status</th>
+                <th>Place</th>
+            </tr>
+        {% for order in orders %}
+            <tr>
+                <th>{{ order.date }}</th>
+                <th>{{ order.status }}</th>
+                <th>{{ order.location }}</th>
+            </tr>
+        {% endfor %}
+        </table>
+
+{% endblock content %}

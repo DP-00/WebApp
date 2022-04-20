@@ -41,6 +41,12 @@
                     <span>You Save</span>
                     <span>NOK 1,000</span>
                 </p> -->
+                <p>
+                    Location:
+                    <form method="POST"> {% csrf_token %}
+                        {{ form }}
+                    </form>
+                </p>
                 <a href="{% url 'checkout' %}">Proceed to Checkout</a>
             </div>
         </div>
