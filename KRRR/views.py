@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from yaml import serialize_all
 from .models import *
 from .forms import UserRegistrationForm, UserUpdateForm
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -71,24 +71,18 @@ class UserProfileView(UpdateView):
 
 
 
+
 def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
-def adminUsers(request):
-    if request.method != "GET":
-        raise Http404("Something went wrong")
+class AdminUsersView(ListView):
+    model = User
+    template_name = 'KRRR/admin-users.html'
+    context_object_name = 'users'
+    paginate_by = 5
 
-    users = requests.get(f"http://localhost:8000/api/users/").json()
-    return render(request, 'KRRR/admin-users.html', { "users": users })
 
-    
-
-def adminUserDetail(request, id):
-    if request.method == "GET":
-        user = requests.get(f"http://localhost:8000/api/users/{id}/").json()
-    
-    if request.method == "PUT":
-        user = requests.put(f"http://localhost:8000/api/users/{id}/").json()
-    
-    
-    return render(request, 'KRRR/admin-user.html', { "user": user })
+class AdminUserView(DetailView):
+    model = User
+    template_name = 'KRRR/admin-user.html'
+    context_object_name = 'user'

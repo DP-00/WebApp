@@ -18,8 +18,8 @@ urlpatterns = [
 
 
     path('admin-admin/', views.adminAdmin, name="admin-admin"),
-    path('admin-users/', views.adminUsers, name="admin-users"),
-    path('admin-users/<int:id>/', views.adminUserDetail, name="admin-user"),
+    path('admin-users/', views.AdminUsersView.as_view(), name="admin-users"),
+    path('admin-users/<int:id>/', views.AdminUserView.as_view(), name="admin-user"),
 
     
     path('register/', views.UserRegistrationView.as_view(), name='register'),
