@@ -51,6 +51,34 @@ header, footer {
     border-radius: 0;
 }
 
+/* SECTION SETTINGS */
+
+section {
+    border-radius: 0;
+    padding: 6.4rem 12.8rem;
+    text-align: justify;
+    color: var(--grey3);
+  }
+  
+  @media (max-width: 960px) {
+    section {
+      padding: 6.4rem;
+    }
+  }
+  
+  section:nth-child(odd) {
+    background: var(--blue1);
+  }
+  
+  section:nth-child(even) {
+    background: var(--blue2);
+  }
+  
+  .text-section {
+    max-width: 2000px;
+  }
+  
+
 /* GENERAL TEXT SETTINGS */
 h1 {
     font-size: 6.4rem;
