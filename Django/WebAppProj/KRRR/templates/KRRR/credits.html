@@ -7,7 +7,36 @@
     <title>Credits</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <style>
-        
+        section {
+  border-radius: 0;
+  padding: 6.4rem 12.8rem;
+  text-align: justify;
+  color: var(--grey3);
+}
+
+@media (max-width: 960px) {
+  section {
+    padding: 6.4rem;
+  }
+}
+
+section:nth-child(odd) {
+  background: var(--blue1);
+}
+
+section:nth-child(even) {
+  background: var(--blue2);
+}
+
+.text-section {
+  max-width: 2000px;
+}
+
+h3 {
+    font-size: 3.2rem;
+    padding: 3.2rem 0;
+}
+
     </style>
 
 </head>
