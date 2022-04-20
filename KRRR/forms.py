@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 
-class CustomerRegistrationModel(UserCreationForm):
+class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100)
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
@@ -16,7 +16,8 @@ class CustomerRegistrationModel(UserCreationForm):
         fields = ['first_name','last_name','username','email','password1','password2']
 
 
-class CustomerUpdateModel(forms.ModelForm):
+
+class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField(max_length=100)
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)

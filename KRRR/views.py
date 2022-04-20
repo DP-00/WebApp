@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from yaml import serialize_all
 from .models import *
-from .forms import CustomerRegistrationModel, CustomerUpdateModel
+from .forms import UserRegistrationForm, UserUpdateForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
@@ -60,25 +60,25 @@ def checkout(request):
 
 def register(request):
     if request.method == 'POST':
-        form = CustomerRegistrationModel(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect("index")
     else:
-        form = CustomerRegistrationModel()
+        form = UserRegistrationForm()
     return render(request, "KRRR/register.html", {'form':form})
 
 
 @login_required
 def customer(request):
     if request.method == "POST":
-        updated_form = CustomerUpdateModel(request.POST, instance=request.user)
+        updated_form = UserUpdateForm(request.POST, instance=request.user)
         if updated_form.is_valid():
             updated_form.save()
             return redirect("customer")
     else:
-        updated_form = CustomerUpdateModel(instance=request.user)
+        updated_form = UserUpdateForm(instance=request.user)
 
     return render(request, "KRRR/customer.html", {'updated_form':updated_form})
 
