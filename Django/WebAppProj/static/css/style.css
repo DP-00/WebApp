@@ -1,31 +1,3 @@
-/* SECTIONS */
-
-section {
-  border-radius: 0;
-  padding: 6.4rem 12.8rem;
-  text-align: justify;
-  color: var(--grey3);
-}
-
-@media (max-width: 960px) {
-  section {
-    padding: 6.4rem;
-  }
-}
-
-section:nth-child(odd) {
-  background: var(--blue1);
-}
-
-section:nth-child(even) {
-  background: var(--blue2);
-}
-
-.text-section {
-  max-width: 2000px;
-}
-
-
 /* HERO */
 
 #hero {
@@ -274,7 +246,6 @@ section:nth-child(even) {
     list-style-type: none;
     font-size: 1.6rem;   
     padding: 1.2rem;
-
   }
 
   .price {
