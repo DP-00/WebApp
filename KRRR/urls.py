@@ -20,10 +20,11 @@ urlpatterns = [
 
     path('admin-admin/', views.adminAdmin, name="admin-admin"),
     path('admin-users/', views.adminUsers, name="admin-users"),
-    path('admin-users/<int:id>', views.adminUserDetail, name="admin-user"),
+    path('admin-users/<int:id>/', views.adminUserDetail, name="admin-user"),
 
-    path('register/', views.register, name='register'),
-    path('customer/', views.customer, name='customer'),
+    
+    path('register/', views.UserRegistrationView.as_view(), name='register'),
+    path('customer/<int:pk>/', views.UserProfileView.as_view(), name='customer'),
     path('login/', auth_views.LoginView.as_view(template_name="KRRR/login.html"), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name="KRRR/logout.html"), name='logout'),
 ]

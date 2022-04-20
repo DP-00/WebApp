@@ -3,6 +3,8 @@ from django.shortcuts import redirect, render
 from yaml import serialize_all
 from .models import *
 from .forms import UserRegistrationForm, UserUpdateForm
+from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
@@ -58,29 +60,19 @@ def checkout(request):
 
 
 
-def register(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect("index")
-    else:
-        form = UserRegistrationForm()
-    return render(request, "KRRR/register.html", {'form':form})
+
+class UserRegistrationView(CreateView):
+    form_class = UserRegistrationForm
+    success_url = '/'
+    template_name = 'KRRR/register.html'
 
 
-@login_required
-def customer(request):
-    if request.method == "POST":
-        updated_form = UserUpdateForm(request.POST, instance=request.user)
-        if updated_form.is_valid():
-            updated_form.save()
-            return redirect("customer")
-    else:
-        updated_form = UserUpdateForm(instance=request.user)
+class UserProfileView(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'KRRR/customer.html'
+    success_url = 'customer'
 
-    return render(request, "KRRR/customer.html", {'updated_form':updated_form})
 
 
 def adminAdmin(request):
