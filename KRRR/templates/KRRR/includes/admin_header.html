@@ -1,0 +1,26 @@
+{% load static %}
+<header>
+    <nav>
+        <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Keep roling roling roling logo"></a>
+
+        <ul id="menu-list">
+            
+            {% include 'KRRR/includes/menu_bar.html' %}
+ 
+        </ul>
+        <button id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
+        <script>
+            function hamburgerFunction(){
+                const menu = document.getElementById("menu-list")
+                if (menu.style.display === "block") {
+                    menu.style.display = "none";
+                } else {
+                    menu.style.display = "block";
+                }
+            }
+        </script>
+        <button  onclick="location.href='login/'">
+            <ion-icon name="person"></ion-icon>
+        </button>
+    </nav>
+</header>

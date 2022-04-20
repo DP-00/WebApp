@@ -10,52 +10,16 @@
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Keep roling roling roling logo"></a>
-
-            <ul id="menu-list">
-                
-                {% include 'KRRR/includes/menu_bar.html' %}
-     
-            </ul>
-            <button id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
-            <script>
-                function hamburgerFunction(){
-                    const menu = document.getElementById("menu-list")
-                    if (menu.style.display === "block") {
-                        menu.style.display = "none";
-                    } else {
-                        menu.style.display = "block";
-                    }
-                }
-            </script>
-            <button  onclick="location.href='login/'">
-                <ion-icon name="person"></ion-icon>
-            </button>
-        </nav>
-    </header>
+    {% include 'KRRR/includes/admin_header.html' %}
 
     <div class="side-bar">
-
         {% include "KRRR/includes/admin_side_bar.html" %}
-    
     </div>
 
     {% block content %}{% endblock content %}
 
 
-    <footer>
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}#about-us">About us</a></li>
-                <li><a href="{% url 'index' %}#our-products">Products</a></li>
-                <li><a href="{% url 'index' %}#places-to-explore">Trips</a></li>
-                <li><a href="{% url 'index' %}#featured-in">Opinions</a></li>
-                <li><a href="{% url 'index' %}#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </footer>
+    {% include 'KRRR/includes/footer.html' %}
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
