@@ -93,6 +93,11 @@ class AdminUserListView(ListView):
     context_object_name = 'users'
     paginate_by = 5
 
+class AdminProductCreatetView(CreateView):
+    form_class = ProductForm
+    success_url = reverse_lazy('admin-products')
+    template_name = 'KRRR/product-create.html'
+
 class AdminProductListView(ListView):
     model = Product
     template_name = 'KRRR/admin-products.html'
@@ -102,7 +107,7 @@ class AdminProductListView(ListView):
 class AdminProductView(UpdateView):
     model = Product
     success_url = reverse_lazy('admin-products')
-    form_class = ProductUpdateForm
+    form_class = ProductForm
     template_name = 'KRRR/admin-product.html'
     context_object_name = 'product'
 

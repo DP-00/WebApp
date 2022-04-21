@@ -29,7 +29,7 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['first_name','last_name','username','email']
 
 
-class ProductUpdateForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = '__all__'
