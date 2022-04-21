@@ -11,10 +11,10 @@ from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-from django.db.models import Min
+# from django.db.models import F, Q
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
-
-from django.db import IntegrityError
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -27,12 +27,11 @@ class Product(models.Model):
     price = models.IntegerField()
     description = models.CharField(max_length=250)
     photo = models.FileField(blank=True)
-    salePrice = models.FloatField(blank=True, null=True)
-    class Meta:
-        constraints = [
-        CheckConstraint(check=models.Q(salePrice__lt=models.F('price')), name='discount'),
-    ]
+    salePrice = models.IntegerField(blank=True, null=True)
 
+    def clean(self):
+        if self.salePrice >= self.price:
+            raise ValidationError({'salePrice':_('Sale price must be lower than normal price.')})
 
 
 class Order(models.Model):
