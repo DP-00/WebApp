@@ -19,6 +19,7 @@ urlpatterns = [
 
     path('admin-admin/', views.adminAdmin, name="admin-admin"),
     path('admin-users/', views.AdminUserListView.as_view(), name="admin-users"),
+    
     path('admin-products/', views.AdminProductListView.as_view(), name="admin-products"),
     path('admin-products/create/', views.AdminProductCreatetView.as_view(), name="product-create"),
     path('admin-products/<int:pk>/', views.AdminProductView.as_view(), name='admin-product'),
