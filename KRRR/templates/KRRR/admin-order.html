@@ -13,12 +13,12 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-            <legend>{{ product.name }}</legend>
+            <legend>Order - {{ order.id }}</legend>
             {{ form.as_p }}
         </fieldset>
         <div class="form-func">
             <button type="submit">Update</button>
-            <a href="{% url 'product-delete' product.id %}">Delete</a>
+            <a href="{% url 'order-delete' order.id %}">Delete</a>
         </div>
     </form>
 

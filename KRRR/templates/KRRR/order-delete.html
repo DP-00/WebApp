@@ -1,4 +1,4 @@
-{% extends 'KRRR/admin-layout.html' %}
+{% extends 'KRRR/main.html' %}
 {% load static %}
 
 
@@ -13,12 +13,13 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-            <legend>{{ product.name }}</legend>
-            {{ form.as_p }}
+            <legend>Delete Order</legend>
+            <p>Are you sure you want to delete the Order-{{ order.id }}?</p>
         </fieldset>
         <div class="form-func">
-            <button type="submit">Update</button>
-            <a href="{% url 'product-delete' product.id %}">Delete</a>
+            <button type="submit" class="warning">Yes, Delete</button>
+            <a href="{% url 'admin-product' product.id %}">Cancel</a>
+            
         </div>
     </form>
 

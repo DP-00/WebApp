@@ -1,4 +1,4 @@
-{% extends 'KRRR/main.html' %}
+{% extends 'KRRR/admin-layout.html' %}
 {% load static %}
 
 
@@ -18,7 +18,7 @@
         </fieldset>
         <div class="form-func">
             <button type="submit">Update</button>
-            <button type="submit" class="warning">Delete</button>
+            <a href="{% url 'customer-delete' user.id %}">Delete</a>
         </div>
     </form>
 

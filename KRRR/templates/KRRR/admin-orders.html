@@ -10,15 +10,14 @@
 
 <div class="content">
     <fieldset>
-        <legend>USERS</legend>
-
-        {% for user in users %}
+        <legend>ORDERS</legend>
+        {% for order in orders %}
     
         <div class="user">
-            <p>{{ user.username }}</p>
+            <p>{{ order.id }}</p>
             <form action="#">
-                <button><a href="{% url 'admin-user' user.id %}">Details</a></button>
-                <a href="{% url 'customer-delete' user.id %}">Delete</a>
+                <button><a href="{% url 'admin-order' order.id %}">Details</a></button>
+                <a href="{% url 'order-delete' order.id %}">Delete</a>
             </form>
         </div>
     

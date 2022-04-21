@@ -64,13 +64,11 @@ class UserRegistrationView(CreateView):
     success_url = reverse_lazy('login')
     template_name = 'KRRR/register.html'
 
-
 class UserProfileView(UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'KRRR/customer.html'
     success_url = '/'
-
 
 class UserDeleteView(DeleteView):
     model = User
@@ -79,7 +77,7 @@ class UserDeleteView(DeleteView):
 
     def test_func(self):
         user = self.get_object()
-        if self.request.user == user or self.request.user.is_superuser:
+        if self.request.user == user:
             return True
         return False
 
@@ -87,11 +85,29 @@ class UserDeleteView(DeleteView):
 def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
+
 class AdminUserListView(ListView):
     model = User
     template_name = 'KRRR/admin-users.html'
     context_object_name = 'users'
-    paginate_by = 5
+    paginate_by = 7
+
+class AdminUserView(UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'KRRR/admin-user.html'
+    success_url = reverse_lazy('admin-users')
+
+class AdminUserDeleteView(DeleteView):
+    model = User
+    template_name = 'KRRR/customer-delete.html'
+    success_url = reverse_lazy('admin-users')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
 
 class AdminProductCreatetView(CreateView):
     form_class = ProductForm
@@ -115,6 +131,30 @@ class AdminProductDeleteView(DeleteView):
     model = Product
     template_name = 'KRRR/product-delete.html'
     success_url = reverse_lazy('admin-products')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+
+class AdminOrderListView(ListView):
+    model = Order
+    template_name = 'KRRR/admin-orders.html'
+    context_object_name = 'orders'
+    paginate_by = 7
+
+class AdminOrderView(UpdateView):
+    model = Order
+    success_url = reverse_lazy('admin-orders')
+    form_class = OrderForm
+    template_name = 'KRRR/admin-order.html'
+    context_object_name = 'order'
+
+class AdminOrderDeleteView(DeleteView):
+    model = Order
+    template_name = 'KRRR/order-delete.html'
+    success_url = reverse_lazy('admin-orders')
 
     def test_func(self):
         if self.request.user.is_superuser:
