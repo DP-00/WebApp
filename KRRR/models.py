@@ -29,6 +29,9 @@ class Product(models.Model):
     photo = models.FileField(blank=True)
     salePrice = models.FloatField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
 # CheckConstraint(check=Product(salePrice__lt=Product('price'), name='discount'))
 # CheckConstraint(check=Product(price__gte=18), name='age_gte_18')
 

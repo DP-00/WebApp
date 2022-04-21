@@ -20,6 +20,7 @@
         </fieldset>
         <div class="form-func">
             <a href="{% url 'admin-user-orders' user.username %}">Orders</a>
+            <a href="{% url 'admin-user-comments' user.username %}">Comments</a>
             <a href="{% url 'user-delete' user.id %}">Delete</a>
         </div>
     </form>

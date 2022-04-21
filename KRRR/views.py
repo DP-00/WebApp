@@ -198,3 +198,13 @@ class AdminCommentDeleteView(DeleteView):
         if self.request.user.is_superuser:
             return True
         return False
+
+class AdminUserCommentListView(ListView):
+    model = Comment
+    template_name = 'KRRR/admin-user-comments.html'
+    context_object_name = 'comments'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Comment.objects.filter(customer=user).order_by('-comment_date')
