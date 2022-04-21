@@ -69,25 +69,6 @@ legend {
 
 }
 
-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-
-    /* border: 1px solid red; */
-}
-
-footer ul {
-    display: flex;
-    list-style-type: none;
-}
-
-footer ul img {
-    max-width: 5vm;
-    max-height: 5vm;
-}
-
 .element {
     margin: 2rem;
     padding: 0;
