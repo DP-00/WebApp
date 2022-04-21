@@ -92,11 +92,9 @@ class AdminUserListView(ListView):
     context_object_name = 'users'
     paginate_by = 7
 
-class AdminUserView(UpdateView):
+class AdminUserView(DetailView):
     model = User
-    form_class = UserUpdateForm
     template_name = 'KRRR/admin-user.html'
-    success_url = reverse_lazy('admin-users')
 
 class AdminUserDeleteView(DeleteView):
     model = User
