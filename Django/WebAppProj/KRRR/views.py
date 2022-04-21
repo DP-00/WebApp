@@ -8,7 +8,7 @@ import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
-from .forms import CartItemForm, LocationForm
+from .forms import CartItemForm, OrderForm
 
 from django.db.models import Sum
 
@@ -85,9 +85,10 @@ def cart(request):
     else:
         order = Order.objects.get(customer=user, status='cart')
     products = CartItem.objects.filter(order=order)
-    form = LocationForm(request.POST or None)
+    form = OrderForm(request.POST or None)
     if request.method == 'POST':
         order.location = form.data['location']
+        order.order_date = form.data['order_date']
         order.save()
 
     cart_total = sum([product.product.price*product.quantity for product in products])

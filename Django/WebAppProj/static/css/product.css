@@ -2,7 +2,9 @@
     margin: 10%;
     display: grid;
     grid-template-columns: 40% 60%;
-    grid-template-rows: 80% 20%;
+    grid-auto-rows: min-content;
+    align-items: center;
+    justify-items: center;
 }
 
 .product img {
@@ -21,7 +23,7 @@
 }
 
 .options {
-    place-self: center;
+    padding: 1rem;
 }
 
 .comments {
@@ -33,9 +35,9 @@
 }
 
 input {
-    width: 100%;
+    width: 50%;
     background-color: var(--grey2);
-    display: inline-block;
+    display: inline;
     border: 1px solid #ccc;
     box-sizing: border-box;
     padding: 12px 20px;

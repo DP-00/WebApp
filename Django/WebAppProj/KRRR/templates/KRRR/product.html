@@ -31,6 +31,9 @@
                 </script>
             </form>
         </div>
+        <div>
+            <a href="{% url 'shop' %}">Go back to shopping</a>
+        </div>
         </div>
         <div class="comments">
             <h1>Comments</h1>
@@ -49,6 +52,17 @@
                 {% endwith %}
             </p>
             <p class="comment">{{comment.content}}</p>
+            {% if comment.customer == user.get_username %}
+                <p> Change your comment</p>
+                <form method="POST"> {% csrf_token %}
+                    {{ form.product.as_hidden }}
+                    {{ form.quantity }}
+                    <input type="submit" value="Add to cart" >
+                    <script>
+                        document.getElementById("id_product").value = "{{product.id}}";
+                    </script>
+                </form>
+            {% endif %}
             </div>
             {% endfor %}
         </div>
