@@ -16,6 +16,12 @@ main {
     border-radius: 0;
 }
 
+.ad-layout {
+    margin-top: 12rem;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
 .side-bar {
     width: 20vw;
     flex-direction: column;
@@ -82,32 +88,19 @@ footer ul img {
     max-height: 5vm;
 }
 
-.user {
+.element {
     margin: 2rem;
     padding: 0;
     display: flex;
     flex-direction: column;
 
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--grey3);
     border-radius: 0;
 }
 
-.user p {
+.element p {
     margin: 0;
     padding: 0 0 0 1rem;
-}
-
-email {
-    color: var(--grey3);
-    padding: 0 0 0 1rem;
-
-    border-radius: 0;
-}
-
-form {
-    padding: 0 0 0 1rem;
-    border-radius: 0;
 }
 
 button {
@@ -120,6 +113,6 @@ button {
     font-size: 2rem;
 }
 
-.warning {
-    background-color: red;
+.dw-links {
+    margin-bottom: 1rem;
 }

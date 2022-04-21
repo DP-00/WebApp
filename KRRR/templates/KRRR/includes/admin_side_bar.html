@@ -1,8 +1,11 @@
-<fieldset>
-    <legend>Admin View</legend>
-    <a href="/admin">Admin</a>
-    <a href="{% url 'admin-users' %}">Users</a>
-    <a href="{% url 'admin-products' %}">Products</a>
-    <a href="{% url 'admin-orders' %}">Orders</a>
-    <a href="{% url 'admin-comments' %}">Comments</a>
-</fieldset>
+<div class="side-bar">
+    <fieldset>
+        <legend>Admin View</legend>
+        <a href="/admin">Admin</a>
+        <a href="{% url 'admin-users' %}">Users</a>
+        <a href="{% url 'admin-products' %}">Products</a>
+        <a href="{% url 'product-create' %}">Add Product</a>
+        <a href="{% url 'admin-orders' %}">Orders</a>
+        <a href="{% url 'admin-comments' %}">Comments</a>
+    </fieldset>
+</div>

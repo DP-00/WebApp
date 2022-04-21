@@ -13,12 +13,12 @@
         <legend>COMMENTS</legend>
         {% for comment in comments %}
     
-        <div class="user">
+        <div class="element">
             <p>{{ comment.id }}</p>
-            <form action="#">
-                <button><a href="{% url 'admin-comment' comment.id %}">Details</a></button>
-                <a href="{% url 'comment-delete' comment.id %}">Delete</a>
-            </form>
+            <div class="dw-links">
+                <a href="{% url 'admin-comment' comment.id %}" class="detail">Details</a>
+                <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
+            </div>
         </div>
     
         {% endfor %}

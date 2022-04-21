@@ -11,15 +11,14 @@
 <div class="content">
     <fieldset>
         <legend>PRODUCTS</legend>
-        <a href="{% url 'product-create' %}">Create Product</a>
 
         {% for product in products %}
     
-        <div class="user">
+        <div class="element">
             <p>{{ product.name }}</p>
-            <form action="#">
-                <button><a href="{% url 'admin-product' product.id %}">Details</a></button>
-                <a href="{% url 'product-delete' product.id %}">Delete</a>
+            <div class="dw-links">
+                <a href="{% url 'admin-product' product.id %}" class="detail">Details</a>
+                <a href="{% url 'product-delete' product.id %}" class="warning">Delete</a>
             </form>
         </div>
     

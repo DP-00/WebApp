@@ -14,12 +14,12 @@
 
         {% for user in users %}
     
-        <div class="user">
+        <div class="element">
             <p>{{ user.username }}</p>
-            <form action="#">
-                <button><a href="{% url 'admin-user' user.id %}">Details</a></button>
-                <a href="{% url 'account-delete' user.id %}">Delete</a>
-            </form>
+            <div class="dw-links">
+                <a href="{% url 'admin-user' user.id %}" class="detail">Details</a>
+                <a href="{% url 'account-delete' user.id %}" class="warning">Delete</a>
+            </div>
         </div>
     
         {% endfor %}

@@ -12,12 +12,11 @@
 
     {% include 'KRRR/includes/admin_header.html' %}
 
-    <div class="side-bar">
+    <div class="ad-layout">
         {% include "KRRR/includes/admin_side_bar.html" %}
+
+        {% block content %}{% endblock content %}
     </div>
-
-    {% block content %}{% endblock content %}
-
 
     {% include 'KRRR/includes/footer.html' %}
 
