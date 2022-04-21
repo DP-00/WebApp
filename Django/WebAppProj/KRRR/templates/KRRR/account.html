@@ -3,21 +3,28 @@
 
 
 {% block extra_head %}
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">
 {% endblock extra_head %}
 
+{% block menu %}
+<li><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'cart' %}">Cart</a></li>
+{% endblock menu %}
+
 {% block content %}
-<h1> dzieńdberek</h1>
+<section id="userdata">
+    <h2>Manage your account</h2>
         <form method="POST">
             {% csrf_token %}
             <fieldset>
-                <legend>{{ user.username }} userdata:</legend>
                 {{ updated_form.as_p }}
             </fieldset>
             <div class="form-func">
-                <button type="submit">Save changes</button>
+                <button id="save" type="submit">Save changes</button>
             </div>
         </form>
+</section>
+<section id="orderlist">
         <h2>Your orders</h2>
         <table>
             <tr>
@@ -27,11 +34,12 @@
             </tr>
         {% for order in orders %}
             <tr>
-                <th>{{ order.date }}</th>
-                <th>{{ order.status }}</th>
-                <th>{{ order.location }}</th>
+                <td>{{ order.date }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.location }}</td>
             </tr>
         {% endfor %}
         </table>
+    </section>
 
 {% endblock content %}
