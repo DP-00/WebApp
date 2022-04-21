@@ -8,7 +8,7 @@ import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
-from .forms import CartItemForm, OrderForm, CommentEditForm
+from .forms import CartItemForm, OrderForm
 
 from django.db.models import Sum
 
