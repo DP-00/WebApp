@@ -17,14 +17,16 @@ class CartItemForm(forms.ModelForm):
             'product': ''
         }
 
-class LocationForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = [
-            'location'
+            'location',
+            'order_date'
         ]
         widgets = {
-            'location': forms.Select(attrs={'onchange': 'submit();'})
+            'location': forms.Select(attrs={'onchange': 'submit();'}),
+            'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 
 class CustomerRegistrationModel(UserCreationForm):
