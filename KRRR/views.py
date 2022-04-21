@@ -1,3 +1,4 @@
+from pyexpat import model
 from turtle import mode
 from attr import fields
 from django.http import Http404
@@ -60,7 +61,7 @@ def checkout(request):
 
 class UserRegistrationView(CreateView):
     form_class = UserRegistrationForm
-    success_url = '/'
+    success_url = reverse_lazy('login')
     template_name = 'KRRR/register.html'
 
 
@@ -68,8 +69,19 @@ class UserProfileView(UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'KRRR/customer.html'
-    success_url = reverse_lazy('index')
+    success_url = '/'
 
+
+class UserDeleteView(DeleteView):
+    model = User
+    template_name = 'KRRR/customer-delete.html'
+    success_url = '/'
+
+    def test_func(self):
+        user = self.get_object()
+        if self.request.user == user or user.is_superuser:
+            return True
+        return False
 
 
 def adminAdmin(request):
@@ -80,3 +92,5 @@ class AdminUsersView(ListView):
     template_name = 'KRRR/admin-users.html'
     context_object_name = 'users'
     paginate_by = 5
+
+

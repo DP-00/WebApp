@@ -13,12 +13,13 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-            <legend>{{ user.username }}</legend>
-            {{ form.as_p }}
+            <legend>Delete User</legend>
+            <p>Are you sure you want to delete the "{{ user.username }}" account?</p>
         </fieldset>
         <div class="form-func">
-            <button type="submit">Update</button>
-            <a href="{% url 'customer-delete' user.id %}">Delete</a>
+            <button type="submit" class="warning">Yes, Delete</button>
+            <a href="{% url 'customer' user.id %}">Cancel</a>
+            
         </div>
     </form>
 
