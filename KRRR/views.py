@@ -3,7 +3,7 @@ from pyexpat import model
 from turtle import mode
 from attr import fields
 from django.http import Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from yaml import serialize_all
 from .models import *
 from .forms import *
@@ -81,6 +81,7 @@ class UserDeleteView(DeleteView):
         if self.request.user == user:
             return True
         return False
+    
 
 
 ##########   ADMIN VIEWS   ##########
@@ -163,6 +164,17 @@ class AdminOrderDeleteView(DeleteView):
         if self.request.user.is_superuser:
             return True
         return False
+
+class AdminUserOrderListView(ListView):
+    model = Order
+    template_name = 'KRRR/admin-user-orders.html'
+    context_object_name = 'orders'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Order.objects.filter(customer=user).order_by('-order_date')
+
 
 
             ### COMMENTS ###
