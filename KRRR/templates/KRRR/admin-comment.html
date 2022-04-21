@@ -3,26 +3,28 @@
 
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_detail_style.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
 
+<div>
     {% include 'KRRR/includes/admin_header.html' %}
 
-    <form method="POST">
-        {% csrf_token %}
+    <div class="content">
         <fieldset>
-            <legend>{{ comment.id }}</legend>
+            <legend>Comment ID: {{ comment.id }}</legend>
             <p>Author: {{ comment.customer }}</p>
             <p>Product: {{ comment.product }}</p>
             <p>Date published: {{ comment.comment_date }}</p>
             <p>Stars: {{ comment.stars }}</p>
             <p>Comment: {{ comment.content }}</p>
+            <div class="sw-links">
+                <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
+            </div>
         </fieldset>
-        <div class="form-func">
-            <a href="{% url 'comment-delete' comment.id %}">Delete</a>
-        </div>
-    </form>
+    </div>
+
+</div>
 
 {% endblock content %}
