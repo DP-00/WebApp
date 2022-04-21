@@ -101,7 +101,7 @@ class AdminUserView(DetailView):
 
 class AdminUserDeleteView(DeleteView):
     model = User
-    template_name = 'KRRR/customer-delete.html'
+    template_name = 'KRRR/user-delete.html'
     success_url = reverse_lazy('admin-users')
 
     def test_func(self):

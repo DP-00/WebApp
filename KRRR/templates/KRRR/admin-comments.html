@@ -1,0 +1,29 @@
+{% extends 'KRRR/admin-layout.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+
+<div class="content">
+    <fieldset>
+        <legend>COMMENTS</legend>
+        {% for comment in comments %}
+    
+        <div class="user">
+            <p>{{ comment.id }}</p>
+            <form action="#">
+                <button><a href="{% url 'admin-comment' comment.id %}">Details</a></button>
+                <a href="{% url 'comment-delete' comment.id %}">Delete</a>
+            </form>
+        </div>
+    
+        {% endfor %}
+    </fieldset>
+</div>
+
+
+{% endblock content %}

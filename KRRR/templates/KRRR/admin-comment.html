@@ -13,13 +13,15 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-            <legend>Delete Product</legend>
-            <p>Are you sure you want to delete the "{{ product.name }}"?</p>
+            <legend>{{ comment.id }}</legend>
+            <p>Author: {{ comment.customer }}</p>
+            <p>Product: {{ comment.product }}</p>
+            <p>Date published: {{ comment.comment_date }}</p>
+            <p>Stars: {{ comment.stars }}</p>
+            <p>Comment: {{ comment.content }}</p>
         </fieldset>
         <div class="form-func">
-            <button type="submit" class="warning">Yes, Delete</button>
-            <a href="{% url 'admin-product' product.id %}">Cancel</a>
-            
+            <a href="{% url 'comment-delete' comment.id %}">Delete</a>
         </div>
     </form>
 
