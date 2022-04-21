@@ -1,3 +1,4 @@
+from distutils.errors import CompileError
 from pyexpat import model
 from turtle import mode
 from attr import fields
@@ -82,10 +83,12 @@ class UserDeleteView(DeleteView):
         return False
 
 
+##########   ADMIN VIEWS   ##########
 def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
 
+            ### USERS ###
 class AdminUserListView(ListView):
     model = User
     template_name = 'KRRR/admin-users.html'
@@ -107,6 +110,7 @@ class AdminUserDeleteView(DeleteView):
         return False
 
 
+            ### PRODUCTS ###
 class AdminProductCreatetView(CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('admin-products')
@@ -136,6 +140,7 @@ class AdminProductDeleteView(DeleteView):
         return False
 
 
+            ### ORDERS ###
 class AdminOrderListView(ListView):
     model = Order
     template_name = 'KRRR/admin-orders.html'
@@ -153,6 +158,29 @@ class AdminOrderDeleteView(DeleteView):
     model = Order
     template_name = 'KRRR/order-delete.html'
     success_url = reverse_lazy('admin-orders')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+
+            ### COMMENTS ###
+class AdminCommentListView(ListView):
+    model = Comment
+    template_name = 'KRRR/admin-comments.html'
+    context_object_name = 'comments'
+    paginate_by = 7
+
+class AdminCommentView(DetailView):
+    model = Comment
+    template_name = 'KRRR/admin-comment.html'
+    context_object_name = 'comment'
+
+class AdminCommentDeleteView(DeleteView):
+    model = Comment
+    template_name = 'KRRR/comment-delete.html'
+    success_url = reverse_lazy('admin-comments')
 
     def test_func(self):
         if self.request.user.is_superuser:
