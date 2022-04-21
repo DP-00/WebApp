@@ -13,7 +13,9 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from django.db.models import Min
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
-import math  
+import math
+
+
 class Product(models.Model):
     name = models.CharField(max_length=50)
     CATEGORY_TYPE = (

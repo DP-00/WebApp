@@ -5,7 +5,7 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from yaml import serialize_all
 from .models import *
-from .forms import UserRegistrationForm, UserUpdateForm
+from .forms import *
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -79,7 +79,7 @@ class UserDeleteView(DeleteView):
 
     def test_func(self):
         user = self.get_object()
-        if self.request.user == user or user.is_superuser:
+        if self.request.user == user or self.request.user.is_superuser:
             return True
         return False
 
@@ -87,10 +87,31 @@ class UserDeleteView(DeleteView):
 def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
-class AdminUsersView(ListView):
+class AdminUserListView(ListView):
     model = User
     template_name = 'KRRR/admin-users.html'
     context_object_name = 'users'
     paginate_by = 5
 
+class AdminProductListView(ListView):
+    model = Product
+    template_name = 'KRRR/admin-products.html'
+    context_object_name = 'products'
+    paginate_by = 7
 
+class AdminProductView(UpdateView):
+    model = Product
+    success_url = reverse_lazy('admin-products')
+    form_class = ProductUpdateForm
+    template_name = 'KRRR/admin-product.html'
+    context_object_name = 'product'
+
+class AdminProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'KRRR/product-delete.html'
+    success_url = reverse_lazy('admin-products')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False

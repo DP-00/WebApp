@@ -18,8 +18,10 @@ urlpatterns = [
 
 
     path('admin-admin/', views.adminAdmin, name="admin-admin"),
-    path('admin-users/', views.AdminUsersView.as_view(), name="admin-users"),
-
+    path('admin-users/', views.AdminUserListView.as_view(), name="admin-users"),
+    path('admin-products/', views.AdminProductListView.as_view(), name="admin-products"),
+    path('admin-products/<int:pk>/', views.AdminProductView.as_view(), name='admin-product'),
+    path('admin-products/<int:pk>/delete/', views.AdminProductDeleteView.as_view(), name='product-delete'),
     
     path('register/', views.UserRegistrationView.as_view(), name='register'),
     path('customer/<int:pk>/', views.UserProfileView.as_view(), name='customer'),
