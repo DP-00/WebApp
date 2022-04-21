@@ -12,50 +12,42 @@
 
 {% block content %}
         <h1>Shopping Cart</h1>
+        
         <div class="cart">
             <div class="products">
+                {% for product in products %}
                 <div class="product">
                     <img src="{% static 'images/2.jpg' %}">
                     <div class="product-info">
-                        <h3 class="product-name">Bicycle 1</h3>
-                        <h4 class="product-price">NOK 1,000</h4>
-                        <h4 class="product-offer">50%</h4>
-                        <p class="product-quantity">Qnt: <input value="1" name="">
-                        <p class="product-remove">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <h3 class="product-name">{{product.product.name}}</h3>
+                        <h4 class="product-price">{{product.product.price}}</h4>
+                        <h4 class="product-offer">Quantity: {{product.quantity}}</h4>
                         <span class="remove">Remove</span>
                         </p>
                     </div>
                 </div>
-                <div class="product">
-                    <img src="{% static 'images/3.jpg' %}">
-                    <div class="product-info">
-                        <h3 class="product-name">Bicycle 2</h3>
-                        <h4 class="product-price">NOK 2,000</h4>
-                        <h4 class="product-offer">40%</h4>
-                        <p class="product-quantity">Qnt: <input value="1" name="">
-                        <p class="product-remove">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                        <span class="remove">Remove</span>
-                        </p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="cart-total">
                 <p>
                     <span>Total Price</span>
-                    <span>NOK 3,000</span>
+                    <span>{{ cart_total }}</span>
                 </p>
                 <p>
                     <span>Number of Items</span>
-                    <span>2</span>
+                    <span>{{ cart_quantity }}</span>
                 </p>
-                <p>
+                <!-- <p>
                     <span>You Save</span>
                     <span>NOK 1,000</span>
+                </p> -->
+                <p>
+                    Location:
+                    <form method="POST"> {% csrf_token %}
+                        {{ form }}
+                    </form>
                 </p>
-                <a href="#">Proceed to Checkout</a>
+                <a href="{% url 'checkout' %}">Proceed to Checkout</a>
             </div>
         </div>
 {% endblock content %}
-

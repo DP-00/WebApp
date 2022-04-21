@@ -1,9 +1,11 @@
 {% load static %}
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Bike rental webpage as a final project">
     <title>KRRR</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     {% block extra_head %}
@@ -13,7 +15,7 @@
 <body>
     <header>
         <nav>
-            <a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Keep roling roling roling logo"></a>
+            <a href="{% url 'index' %}"><img id="logo" src="{% static 'images/logo.png' %}" alt="Keep roling roling roling logo"></a>
 
             <ul id="menu-list">
                 {% block menu %}
@@ -21,43 +23,16 @@
                 {% endblock menu %}
      
             </ul>
-            <button id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
-            <script>
-                function hamburgerFunction(){
-                    const menu = document.getElementById("menu-list")
-                    if (menu.style.display === "block") {
-                        menu.style.display = "none";
-                    } else {
-                        menu.style.display = "block";
-                    }
-                }
-            </script>
-            <button  onclick="location.href='login/'">
+
+            <button aria-label="menu" id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
+            <script src="../../../static/js/hamburgerMenu.js"></script>
+
+            <button  id="account-button" aria-label="account" onclick="location.href='account/'">
                 <ion-icon name="person"></ion-icon>
             </button>
+
+
         </nav>
-
-        <!-- Login window-->
-        <!-- <div id="login" class="modal">
-            <form class="modal-content animate" action="file.py">
-
-                <div class="container">
-                    <button onclick="document.getElementById('login').style.display='none'" class="close" title="Close window">&times;</button>
-                    <label><strong>Username</strong>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-                    </label>
-
-
-                    <label><strong>Password</strong>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                    </label>
-
-                    <a href="{% url 'register' %}">Create account</a>
-                    <button id="login-button" type="submit">Log in</button>
-
-                </div>
-            </form>
-        </div> -->
     </header>
 
     <main>
@@ -70,7 +45,7 @@
 <!--        add to the footer:
 1. employee login
 2. contact form
-3. -->
+3. credits and attributions -->
         <nav>
             <ul>
                 <li><a href="{% url 'index' %}#about-us">About us</a></li>

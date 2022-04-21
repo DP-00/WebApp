@@ -1,28 +1,20 @@
-from distutils.errors import CompileError
-from pyexpat import model
-from turtle import mode
-from attr import fields
-from django.http import Http404
-from django.shortcuts import get_object_or_404, redirect, render
-from yaml import serialize_all
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import *
-from .forms import *
-from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 from django.contrib.auth.models import User
+from .forms import *
+
 from django.urls import reverse_lazy
+from django.views.generic import CreateView,UpdateView,DetailView,DeleteView, ListView
+from django.contrib.auth.decorators import login_required
 
 import requests
-from rest_framework import viewsets, status
+from rest_framework import viewsets
 from .serializers import ProductSerializer
 
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
-
-class ShopViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all().order_by('id')
-    serializer_class = ProductSerializer
+from django.db.models import Sum
 
 
+#  index - main page
 def index(request):
     comment = Comment.objects.filter(stars=5).order_by('?').first()
     cheapestBike = Product.objects.filter(category='Bike').all().aggregate(Min('price'))
@@ -32,34 +24,104 @@ def index(request):
     return render(request, 'KRRR/index.html', context)
 
 
+# API
+class ShopViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all().order_by('id')
+    serializer_class = ProductSerializer
+
+
+# shopping
 def shop(request):
-    products = requests.get("http://localhost:8000/api/shop")
-    context = {'products': products}
+    products = Product.objects.all()
+    form = CartItemForm(request.POST or None)
+    if request.method == 'POST':
+        user = request.user
+        if not Order.objects.filter(customer=user).exists():
+            order = Order(customer=user)
+        else:
+            order = Order.objects.get(customer=user)
+        item = CartItem.objects.create(order=order, product=Product.objects.get(id=form.data['product']), quantity=form.data['quantity'])
+        item.save()
+
+    context = {
+        'products': products, 
+        'form': form
+        }
     return render(request, 'KRRR/shop.html', context)
 
+
 def product(request, id):
+    form = CartItemForm(request.POST or None)
+    if request.method == 'POST':
+        user = request.user
+        if not Order.objects.filter(customer=user, status='cart').exists():
+            order = Order(customer=user, status='cart')
+            order.save()
+        else:
+            order = Order.objects.get(customer=user, status='cart')
+
+        if not CartItem.objects.filter(order=order, product=Product.objects.get(id=id)).exists():
+            item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
+        else:
+            item = CartItem.objects.get(order=order, product=Product.objects.get(id=id))
+            quantity = item.quantity + int(form.data['quantity'])
+            item.quantity = quantity
+        item.save()
+
     product = Product.objects.get(id = id)
-    # product = requests.get(f"http://localhost:8000/api/shop/{id}")
     comments = Comment.objects.filter(product=product)
-    return render(request, 'KRRR/product.html', {'product': product, 'comments': comments})
+    context = {
+        'product': product, 
+        'comments': comments, 
+        'form': form
+    }
+    return render(request, 'KRRR/product.html', context)
 
-
+@login_required
 def cart(request):
-    context = {}
+    user = request.user
+    if not Order.objects.filter(customer=user, status='cart').exists():
+        order = Order(customer=user, status='cart')
+        order.save()
+    else:
+        order = Order.objects.get(customer=user, status='cart')
+    products = CartItem.objects.filter(order=order)
+    form = LocationForm(request.POST or None)
+    if request.method == 'POST':
+        order.location = form.data['location']
+        order.save()
+
+    cart_total = sum([product.product.price*product.quantity for product in products])
+    cart_quantity = sum([product.quantity for product in products])
+    context = {
+        'order': order, 
+        'products': products,
+        'form': form,
+        'cart_total': cart_total,
+        'cart_quantity' : cart_quantity
+        }
     return render(request, 'KRRR/cart.html', context)
 
 
 def checkout(request):
-    context = {}
+    order = Order.objects.get(customer=request.user, status='cart')
+    products = CartItem.objects.filter(order=order)
+    cart_total = sum([product.product.price*product.quantity for product in products])
+    cart_quantity = sum([product.quantity for product in products])
+    order.status = 'paid'
+    order.save()
+
+    context = {
+        'products': products,
+        'cart_total': cart_total,
+        'cart_quantity' : cart_quantity,
+        }
     return render(request, 'KRRR/checkout.html', context)
 
 
 
 
-
-
-
-
+# user and account management
 class UserRegistrationView(CreateView):
     form_class = UserRegistrationForm
     success_url = reverse_lazy('login')
@@ -68,12 +130,12 @@ class UserRegistrationView(CreateView):
 class UserProfileView(UpdateView):
     model = User
     form_class = UserUpdateForm
-    template_name = 'KRRR/customer.html'
+    template_name = 'KRRR/account.html'
     success_url = '/'
 
 class UserDeleteView(DeleteView):
     model = User
-    template_name = 'KRRR/customer-delete.html'
+    template_name = 'KRRR/account-delete.html'
     success_url = '/'
 
     def test_func(self):
@@ -208,3 +270,9 @@ class AdminUserCommentListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Comment.objects.filter(customer=user).order_by('-comment_date')
+
+
+# credits
+def credits(request):
+    context = {}
+    return render(request, 'KRRR/credits.html', context)

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
 
 
@@ -13,9 +12,6 @@
     --blue1: rgb(14, 36, 36);
     --blue-text: #c9ffff;
     --blue-dark: #091818;
-
-    --blue3: #008585;
-    --blue4: #007474 ;
 }
 
 * {
@@ -23,12 +19,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border-radius: 5rem;
+    border-radius: 4rem;
 }
 
 html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
+    color: var(--grey3);
+    background: var(--blue1);
 }
 
 @media (max-width: 960px) {
@@ -43,17 +41,43 @@ html {
     }
 }
 
-
 body {
-    font-size: 3rem;
+    font-size: 3.2rem;
 }
 
 header, footer {
     background: var(--blue-dark);
-    color: var(--grey3);
     padding: 1.6rem;
     border-radius: 0;
 }
+
+/* SECTION SETTINGS */
+
+section {
+    border-radius: 0;
+    padding: 6.4rem 12.8rem;
+    text-align: justify;
+    color: var(--grey3);
+  }
+  
+  @media (max-width: 960px) {
+    section {
+      padding: 6.4rem;
+    }
+  }
+  
+  section:nth-child(odd) {
+    background: var(--blue1);
+  }
+  
+  section:nth-child(even) {
+    background: var(--blue2);
+  }
+  
+  .text-section {
+    max-width: 2000px;
+  }
+  
 
 /* GENERAL TEXT SETTINGS */
 h1 {
@@ -94,33 +118,29 @@ nav {
     display: none;
 }
 
-
-
 nav button{
     background-color: var(--blue2);
     display: inline-block;
 }
 
-nav img{
-
-    height:10rem;
+#logo{
+    height:9.8rem;
     position: absolute;
     top: 0;
-    left: 1rem;
-    padding: 1rem;
+    left: 1.6rem;
+    padding: 0.8rem;
     border-radius: 0;
 }
 
 nav li {
-    list-style-type: none;
     display: inline-block;
     margin: 16px;
 }
 
 @media (max-width: 1200px) {
+
     #menu-list{
         display: none;
-        float: right;
     }
 
     #menu-button{
@@ -130,15 +150,19 @@ nav li {
     nav li {
         display: block;
         margin: 16px;
+        text-align: center;
     }
 
-    /* nav img{
-        height:10rem;
+    #logo{
+        height:9.6rem;
         position: absolute;
         top: 0;
-        left: 0;
-        padding: 1rem;
-    } */
+        left: 1.6rem;
+        padding: 0.8rem;
+        border-radius: 0;
+    }
+    
+
   }
   
 
@@ -160,13 +184,14 @@ a:hover {
 
 
 /* BUTTON STYLING */
+
 button{
     font-family: 'Montserrat', sans-serif;
     color: var(--grey3);
     background-color: var(--blue1);
-    padding: 1.4rem;
+    padding: 1.6rem;
     font-weight: bold;
-    font-size: 2.4rem;
+    font-size: 1.6rem;
 }
 
 button:hover {
@@ -175,30 +200,30 @@ button:hover {
 }
 
 
-/* MODAL */
+ /* MODAL -  delete 
   .modal {
-    display: none;  /*Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 5; /* Sit on top */
+    display: none;  /*Hidden by default
+    position: fixed; /* Stay in place 
+    z-index: 5; /* Sit on top 
     left: 0;
     top: 0;
-    width: 100%; /*Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    width: 100%; /*Full width 
+    height: 100%; /* Full height
+    overflow: auto; /* Enable scroll if needed 
+    background-color: rgb(0,0,0); /* Fallback color 
+    background-color: rgba(0,0,0,0.6); 
     padding-top: 60px;
     border-radius: 0;
     
   }
   
-  /* Modal Content/Box */
+
 .modal-content {
     background-color: var(--blue1);
-    margin: 50px auto; /* 15% from the top and centered */
+    margin: 50px auto;
     padding: 5rem;
     border: 1px solid var(--blue2);
-    width: 66%; /* Could be more or less, depending on screen size */
+    width: 66%; 
     line-height: 6.4rem;
   }
 
@@ -227,7 +252,6 @@ input {
  }
 
 
-/* The Close Button */
 .close {
     float: right;
     color: var(--grey3);
@@ -242,9 +266,9 @@ input {
 .close:focus {
     color: rgb(109, 7, 7);
     background-color: var(--blue1);
-}
+} */
 
-  /* Add Zoom Animation */
+   /* Add Zoom Animation
   .animate {
     -webkit-animation: animatezoom 0.6s;
     animation: animatezoom 0.6s
@@ -258,4 +282,4 @@ input {
 @keyframes animatezoom {
     from {transform: scale(0)}
     to {transform: scale(1)}
-  } 
+  } */

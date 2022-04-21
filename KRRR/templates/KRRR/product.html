@@ -22,8 +22,14 @@
             <p>{{product.description}}</p>
         </div>
         <div class="options">
-            <button name="cart">Add to cart</button>
-            <button name="more">More</button>
+            <form method="POST"> {% csrf_token %}
+                {{ form.product.as_hidden }}
+                {{ form.quantity }}
+                <input type="submit" value="Add to cart" >
+                <script>
+                    document.getElementById("id_product").value = "{{product.id}}";
+                </script>
+            </form>
         </div>
         </div>
         <div class="comments">

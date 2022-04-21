@@ -1,0 +1,21 @@
+.text-section {
+    max-width: 2000px;
+  }
+
+section {
+    padding: 6.4rem 12.8rem;
+    text-align: justify;
+    color: var(--grey3);
+  }
+
+.card {
+    display: grid;
+    padding: 1.6rem;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.card p {
+    text-align: center;
+}

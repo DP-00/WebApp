@@ -13,7 +13,8 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from django.db.models import Min
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
-import math
+
+from django.db import IntegrityError
 
 
 class Product(models.Model):
@@ -28,12 +29,14 @@ class Product(models.Model):
     description = models.CharField(max_length=250)
     photo = models.FileField(blank=True)
     salePrice = models.FloatField(blank=True, null=True)
+    
+    class Meta:
+        constraints = [
+        CheckConstraint(check=models.Q(salePrice__lt=models.F('price')), name='discount'),
+    ]
 
     def __str__(self):
         return self.name
-
-# CheckConstraint(check=Product(salePrice__lt=Product('price'), name='discount'))
-# CheckConstraint(check=Product(price__gte=18), name='age_gte_18')
 
 
 class Order(models.Model):
@@ -41,11 +44,22 @@ class Order(models.Model):
         ('city', 'city centre'),
         ('MOA', 'AMFI Moa'),
     )
+    ORDER_STATUS = (
+        ('cart', 'still shopping'),
+        ('paid', 'shopping compleated'),
+        ('done', 'order compleated'),
+    )
+
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)
     order_date = models.DateTimeField(default=datetime.now())
-    location = models.CharField(max_length=4, choices=LOCATION_TYPE)
-    realized = models.BooleanField(default=False)
+    location = models.CharField(max_length=4, choices=LOCATION_TYPE, default='city')
+    status = models.CharField(max_length=4, choices=ORDER_STATUS, default='cart')
+
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
@@ -56,22 +70,14 @@ class Comment(models.Model):
         ('4', 'Positive'),
         ('5', 'Excelant'),
     )
-
     customer = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     comment_date = models.DateTimeField(default=datetime.now())
     stars = models.CharField(max_length=1, choices=STARS_TYPE, default='5')
     content = models.CharField(max_length=1000, blank=True)
-
-
-
-
-class Meta:
-    constraints = [
-        # CheckConstraint(check=Product(price__gte=18), name='test'),
-        # CheckConstraint(check=Product(salePrice__lt=Product('price'), name='discount')),
-        UniqueConstraint(fields=['customer', 'product','stars'], name='unique_stars'),
-        UniqueConstraint(fields=['customer', 'product','content'], name='unique_review') 
-    ]
-
-
+    
+    class Meta:
+        constraints = [
+            UniqueConstraint(fields=['customer', 'product','stars'], name='unique_stars'),
+            UniqueConstraint(fields=['customer', 'product','content'], name='unique_review') 
+        ]

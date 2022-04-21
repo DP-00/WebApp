@@ -1,0 +1,104 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <style>
+        h1 {
+            text-align: center;
+            letter-spacing: 1rem;
+        }
+
+        h3 {
+            font-size: 3.2rem;
+            padding: 4.8rem  0 0 0;
+        }
+
+        ul {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        }
+
+        li{
+            list-style-type: circle;
+            list-style-position: inside;
+            font-size: 1.6rem;   
+            padding: 1.6rem 3.2rem ;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Credits</h1>
+
+    <section>
+        <h2>About the project</h2>
+        <p>
+            Final project for courses Web Technologies & Application Development, spring 2022 NTNU
+        </p>
+        <a href="https://github.com/DP-00/WebApp"><img src="github.png' %}" alt="Github icon">Our Github repository</a>
+    </section>
+
+    <section>
+        <h2>Authors and contribution</h2>
+            <p> Every person was responsible for some parts of the project.</p>
+
+            <h3>Dagmara Pasiak</h3>
+                <ul>
+                    <li> Wireframe and design of the main page </li>
+                    <li> HTML and CSS for base design and form (together with Marcelina)</li>
+                    <li> HTML, CSS and JavaScript for first part of the Main Page 
+                        (Navigation, Hero, About Us, Products, Places to explore)</li>
+                    <li> Integration of Open Layers JavaScript library into the project and creation of interactive map with photos</li>
+                    <li> Responsivnes of the main page</li>
+                    <li> HTML and CSS for login</li>
+                    <li> Set up of Django project and initial settings</li>
+                    <li> Design of database model and Django implementation</li>
+                    <li> Implementation of REST and product serialization</li>
+                    <li> Creation of a set of Postman test</li>
+                </ul>
+            
+            <h3>Marcelina Suszczyk</h3>
+                <ul>
+                    <li> Mockup and design of the main page </li>
+                    <li> HTML and CSS for base design and form (together with Dagmara)</li>
+                    <li> HTML, CSS and JavaScript for second part of the Main Page 
+                        (Gallery, Featured in, Comments and Footer</li>
+                    <li> HTML and CSS for registration of users</li>
+                    <li> HTML and CSS for shop, cart and products</li>
+                </ul>
+
+            <h3>Szymon Ściegienny</h3>
+                <ul>
+                    <li> </li>
+                </ul>
+
+
+    </section>
+
+    <section>
+        <h2>Attributions</h2>
+            <h3>Icons</h3>
+                <ul>
+                    <li><a href="https://www.flaticon.com/free-icons/bike" title="bike icons">Bike shop icon created by Smashicons - Flaticon used in the map</a></li>
+                    <li><a href="https://www.flaticon.com/free-icons/bike" title="bike icons">Wheel icon created by mangsaabguru - Flaticon used in the logo</a></li>
+                </ul>
+            <h3>Photographs</h3>
+                <ul>
+                    <li>Photo "Endless Rows of Bikes" by <a href="https://unsplash.com/@bertomacario?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Berto Macario</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> in About Section</li>
+                    <li>Photo by <a href="https://unsplash.com/@giorgiograni?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Giorgio Grani</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> in Hero Section
+                    </li>
+                    <li>Photo by <a href="https://unsplash.com/@oxaroxa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Oxa Roxa</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a> in Our Products Section on E-Bike card
+                    </li>
+                    <li>Photo by <a href="https://www.instagram.com/accounts/login/?next=/adubi_i/"> Adam Dubec</a> on <a href="https://www.pexels.com/">Pexels</a> in Our Products Section on Bike card                      
+                    </li>
+                    <li>Photo by <a href=""> </a> on <a href="">Pexels</a> in Our Products Section on Personalization card</li>
+                    <li>Photos by Dagmara Pasiak in Places to explore Section in the map</li>
+                </ul>
+    </section>
+</body>
+</html>

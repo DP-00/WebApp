@@ -6,26 +6,28 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'shop', views.ShopViewSet)
 
-
 urlpatterns = [
     path('', views.index, name="index"),
+
+# API urls
     path('api/', include(router.urls)),
-    path('shop/', views.shop, name="shop"),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+# shopping urls
+    path('shop/', views.shop, name="shop"),
     path('shop/<int:id>/', views.product, name='product'),
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
 
-
-
+# customer urls
     path('register/', views.UserRegistrationView.as_view(), name='register'),
-    path('customer/<int:pk>/', views.UserProfileView.as_view(), name='customer'),
-    path('customer/<int:pk>/delete/', views.UserDeleteView.as_view(), name='customer-delete'),
+    path('account/<int:pk>/', views.UserProfileView.as_view(), name='account'),
+    path('account/<int:pk>/delete/', views.UserDeleteView.as_view(), name='account-delete'),
     path('login/', auth_views.LoginView.as_view(template_name="KRRR/login.html"), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name="KRRR/logout.html"), name='logout'),
 
 
-
+# admin urls
     path('admin-admin/', views.adminAdmin, name="admin-admin"),
 
     path('admin-users/', views.AdminUserListView.as_view(), name="admin-users"),
@@ -46,4 +48,7 @@ urlpatterns = [
     path('admin-comments/', views.AdminCommentListView.as_view(), name="admin-comments"),
     path('admin-comments/<int:pk>/', views.AdminCommentView.as_view(), name='admin-comment'),
     path('admin-comments/<int:pk>/delete/', views.AdminCommentDeleteView.as_view(), name='comment-delete'),
+
+# credits
+    path('credits/', views.credits, name="credits"),
 ]

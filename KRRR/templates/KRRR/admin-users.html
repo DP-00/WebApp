@@ -18,7 +18,7 @@
             <p>{{ user.username }}</p>
             <form action="#">
                 <button><a href="{% url 'admin-user' user.id %}">Details</a></button>
-                <a href="{% url 'customer-delete' user.id %}">Delete</a>
+                <a href="{% url 'account-delete' user.id %}">Delete</a>
             </form>
         </div>
     

@@ -4,8 +4,25 @@ from attr import fields
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from matplotlib.pyplot import cla
 from .models import *
+
+
+class CartItemForm(forms.ModelForm):
+    class Meta:
+        model = CartItem
+        fields = ['product', 'quantity']
+        labels = {
+            'product': ''
+        }
+
+
+class LocationForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['location']
+        widgets = {
+            'location': forms.Select(attrs={'onchange': 'submit();'})
+        }
 
 
 class UserRegistrationForm(UserCreationForm):
@@ -16,7 +33,6 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name','last_name','username','email','password1','password2']
-
 
 
 class UserUpdateForm(forms.ModelForm):
