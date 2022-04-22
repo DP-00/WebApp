@@ -29,6 +29,14 @@ class OrderForm(forms.ModelForm):
             'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'stars',
+            'content'
+        ]
+
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100)
     first_name = forms.CharField(max_length=50)

@@ -39,8 +39,8 @@
             <h1>Comments</h1>
             {% for comment in comments %}
             <div class="comment">
-            <p class="date">{{comment.comment_date|naturaltime}}</p>
-            <p class="customer">{{comment.customer}}</p>
+            <p class="date"><small>{{comment.comment_date|naturaltime}}</small></p>
+            <p class="customer"><strong>{{comment.customer}}</strong></p>
             <p class="stars">
                 {% with full=comment.stars empty=5|sub:comment.stars %}
                 {% for star in ""|ljust:full %}
@@ -52,19 +52,11 @@
                 {% endwith %}
             </p>
             <p class="comment">{{comment.content}}</p>
-            {% if comment.customer == user.get_username %}
-                <p> Change your comment</p>
-                <form method="POST"> {% csrf_token %}
-                    {{ form.product.as_hidden }}
-                    {{ form.quantity }}
-                    <input type="submit" value="Add to cart" >
-                    <script>
-                        document.getElementById("id_product").value = "{{product.id}}";
-                    </script>
-                </form>
-            {% endif %}
             </div>
+            {% empty %}
+            <p>This product does not have any comments yet</p>
             {% endfor %}
+            <p><a href="{% url 'add-comment'  id=product.id %}">Add comment</a></p>
         </div>
     </div>
 
