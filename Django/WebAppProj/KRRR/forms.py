@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import CartItem, Order
+from .models import *
 
 class CartItemForm(forms.ModelForm):
     class Meta:
@@ -29,7 +29,7 @@ class OrderForm(forms.ModelForm):
             'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 
-class CustomerRegistrationModel(UserCreationForm):
+class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100)
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
@@ -39,7 +39,7 @@ class CustomerRegistrationModel(UserCreationForm):
         fields = ['first_name','last_name','username','email','password1','password2']
 
 
-class CustomerUpdateModel(forms.ModelForm):
+class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField(max_length=100)
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=50)
@@ -47,3 +47,21 @@ class CustomerUpdateModel(forms.ModelForm):
     class Meta():
         model = User
         fields = ['first_name','last_name','username','email']
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = '__all__'
