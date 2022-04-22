@@ -10,9 +10,6 @@ main {
     display: flex;
     margin: 2rem 0 2rem 0;
     padding: 2rem 0 2rem 0;
-
-
-    /* border: 1px solid red; */
     border-radius: 0;
 }
 
@@ -25,9 +22,6 @@ main {
 .side-bar {
     width: 20vw;
     flex-direction: column;
-
-    /* border: 1px solid red; */
-    border-radius: 0;
 }
 
 .side-bar a{
@@ -37,13 +31,16 @@ main {
     margin: 2rem;
     padding: 1rem;
     background: var(--blue1);
-
-    /* border: 1px solid greenyellow; */
 }
 
 fieldset {
     background: var(--blue2);
     margin: 1rem;
+    padding: 2rem;
+}
+
+fieldset p {
+    padding: 0;
 }
 
 legend {
@@ -51,22 +48,11 @@ legend {
     font-size: 4rem;
     color: var(--grey3);
     font-weight: 800;
-
 }
 
 .content {
     width: 80vw;
-
     border-radius: 0;
-}
-
-.content p {
-    margin: 1rem;
-    padding: 3rem;
-    font-size: 3rem;
-    border-radius: 0;
-    color: var(--grey3);
-
 }
 
 .element {
@@ -75,7 +61,7 @@ legend {
     display: flex;
     flex-direction: column;
 
-    border-bottom: 1px solid var(--grey3);
+    border-bottom: 1px solid white;
     border-radius: 0;
 }
 
@@ -95,5 +81,6 @@ button {
 }
 
 .dw-links {
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
 }
