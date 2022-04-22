@@ -1,0 +1,30 @@
+{% extends 'KRRR/admin-layout.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_detail_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+<div>
+    {% include 'KRRR/includes/admin_header.html' %}
+
+    <div class="content">
+        <fieldset>
+            <legend>{{ user.username }}</legend>
+            <p>First name: {{ user.first_name }}</p>
+            <p>Last name: {{ user.last_name }}</p>
+            <p><email>Email: {{ user.email }}</email></p>
+            <div class="dw-links">
+                <a href="{% url 'admin-user-orders' user.username %}" class="detail">Orders</a>
+                <a href="{% url 'admin-user-comments' user.username %}" class="detail">Comments</a>
+                <a href="{% url 'user-delete' user.id %}" class="warning">Delete</a>
+            </div>
+        </fieldset>
+    </div>
+    
+</div>
+
+{% endblock content %}
