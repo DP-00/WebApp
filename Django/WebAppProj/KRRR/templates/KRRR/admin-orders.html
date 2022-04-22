@@ -1,0 +1,29 @@
+{% extends 'KRRR/admin-layout.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+
+<div class="content">
+    <fieldset>
+        <legend>ORDERS</legend>
+        {% for order in orders %}
+    
+        <div class="element">
+            <p>{{ order.id }}</p>
+            <div class="dw-links">
+                <a href="{% url 'admin-order' order.id %}" class="detail">Details</a>
+                <a href="{% url 'order-delete' order.id %}" class="warning">Delete</a>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </fieldset>
+</div>
+
+
+{% endblock content %}
