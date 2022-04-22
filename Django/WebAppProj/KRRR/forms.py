@@ -29,7 +29,7 @@ class OrderForm(forms.ModelForm):
             'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 
-class CommentForm(forms.ModelForm):
+class UserCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = [
