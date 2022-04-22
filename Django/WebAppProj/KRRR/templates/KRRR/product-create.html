@@ -1,0 +1,25 @@
+{% extends 'KRRR/admin-layout.html' %}
+{% load static %}
+
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+    {% include 'KRRR/includes/admin_header.html' %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Create Product</legend>
+            {{ form.as_p }}
+        </fieldset>
+        <div class="form-func">
+            <button type="submit">Create</button>
+            <a href="{% url 'admin-products'%}">Cancel</a>
+        </div>
+    </form>
+
+{% endblock content %}

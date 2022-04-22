@@ -1,0 +1,30 @@
+{% extends 'KRRR/admin-layout.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+
+
+<div class="content">
+    <fieldset>
+        <legend>PRODUCTS</legend>
+
+        {% for product in products %}
+    
+        <div class="element">
+            <p>{{ product.name }}</p>
+            <div class="dw-links">
+                <a href="{% url 'admin-product' product.id %}" class="detail">Details</a>
+                <a href="{% url 'product-delete' product.id %}" class="warning">Delete</a>
+            </form>
+        </div>
+    
+        {% endfor %}
+    </fieldset>
+</div>
+
+
+{% endblock content %}
