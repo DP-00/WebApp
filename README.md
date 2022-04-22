@@ -14,6 +14,7 @@
 - [ ] style the gallery
 - [ ] add responsiveness to the gallery
 4. Szymon:
+- [ ] admin functionality
 
 
 
