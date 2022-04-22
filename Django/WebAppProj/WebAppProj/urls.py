@@ -20,4 +20,5 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('KRRR.urls')),
-]
+    path("accounts/", include("django.contrib.auth.urls")),
+ ]

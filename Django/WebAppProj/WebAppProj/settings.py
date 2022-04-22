@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Etc/GMT-2'
 
 USE_I18N = True
 
@@ -132,3 +132,6 @@ STATICFILES_DIRS = [
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_REDIRECT_URL = "index"
 LOGIN_URL = "login"
+
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
