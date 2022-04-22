@@ -1,16 +1,17 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import *
-from .forms import CustomerRegistrationModel, CustomerUpdateModel
+from .forms import *
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 
 import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
 
-from .forms import CartItemForm, OrderForm
-
-from django.db.models import Sum
+from django.db.models import Sum, Min
 
 
 #  index - main page
@@ -122,13 +123,13 @@ def checkout(request):
 # customer and account management
 def register(request):
     if request.method == 'POST':
-        form = CustomerRegistrationModel(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect("index")
     else:
-        form = CustomerRegistrationModel()
+        form = UserRegistrationForm()
     return render(request, "KRRR/register.html", {'form':form})
 
 
@@ -136,22 +137,140 @@ def register(request):
 def account(request):
     orders = Order.objects.filter(customer=request.user)
     if request.method == "POST":
-        updated_form = CustomerUpdateModel(request.POST, instance=request.user)
+        updated_form = UserUpdateForm(request.POST, instance=request.user)
         if updated_form.is_valid():
             updated_form.save()
             return redirect("account")
     else:
-        updated_form = CustomerUpdateModel(instance=request.user)
+        updated_form = UserUpdateForm(instance=request.user)
 
     return render(request, "KRRR/account.html", {'updated_form':updated_form, 'orders': orders})
 
 
-# admin
+
+##########   ADMIN VIEWS   ##########
 def adminAdmin(request):
     return render(request, 'KRRR/admin-admin.html', {})
 
-def adminUsers(request):
-    return render(request, 'KRRR/admin-users.html', { "users": User.objects.all() })
+
+            ### USERS ###
+class AdminUserListView(ListView):
+    model = User
+    template_name = 'KRRR/admin-users.html'
+    context_object_name = 'users'
+    paginate_by = 7
+
+class AdminUserView(DetailView):
+    model = User
+    template_name = 'KRRR/admin-user.html'
+
+class AdminUserDeleteView(DeleteView):
+    model = User
+    template_name = 'KRRR/user-delete.html'
+    success_url = reverse_lazy('admin-users')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+
+            ### PRODUCTS ###
+class AdminProductCreatetView(CreateView):
+    form_class = ProductForm
+    success_url = reverse_lazy('admin-products')
+    template_name = 'KRRR/product-create.html'
+
+class AdminProductListView(ListView):
+    model = Product
+    template_name = 'KRRR/admin-products.html'
+    context_object_name = 'products'
+    paginate_by = 7
+
+class AdminProductView(UpdateView):
+    model = Product
+    success_url = reverse_lazy('admin-products')
+    form_class = ProductForm
+    template_name = 'KRRR/admin-product.html'
+    context_object_name = 'product'
+
+class AdminProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'KRRR/product-delete.html'
+    success_url = reverse_lazy('admin-products')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+
+            ### ORDERS ###
+class AdminOrderListView(ListView):
+    model = Order
+    template_name = 'KRRR/admin-orders.html'
+    context_object_name = 'orders'
+    paginate_by = 7
+
+class AdminOrderView(UpdateView):
+    model = Order
+    success_url = reverse_lazy('admin-orders')
+    form_class = OrderForm
+    template_name = 'KRRR/admin-order.html'
+    context_object_name = 'order'
+
+class AdminOrderDeleteView(DeleteView):
+    model = Order
+    template_name = 'KRRR/order-delete.html'
+    success_url = reverse_lazy('admin-orders')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminUserOrderListView(ListView):
+    model = Order
+    template_name = 'KRRR/admin-user-orders.html'
+    context_object_name = 'orders'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Order.objects.filter(customer=user).order_by('-order_date')
+
+
+           ### COMMENTS ###
+class AdminCommentListView(ListView):
+    model = Comment
+    template_name = 'KRRR/admin-comments.html'
+    context_object_name = 'comments'
+    paginate_by = 7
+
+class AdminCommentView(DetailView):
+    model = Comment
+    template_name = 'KRRR/admin-comment.html'
+    context_object_name = 'comment'
+
+class AdminCommentDeleteView(DeleteView):
+    model = Comment
+    template_name = 'KRRR/comment-delete.html'
+    success_url = reverse_lazy('admin-comments')
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminUserCommentListView(ListView):
+    model = Comment
+    template_name = 'KRRR/admin-user-comments.html'
+    context_object_name = 'comments'
+    paginate_by = 5
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Comment.objects.filter(customer=user).order_by('-comment_date')
 
 
 # credits
