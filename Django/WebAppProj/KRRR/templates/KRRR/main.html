@@ -21,7 +21,7 @@
                 {% block menu %}
 
                 {% endblock menu %}
-     
+                <li><a href="{% url 'shop' %}">Shop</a></li>
             </ul>
 
             <button aria-label="menu" id="menu-button" onclick="hamburgerFunction()"><ion-icon name="list"></ion-icon></button>
@@ -42,19 +42,24 @@
     </main>
 
     <footer>
-<!--        add to the footer:
-1. employee login
-2. contact form
-3. credits and attributions -->
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}#about-us">About us</a></li>
-                <li><a href="{% url 'index' %}#our-products">Products</a></li>
-                <li><a href="{% url 'index' %}#places-to-explore">Trips</a></li>
-                <li><a href="{% url 'index' %}#featured-in">Opinions</a></li>
-                <li><a href="{% url 'index' %}#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="contact-details">
+            <h6>Contact details</h6>
+            <p><ion-icon name="call"></ion-icon> 01234 567890</p>
+            <p><a href="#"><ion-icon name="mail"></ion-icon> Contact us</a></p>
+            <p><ion-icon name="location"></ion-icon> Langelandsvegen 25, Ålesund, Norge, NO</p>
+        </div>
+        <div class="footer-links">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'index' %}#about-us">About us</a></li>
+                    <li><a href="{% url 'index' %}#our-products">Products</a></li>
+                    <li><a href="{% url 'index' %}#places-to-explore">Trips</a></li>
+                    <li><a href="{% url 'index' %}#featured-in">Opinions</a></li>
+                    <li><a href="{% url 'index' %}#contact">Contact</a></li>
+                    <li><a href="{% url 'credits' %}">Credits</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -51,6 +51,28 @@ header, footer {
     border-radius: 0;
 }
 
+footer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+@media (max-width: 2000px) {
+    footer {
+        flex-direction: column;
+        }
+    }
+
+footer p {
+    padding: 0.5rem;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+footer div {
+    display: inline;
+}
+
 /* SECTION SETTINGS */
 
 section {
@@ -295,3 +317,4 @@ input {
     from {transform: scale(0)}
     to {transform: scale(1)}
   } */
+
