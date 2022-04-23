@@ -115,12 +115,18 @@ def product(request, id):
 @login_required
 def add_comment(request, id):
     product = Product.objects.get(id=id)
-    form = UserCommentForm()
+    if Comment.objects.filter(product=product, customer=request.user).exists():
+        c = Comment.objects.get(product=product, customer=request.user)
+    else:
+        c = Comment(product=product, customer=request.user)
+    form = UserCommentForm(instance=c)
+    
     if request.method == "POST":
         form  = UserCommentForm(request.POST)
         if form.is_valid():
-            content = form.data['content']
-            c = Comment(product=product, customer=request.user, content=content, stars=form.data['stars'], comment_date=datetime.now())
+            c.content=form.data['content']
+            c.stars=form.data['stars']
+            c.comment_date=datetime.now()
             c.save()
             return redirect('product', id)
 
@@ -140,18 +146,12 @@ def cart(request):
     else:
         order = Order.objects.get(customer=user, status='cart')
     products = CartItem.objects.filter(order=order)
-    form = OrderForm(request.POST or None)
-    if request.method == 'POST':
-        order.location = form.data['location']
-        order.order_date = form.data['order_date']
-        order.save()
 
     cart_total = sum([product.product.price*product.quantity for product in products])
     cart_quantity = sum([product.quantity for product in products])
     context = {
         'order': order, 
         'products': products,
-        'form': form,
         'cart_total': cart_total,
         'cart_quantity' : cart_quantity
         }
@@ -163,13 +163,20 @@ def checkout(request):
     products = CartItem.objects.filter(order=order)
     cart_total = sum([product.product.price*product.quantity for product in products])
     cart_quantity = sum([product.quantity for product in products])
-    order.status = 'paid'
-    order.save()
+    form = UserOrderForm(request.POST or None)
+    if request.method == 'POST':
+        order.location = form.data['location']
+        order.order_date = form.data['order_date']
+        order.save()
+        order.status = 'paid'
+        order.save()
+        return redirect('shop')
 
     context = {
         'products': products,
         'cart_total': cart_total,
         'cart_quantity' : cart_quantity,
+        'form': form,
         }
     return render(request, 'KRRR/checkout.html', context)
 

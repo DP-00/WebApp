@@ -17,7 +17,7 @@ class CartItemForm(forms.ModelForm):
             'product': ''
         }
 
-class OrderForm(forms.ModelForm):
+class UserOrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = [
@@ -25,7 +25,7 @@ class OrderForm(forms.ModelForm):
             'order_date'
         ]
         widgets = {
-            'location': forms.Select(attrs={'onchange': 'submit();'}),
+            'location': forms.Select(),
             'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 

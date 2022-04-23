@@ -9,6 +9,12 @@
 </head>
 
 <body>
-    <img id="background" src="{% static 'images/heroBig.png' %}" alt="?">
-    <p>you have paid {{cart_total}} NOK for {{ cart_quantity }} products</p>
+    <p>
+        Location:
+        <form method="POST"> {% csrf_token %}
+            {{ form }}
+            <button type="submit">Pay</button>
+        </form>
+    </p>
+    <p>you will paid {{cart_total}} NOK for {{ cart_quantity }} products</p>
 </body>
