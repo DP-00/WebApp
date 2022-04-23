@@ -106,6 +106,25 @@ def product(request, id):
     return render(request, 'KRRR/product.html', context)
 
 @login_required
+def add_comment(request, id):
+    product = Product.objects.get(id=id)
+    form = UserCommentForm()
+    if request.method == "POST":
+        form  = UserCommentForm(request.POST)
+        if form.is_valid():
+            content = form.data['content']
+            c = Comment(product=product, customer=request.user, content=content, stars=form.data['stars'], comment_date=datetime.now())
+            c.save()
+            return redirect('product', id)
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'KRRR/add-comment.html', context)
+
+
+@login_required
 def cart(request):
     user = request.user
     if not Order.objects.filter(customer=user, status='cart').exists():
