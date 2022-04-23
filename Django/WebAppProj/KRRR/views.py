@@ -13,15 +13,7 @@ from .serializers import ProductSerializer
 
 from django.db.models import Sum, Min
 from django.conf import settings
-from django.core.mail import send_mail
 
-# send_mail('This is the title of the email',
-#           'This is the message you want to send',
-#           settings.DEFAULT_FROM_EMAIL,
-#           [
-#               settings.EMAIL_HOST_USER,
-#           ]
-# )
 
 #  index - main page
 def index(request):
