@@ -15,6 +15,7 @@ from datetime import datetime
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+from sqlalchemy import null
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -30,7 +31,7 @@ class Product(models.Model):
     salePrice = models.IntegerField(blank=True, null=True)
 
     def clean(self):
-        if self.salePrice >= self.price:
+        if (self.salePrice is not None) and (self.salePrice >= self.price):
             raise ValidationError({'salePrice':_('Sale price must be lower than normal price.')})
 
 

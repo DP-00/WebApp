@@ -12,14 +12,42 @@ from rest_framework import viewsets
 from .serializers import ProductSerializer
 
 from django.db.models import Sum, Min
+from django.conf import settings
+from django.core.mail import send_mail
 
+# send_mail('This is the title of the email',
+#           'This is the message you want to send',
+#           settings.DEFAULT_FROM_EMAIL,
+#           [
+#               settings.EMAIL_HOST_USER,
+#           ]
+# )
 
 #  index - main page
 def index(request):
     comment = Comment.objects.filter(stars=5).order_by('?').first()
+
     cheapestBike = Product.objects.filter(category='Bike').all().aggregate(Min('price'))
+    cheapestBikeS = Product.objects.filter(category='Bike').all().aggregate(Min('salePrice'))
+    cheapestBike = list(cheapestBike.values())[0]
+    cheapestBikeS = list(cheapestBikeS.values())[0]
+    if cheapestBikeS is not None and cheapestBike > cheapestBikeS:
+        cheapestBike = cheapestBikeS
+
     cheapestEBike = Product.objects.filter(category='E-bike').all().aggregate(Min('price'))
-    personalizationPrice = Product.objects.filter(name='Personalization').all().aggregate(Min('price'))
+    cheapestEBikeS = Product.objects.filter(category='E-bike').all().aggregate(Min('salePrice'))
+    cheapestEBike = list(cheapestEBike.values())[0]
+    cheapestEBikeS = list(cheapestEBikeS.values())[0]
+    if cheapestEBikeS is not None and cheapestBike > cheapestBikeS:
+        cheapestBike = cheapestBikeS
+
+    personalizationPrice = Product.objects.filter(name='Personalization option').all().aggregate(Min('price'))
+    personalizationPriceS = Product.objects.filter(name='Personalization option').all().aggregate(Min('salePrice'))
+    personalizationPrice = list(personalizationPrice.values())[0]
+    personalizationPriceS = list(personalizationPriceS.values())[0]
+    if personalizationPriceS is not None and personalizationPrice > personalizationPriceS:
+        personalizationPrice = personalizationPriceS
+
     context = {'comment': comment, 'cheapestBike': cheapestBike, 'cheapestEBike':cheapestEBike, 'personalizationPrice':personalizationPrice}
     return render(request, 'KRRR/index.html', context)
 
