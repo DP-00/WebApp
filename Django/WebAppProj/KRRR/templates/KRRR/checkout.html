@@ -9,12 +9,14 @@
 </head>
 
 <body>
-    <p>
+    <div>
         Location:
         <form method="POST"> {% csrf_token %}
             {{ form }}
+            <p>You will paid {{cart_total}} NOK for {{ cart_quantity }} products</p>
+
             <button type="submit">Pay</button>
+
         </form>
-    </p>
-    <p>you will paid {{cart_total}} NOK for {{ cart_quantity }} products</p>
+    </div>
 </body>
