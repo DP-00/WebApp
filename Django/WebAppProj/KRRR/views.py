@@ -82,13 +82,12 @@ def add_comment(request, id):
     product = Product.objects.get(id=id)
     form = UserCommentForm()
     if request.method == "POST":
-        form = UserCommentForm(request.POST)
+        form  = UserCommentForm(request.POST)
         if form.is_valid():
             content = form.data['content']
             c = Comment(product=product, customer=request.user, content=content, stars=form.data['stars'], comment_date=datetime.now())
             c.save()
             return redirect('product', id)
-
 
     context = {
         'form': form
