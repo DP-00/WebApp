@@ -20,3 +20,12 @@ section {
     text-align: center;
 }
 
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content a {
+  text-align: center;
+}

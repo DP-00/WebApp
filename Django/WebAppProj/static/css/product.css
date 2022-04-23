@@ -26,6 +26,11 @@
     padding: 1rem;
 }
 
+form {
+    display: flex;
+    flex-direction: row;
+}
+
 .comments {
     padding: 2rem;
 }
@@ -41,7 +46,8 @@ input {
     border: 1px solid #ccc;
     box-sizing: border-box;
     padding: 12px 20px;
-    margin-bottom: 2rem;
+    margin: 2rem;
     color: var(--grey3);
     font-size: large;
+    text-align: center;
 }

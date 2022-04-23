@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 
+import django.contrib.messages as messages
+
 import requests
 from rest_framework import viewsets
 from .serializers import ProductSerializer
@@ -94,7 +96,12 @@ def product(request, id):
             item = CartItem.objects.get(order=order, product=Product.objects.get(id=id))
             quantity = item.quantity + int(form.data['quantity'])
             item.quantity = quantity
+            
+
         item.save()
+        form = CartItemForm()
+        return redirect('cart')
+
 
     product = Product.objects.get(id = id)
     comments = Comment.objects.filter(product=product)
