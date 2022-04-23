@@ -177,51 +177,96 @@
   <section id="gallery">
     <h2>Gallery</h2>
     <div id="images">
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/1-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/1.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/1-mobile.jpg' %}" alt="picture 1">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/2-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/2.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/2-mobile.jpg' %}" alt="picture 2">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/3-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/3.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/3-mobile.jpg' %}" alt="picture 3">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/4-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/4.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/4-mobile.jpg' %}" alt="picture 4">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/9-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/9.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/9-mobile.jpg' %}" alt="picture 9">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/6-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/6.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/6-mobile.jpg' %}" alt="picture 6">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/7-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/7.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/7-mobile.jpg' %}" alt="picture 7">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/8-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/8.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/8-mobile.jpg' %}" alt="picture 8">
-      </picture>
-      <picture>
-        <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/9-square.jpg' %}">
-        <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/9.jpg' %}">
-        <img src="{% static 'images/gallery/mobile/9-mobile.jpg' %}" alt="picture 9">
-      </picture>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/1-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/1.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/1-mobile.jpg' %}" alt="picture 1">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Modern people</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/2-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/2.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/2-mobile.jpg' %}" alt="picture 2">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Healthy lifestyle</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/3-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/3.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/3-mobile.jpg' %}" alt="picture 3">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Hipster life</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/4-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/4.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/4-mobile.jpg' %}" alt="picture 4">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Modern</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/5-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/5.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/5-mobile.jpg' %}" alt="picture 5">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Urban</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/6-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/6.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/6-mobile.jpg' %}" alt="picture 6">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Hipster</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/7-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/7.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/7-mobile.jpg' %}" alt="picture 7">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Authenticity</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/8-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/8.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/8-mobile.jpg' %}" alt="picture 8">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Individuality</p>
+        </div>
+      </div>
+      <div class="gallery-container">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="{% static 'images/gallery/full-size/9-square.jpg' %}">
+          <source media="(min-width: 760px)" srcset="{% static 'images/gallery/medium/9.jpg' %}">
+          <img src="{% static 'images/gallery/mobile/9-mobile.jpg' %}" alt="picture 9">
+        </picture>
+        <div class="gallery-overlay">
+          <p>Freedom</p>
+        </div>
+      </div>
  
     </div>
   </section>

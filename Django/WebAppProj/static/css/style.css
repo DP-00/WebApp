@@ -354,6 +354,42 @@
   height: 30vw;
 }
 
+.gallery-container {
+  position:relative;
+}
+
+.gallery-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: var(--grey2);
+}
+
+.gallery-container:hover .gallery-overlay {
+  opacity: 0.8;
+}
+
+.gallery-overlay p {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 #comments, #featured-in, #reminder > p {
   text-align: center;
 }
