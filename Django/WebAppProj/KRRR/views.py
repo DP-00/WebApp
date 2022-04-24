@@ -5,7 +5,8 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 import django.contrib.messages as messages
 
@@ -213,8 +214,13 @@ def account(request):
 
 
 ##########   ADMIN VIEWS   ##########
-def adminAdmin(request):
-    return render(request, 'KRRR/admin-admin.html', {})
+class AdminView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+    template_name = 'KRRR/admin-admin.html'
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
 
 
             ### USERS ###
