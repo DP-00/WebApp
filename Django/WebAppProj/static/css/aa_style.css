@@ -4,16 +4,10 @@ body {
    background: var(--blue1);
 }
 
-
-
 main {
     display: flex;
     margin: 2rem 0 2rem 0;
     padding: 2rem 0 2rem 0;
-
-
-    /* border: 1px solid red; */
-    border-radius: 0;
 }
 
 .ad-layout {
@@ -25,9 +19,6 @@ main {
 .side-bar {
     width: 20vw;
     flex-direction: column;
-
-    /* border: 1px solid red; */
-    border-radius: 0;
 }
 
 .side-bar a{
@@ -37,8 +28,6 @@ main {
     margin: 2rem;
     padding: 1rem;
     background: var(--blue1);
-
-    /* border: 1px solid greenyellow; */
 }
 
 fieldset {
@@ -46,31 +35,30 @@ fieldset {
     margin: 1rem;
 }
 
+fieldset .element:last-child {
+    border: 0;
+}
+
 legend {
     margin: 0 auto;
     font-size: 4rem;
     color: var(--grey3);
     font-weight: 800;
-
 }
 
 .content {
     width: 80vw;
-
-    border-radius: 0;
 }
 
 .content p {
-    margin: 1rem;
-    padding: 3rem;
+    margin: 0 1rem;
+    padding: 0 1rem;
     font-size: 3rem;
     border-radius: 0;
     color: var(--grey3);
-
 }
 
 .element {
-    margin: 2rem;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -80,7 +68,7 @@ legend {
 }
 
 .element p {
-    margin: 0;
+    margin: 0 1rem;
     padding: 0 0 0 1rem;
 }
 
@@ -88,12 +76,40 @@ button {
     background: var(--blue1);
     border: none;
     color: var(--grey3);
-    padding: 0.7rem;
+    padding: 0.4rem;
     text-align: center;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .dw-links {
-    margin-bottom: 1rem;
+    margin: 0.5rem 1rem 1rem 1rem;
+    padding: 0 1rem;
+}
+
+.warning {
+    background-color: red;
+    font-size: 2.5rem;
+    padding: 0.4rem;
+}
+
+.detail {
+    background-color: var(--blue1);
+    font-size: 2.5rem;
+    padding: 0.4rem;
+}
+
+.cancel {
+    background-color: rgb(181, 10, 10);
+    font-size: 2.5rem;
+    padding: 0.4rem;
+}
+
+.pagination{
+    display: flex;
+    padding: 1rem;
+}
+
+.pagination a {
+    margin: 0 1rem;
 }
