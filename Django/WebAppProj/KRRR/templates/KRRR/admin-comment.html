@@ -3,7 +3,7 @@
 
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_detail_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
@@ -19,7 +19,7 @@
             <p>Date published: {{ comment.comment_date }}</p>
             <p>Stars: {{ comment.stars }}</p>
             <p>Comment: {{ comment.content }}</p>
-            <div class="sw-links">
+            <div class="dw-links">
                 <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
             </div>
         </fieldset>

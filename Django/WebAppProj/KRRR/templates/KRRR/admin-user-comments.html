@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_detail_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
@@ -13,19 +13,21 @@
         <legend>COMMENTS</legend>
         {% for comment in comments %}
     
-        <div class="user">
+        <div class="element">
             <p>ID: {{ comment.id }}</p>
             <p>Product: {{ comment.product.name }}</p>
             <p>Date: {{ comment.comment_date }}</p>
             <p>Starts: {{ comment.stars }}</p>
             <p>Content: {{ comment.content }}</p>
-            <div>
+            <div class="dw-links">
                 <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
             </div>
         </div>
     
         {% endfor %}
     </fieldset>
+
+    {% include 'KRRR/includes/pagination.html' %}
 </div>
 
 

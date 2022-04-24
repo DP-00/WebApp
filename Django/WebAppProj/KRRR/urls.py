@@ -28,7 +28,7 @@ urlpatterns = [
     # path('logout/', auth_views.LogoutView.as_view(template_name="KRRR/logout.html"), name='logout'),
 
 # admin urls
-    path('admin-admin/', views.adminAdmin, name="admin-admin"),
+    path('admin-admin/', views.AdminView.as_view(), name="admin-admin"),
 
     path('admin-users/', views.AdminUserListView.as_view(), name="admin-users"),
     path('admin-users/<int:pk>/', views.AdminUserView.as_view(), name='admin-user'),

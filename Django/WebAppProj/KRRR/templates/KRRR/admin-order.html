@@ -3,7 +3,7 @@
 
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_form_style.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
@@ -11,14 +11,16 @@
     {% include 'KRRR/includes/admin_header.html' %}
 
     <form method="POST">
-        {% csrf_token %}
-        <fieldset>
-            <legend>Order - {{ order.id }}</legend>
-            {{ form.as_p }}
-        </fieldset>
-        <div class="form-func">
-            <button type="submit">Update</button>
-            <a href="{% url 'order-delete' order.id %}">Delete</a>
+    {% csrf_token %}
+        <div class="content">
+            <fieldset>
+                <legend>Order: {{ order.id }}</legend>
+                {{ form.as_p }}
+                <div class="dw-links">
+                    <button type="submit">Update</button>
+                    <a href="{% url 'order-delete' order.id %}" class="warning">Delete</a>
+                </div>
+            </fieldset>
         </div>
     </form>
 

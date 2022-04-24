@@ -1,0 +1,25 @@
+@import url(aa_style.css);
+
+input {
+    width: 100%;
+    background-color: var(--grey2);
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin-bottom: 2rem;
+    color: var(--grey3);
+    font-size: large;
+}
+
+select {
+    width: 20%;
+    background-color: var(--grey2);
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    margin-bottom: 2rem;
+    color: var(--grey3);
+    font-size: large;
+}
