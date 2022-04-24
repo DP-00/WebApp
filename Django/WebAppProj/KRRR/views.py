@@ -351,18 +351,28 @@ class AdminUserOrderListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
 
 
            ### COMMENTS ###
-class AdminCommentListView(ListView):
+class AdminCommentListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Comment
     template_name = 'KRRR/admin-comments.html'
     context_object_name = 'comments'
-    paginate_by = 7
+    paginate_by = 3
 
-class AdminCommentView(DetailView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminCommentView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Comment
     template_name = 'KRRR/admin-comment.html'
     context_object_name = 'comment'
 
-class AdminCommentDeleteView(DeleteView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminCommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Comment
     template_name = 'KRRR/comment-delete.html'
     success_url = reverse_lazy('admin-comments')
@@ -372,11 +382,16 @@ class AdminCommentDeleteView(DeleteView):
             return True
         return False
 
-class AdminUserCommentListView(ListView):
+class AdminUserCommentListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Comment
     template_name = 'KRRR/admin-user-comments.html'
     context_object_name = 'comments'
-    paginate_by = 5
+    paginate_by = 3
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
