@@ -256,25 +256,40 @@ class AdminUserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
             ### PRODUCTS ###
-class AdminProductCreatetView(CreateView):
+class AdminProductCreatetView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('admin-products')
     template_name = 'KRRR/product-create.html'
 
-class AdminProductListView(ListView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminProductListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Product
     template_name = 'KRRR/admin-products.html'
     context_object_name = 'products'
-    paginate_by = 7
+    paginate_by = 3
 
-class AdminProductView(UpdateView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminProductView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Product
     success_url = reverse_lazy('admin-products')
     form_class = ProductForm
     template_name = 'KRRR/admin-product.html'
     context_object_name = 'product'
 
-class AdminProductDeleteView(DeleteView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
     template_name = 'KRRR/product-delete.html'
     success_url = reverse_lazy('admin-products')
