@@ -52,6 +52,9 @@
                 {% endwith %}
             </p>
             <p class="comment">{{comment.content}}</p>
+            {% if user == comment.customer %}
+            <a href="{% url 'user-comment-delete' comment.id %}" class="warning">Delete</a>
+            {% endif %}
             </div>
             {% empty %}
             <p>This product does not have any comments yet</p>

@@ -125,8 +125,19 @@ def add_comment(request, id):
     context = {
         'form': form
     }
-
     return render(request, 'KRRR/add-comment.html', context)
+
+def user_comment_delete(request, id):
+    c = Comment.objects.get(id=id)
+    productid = c.product.id
+    if request.method == 'POST':
+        c.delete()
+        return redirect('product', productid)
+    context = {
+        'comment': c
+    }
+    return render(request, 'KRRR/user-comment-delete.html', context)
+
 
 
 @login_required
