@@ -1,0 +1,15 @@
+@import url(aa_style.css);
+
+
+span {
+    font-weight: bold;
+    color: var(--blue-text);
+}
+
+#del-q {
+    margin-bottom: 2rem;
+}
+
+.dw-links {
+    padding: 0 2rem;
+}
