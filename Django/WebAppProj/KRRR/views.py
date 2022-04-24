@@ -224,17 +224,27 @@ class AdminView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 
             ### USERS ###
-class AdminUserListView(ListView):
+class AdminUserListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = User
     template_name = 'KRRR/admin-users.html'
     context_object_name = 'users'
-    paginate_by = 7
+    paginate_by = 3
 
-class AdminUserView(DetailView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminUserView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = User
     template_name = 'KRRR/admin-user.html'
 
-class AdminUserDeleteView(DeleteView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminUserDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = User
     template_name = 'KRRR/user-delete.html'
     success_url = reverse_lazy('admin-users')
