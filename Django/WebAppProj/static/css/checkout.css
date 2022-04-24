@@ -1,0 +1,45 @@
+
+  form {
+      background-color: var(--blue1);
+      margin: 10% auto;
+      padding: 5rem;
+      width: 66%; /* Could be more or less, depending on screen size */
+      line-height: 6.4rem;
+      color: var(--grey3);
+      position: relative;
+      z-index: 1;
+    }
+  
+  fieldset {
+      border: none;
+  }
+  
+  input, select {
+      width: 100%;
+      background-color: var(--grey2);
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      padding: 12px 20px;
+      margin-bottom: 2rem;
+      color: var(--grey3);
+      font-size: large;
+  }
+  
+  a{
+     font-size: 2.4rem;
+  }
+  
+  button {
+      float: right;
+      font-weight: bold;
+      font-size: 2.4rem;
+      background-color: var(--blue2);
+      width: 100%;
+      margin-top: 2rem;
+   }
+  
+   h1 {
+       text-align: center;
+       font-size: 5rem;
+   }

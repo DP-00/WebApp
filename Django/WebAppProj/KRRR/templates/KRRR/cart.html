@@ -13,35 +13,25 @@
         <h1>Shopping Cart</h1>
         
         <div class="cart">
-            <div class="products">
+            <section class="products">
                 {% for product in products %}
                 <div class="product">
-                    <img src="{{MEDIA_ROOT}}/{{ product.photo }}">
+                    <!-- <img src="{{MEDIA_ROOT}}/{{ product.product.photo }}"> -->
                     <div class="product-info">
                         <h3 class="product-name"><a href="{% url 'product' product.product.id %}">{{product.product.name}}</a></h3>
-                        <h4 class="product-price">{{product.product.price}}</h4>
+                        <h4 class="product-price">Price: {{product.product.price}} NOK</h4>
                         <h4 class="product-offer">Quantity: {{product.quantity}}</h4>
-                        <span class="remove">Remove</span>
                         </p>
                     </div>
                 </div>
                 {% endfor %}
-            </div>
-            <div class="cart-total">
+            </section>
+            <section class="cart-total">
                 <p>
-                    <span>Total Price</span>
-                    <span>{{ cart_total }}</span>
+                    Total: {{ cart_total }} NOK. Number of items: {{ cart_quantity }}
                 </p>
-                <p>
-                    <span>Number of Items</span>
-                    <span>{{ cart_quantity }}</span>
-                </p>
-                <!-- <p>
-                    <span>You Save</span>
-                    <span>NOK 1,000</span>
-                </p> -->
                 <a href="{% url 'checkout' %}">Proceed to Checkout</a>
-            </div>
+            </section>
         </div>
 {% endblock content %}
 
