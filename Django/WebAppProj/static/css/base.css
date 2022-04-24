@@ -51,6 +51,10 @@ header, footer {
     border-radius: 0;
 }
 
+#account {
+    padding: 3rem;
+}
+
 footer {
     display: flex;
     justify-content: space-between;

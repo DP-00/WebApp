@@ -22,7 +22,7 @@
     <section id="products">
         {% for product in products %}
         <div class="card">
-            <img src="{% static 'images/2.jpg' %}">
+            <img src="{{MEDIA_ROOT}}/{{ product.photo }}">
             <div class="content">
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.price }}NOK</p>

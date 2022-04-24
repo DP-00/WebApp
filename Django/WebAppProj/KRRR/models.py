@@ -26,7 +26,7 @@ class Product(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY_TYPE, default='Bike')
     price = models.IntegerField()
     description = models.CharField(max_length=250)
-    photo = models.FileField(blank=True, upload_to='static/images/products')
+    photo = models.FileField(blank=True, upload_to='products')
     salePrice = models.IntegerField(blank=True, null=True)
 
     def clean(self):

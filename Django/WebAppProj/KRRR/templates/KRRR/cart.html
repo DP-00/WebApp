@@ -16,7 +16,7 @@
             <div class="products">
                 {% for product in products %}
                 <div class="product">
-                    <img src="{% static 'images/2.jpg' %}">
+                    <img src="{{MEDIA_ROOT}}/{{ product.photo }}">
                     <div class="product-info">
                         <h3 class="product-name"><a href="{% url 'product' product.product.id %}">{{product.product.name}}</a></h3>
                         <h4 class="product-price">{{product.product.price}}</h4>
