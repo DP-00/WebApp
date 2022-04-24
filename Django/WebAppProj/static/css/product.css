@@ -37,6 +37,7 @@ form {
 
 .comment > p {
     display: inline-block;
+    margin: 0 1rem;
 }
 
 input {

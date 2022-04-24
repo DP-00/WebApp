@@ -15,7 +15,6 @@ from datetime import datetime
 from django.db.models.constraints import CheckConstraint, UniqueConstraint
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
-from sqlalchemy import null
 
 class Product(models.Model):
     name = models.CharField(max_length=50)

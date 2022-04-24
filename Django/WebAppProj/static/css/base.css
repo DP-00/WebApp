@@ -57,6 +57,10 @@ footer {
     flex-direction: row;
 }
 
+footer > div {
+    margin: 2rem;
+}
+
 @media (max-width: 2000px) {
     footer {
         flex-direction: column;
@@ -74,6 +78,10 @@ footer div {
 }
 
 /* SECTION SETTINGS */
+main > :first-child {
+    padding-top: 12rem;
+}
+
 
 section {
     border-radius: 0;
