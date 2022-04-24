@@ -8,23 +8,18 @@
 
 {% block content %}
 
-<div>
-    {% include 'KRRR/includes/admin_header.html' %}
-
-    <div class="content">
-        <fieldset>
-            <legend>Comment ID: {{ comment.id }}</legend>
-            <p>Author: {{ comment.customer }}</p>
-            <p>Product: {{ comment.product.name }}</p>
-            <p>Date published: {{ comment.comment_date }}</p>
-            <p>Stars: {{ comment.stars }}</p>
-            <p>Comment: {{ comment.content }}</p>
-            <div class="dw-links">
-                <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
-            </div>
-        </fieldset>
-    </div>
-
+<div class="content">
+    <fieldset>
+        <legend>Comment ID: {{ comment.id }}</legend>
+        <p>Author: {{ comment.customer }}</p>
+        <p>Product: {{ comment.product.name }}</p>
+        <p>Date published: {{ comment.comment_date }}</p>
+        <p>Stars: {{ comment.stars }}</p>
+        <p>Comment: {{ comment.content }}</p>
+        <div class="dw-links">
+            <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
+        </div>
+    </fieldset>
 </div>
 
 {% endblock content %}

@@ -11,20 +11,24 @@
 <div class="content">
     <fieldset>
         <legend>COMMENTS</legend>
-        {% for comment in comments %}
+        {% if not orders %}
+            <p id="del-q">User has not written any comments yet.</p>
+        {% else %}
+            {% for comment in comments %}
     
-        <div class="element">
-            <p>ID: {{ comment.id }}</p>
-            <p>Product: {{ comment.product.name }}</p>
-            <p>Date: {{ comment.comment_date }}</p>
-            <p>Starts: {{ comment.stars }}</p>
-            <p>Content: {{ comment.content }}</p>
-            <div class="dw-links">
-                <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
+            <div class="element">
+                <p>ID: {{ comment.id }}</p>
+                <p>Product: {{ comment.product.name }}</p>
+                <p>Date: {{ comment.comment_date }}</p>
+                <p>Starts: {{ comment.stars }}</p>
+                <p>Content: {{ comment.content }}</p>
+                <div class="dw-links">
+                    <a href="{% url 'comment-delete' comment.id %}" class="warning">Delete</a>
+                </div>
             </div>
-        </div>
     
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </fieldset>
 
     {% include 'KRRR/includes/pagination.html' %}

@@ -12,7 +12,7 @@
     <fieldset>
         <legend>ORDERS</legend>
         {% if not orders %}
-        
+            <p id="del-q">User has not placed any orders yet.</p>
         {% else %}
             {% for order in orders %}
     

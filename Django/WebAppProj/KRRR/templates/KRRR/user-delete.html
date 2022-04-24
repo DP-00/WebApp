@@ -3,24 +3,23 @@
 
 
 {% block extra_head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aa_delete_style.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
 
-    {% include 'KRRR/includes/admin_header.html' %}
-
-    <form method="POST">
-        {% csrf_token %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="content">
         <fieldset>
             <legend>Delete User</legend>
-            <p>Are you sure you want to delete the "{{ user.username }}" account?</p>
+            <p id="del-q">Are you sure you want to delete the "<span>{{ user.username }}</span>" account?</p>
         </fieldset>
-        <div class="form-func">
+        <div class="dw-links">
             <button type="submit" class="warning">Yes, Delete</button>
-            <a href="{% url 'admin-user' user.id %}">Cancel</a>
-            
+            <a href="{% url 'admin-user' user.id %}" class="cancel">Cancel</a>
         </div>
-    </form>
+    </div>
+</form>
 
 {% endblock content %}
