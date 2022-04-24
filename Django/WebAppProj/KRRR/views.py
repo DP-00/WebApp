@@ -301,20 +301,30 @@ class AdminProductDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView
 
 
             ### ORDERS ###
-class AdminOrderListView(ListView):
+class AdminOrderListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Order
     template_name = 'KRRR/admin-orders.html'
     context_object_name = 'orders'
-    paginate_by = 7
+    paginate_by = 3
 
-class AdminOrderView(UpdateView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminOrderView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Order
     success_url = reverse_lazy('admin-orders')
     form_class = OrderForm
     template_name = 'KRRR/admin-order.html'
     context_object_name = 'order'
 
-class AdminOrderDeleteView(DeleteView):
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class AdminOrderDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Order
     template_name = 'KRRR/order-delete.html'
     success_url = reverse_lazy('admin-orders')
@@ -324,11 +334,16 @@ class AdminOrderDeleteView(DeleteView):
             return True
         return False
 
-class AdminUserOrderListView(ListView):
+class AdminUserOrderListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = Order
     template_name = 'KRRR/admin-user-orders.html'
     context_object_name = 'orders'
-    paginate_by = 5
+    paginate_by = 3
+
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
