@@ -8,11 +8,9 @@
 
 {% block content %}
 
-    {% include 'KRRR/includes/admin_header.html' %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <div class="content">
+<form method="POST">
+    {% csrf_token %}
+    <div class="content">
         <fieldset>
             <legend>Delete User</legend>
             <p id="del-q">Are you sure you want to delete the "<span>{{ user.username }}</span>" account?</p>
@@ -21,7 +19,7 @@
             <button type="submit" class="warning">Yes, Delete</button>
             <a href="{% url 'admin-user' user.id %}" class="cancel">Cancel</a>
         </div>
-        </div>
-    </form>
+    </div>
+</form>
 
 {% endblock content %}

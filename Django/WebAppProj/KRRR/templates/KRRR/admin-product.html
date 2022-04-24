@@ -8,20 +8,18 @@
 
 {% block content %}
 
-    {% include 'KRRR/includes/admin_header.html' %}
-
-    <form method="POST">
-    {% csrf_token %}
-        <div class="content">
-            <fieldset>
-                <legend>{{ product.name }}</legend>
-                {{ form.as_p }}
-                <div class="dw-links">
-                    <button type="submit">Update</button>
-                    <a href="{% url 'product-delete' product.id %}" class="warning">Delete</a>
-                </div>
-            </fieldset>
-        </div>
-    </form>
+<form method="POST">
+{% csrf_token %}
+    <div class="content">
+        <fieldset>
+            <legend>{{ product.name }}</legend>
+            {{ form.as_p }}
+            <div class="dw-links">
+                <button type="submit">Update</button>
+                <a href="{% url 'product-delete' product.id %}" class="warning">Delete</a>
+            </div>
+        </fieldset>
+    </div>
+</form>
 
 {% endblock content %}

@@ -8,11 +8,9 @@
 
 {% block content %}
 
-    {% include 'KRRR/includes/admin_header.html' %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <div class="content">
+<form method="POST">
+    {% csrf_token %}
+    <div class="content">
         <fieldset>
             <legend>Delete Order</legend>
             <p id="del-q">Are you sure you want to delete the Order ID: <span>{{ order.id }}</span>?</p>
@@ -21,8 +19,7 @@
             <button type="submit" class="warning">Yes, Delete</button>
             <a href="{% url 'admin-order' order.id %}" class="cancel">Cancel</a>
         </div>
-    
     </div>
-    </form>
+</form>
 
 {% endblock content %}

@@ -113,3 +113,7 @@ button {
 .pagination a {
     margin: 0 1rem;
 }
+
+#del-q {
+    margin-bottom: 2rem;
+}
