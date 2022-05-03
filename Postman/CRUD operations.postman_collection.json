@@ -1,0 +1,607 @@
+{
+	"info": {
+		"_postman_id": "d5bf3482-d0f7-4173-9fe2-5875fa7828a1",
+		"name": "CRUD operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list of products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var firstBikeName = \"Bike rental\";\r",
+							"pm.collectionVariables.set(\"firstBikeName\", firstBikeName);\r",
+							"\r",
+							"pm.test(\"First element has good name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name).to.eql(firstBikeName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Category is valid\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    for(var i in jsonData){\r",
+							"        pm.expect(jsonData[i].category).to.be.oneOf([\"Bike\", \"E-bike\", \"Other\"]);   \r",
+							"    } \r",
+							"});\r",
+							"\r",
+							"var jsonLength = pm.response.json().length;\r",
+							"pm.collectionVariables.set(\"jsonLength\", jsonLength);\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var lastId = jsonData[(jsonLength-1)].id;\r",
+							"pm.collectionVariables.set(\"noId\", lastId+1);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "existing endpoint",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body\", function () {\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    var firstBikeName = pm.collectionVariables.get(\"firstBikeName\");\r",
+							"    pm.expect(jsonData.id).to.eql(1);\r",
+							"    pm.expect(jsonData.name).to.eql(firstBikeName);\r",
+							"    pm.expect(jsonData.category).to.eql('Bike');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/1/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "non-existing object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{noId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{noId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var newId = jsonData.id;\r",
+							"pm.collectionVariables.set(\"newId\", newId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"New bike\",\r\n    \"category\": \"Bike\",\r\n    \"price\": 10,\r\n    \"description\": \"Our new bike\",\r\n    \"salePrice\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "existing new object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body\", function () {\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.name).to.eql('New bike');\r",
+							"    pm.expect(jsonData.category).to.eql('Bike');\r",
+							"    pm.expect(jsonData.price).to.eql(10);\r",
+							"    pm.expect(jsonData.description).to.eql('Our new bike');\r",
+							"    pm.expect(jsonData.salePrice).to.eql(8);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{newId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{newId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Newer bike\",\r\n    \"category\": \"Bike\",\r\n    \"price\": 50,\r\n    \"description\": \"Our even newer bike\",\r\n    \"salePrice\": 48\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{newId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{newId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "existing edited object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check body\", function () {\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.name).to.eql('Newer bike');\r",
+							"    pm.expect(jsonData.category).to.eql('Bike');\r",
+							"    pm.expect(jsonData.price).to.eql(50);\r",
+							"    pm.expect(jsonData.description).to.eql('Our even newer bike');\r",
+							"    pm.expect(jsonData.salePrice).to.eql(48);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{newId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{newId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new list of products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var len = pm.collectionVariables.get('jsonLength');\r",
+							"\r",
+							"pm.test(\"Json has one more element\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(len+1);\r",
+							"});\r",
+							"\r",
+							"var firstBikeName = pm.collectionVariables.get(\"firstBikeName\");\r",
+							"pm.test(\"First element has good name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name).to.eql(firstBikeName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Category is valid\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    for(var i in jsonData){\r",
+							"        pm.expect(jsonData[i].category).to.be.oneOf([\"Bike\", \"E-bike\", \"Other\"]);   \r",
+							"    } \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "existing object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{newId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{newId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "object after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{newId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{newId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "non-existing object",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/{{newId}}/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						"{{newId}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list of products after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var len = pm.collectionVariables.get('jsonLength');\r",
+							"\r",
+							"pm.test(\"Json has start number of elements\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(len);\r",
+							"});\r",
+							"\r",
+							"var firstBikeName = pm.collectionVariables.get(\"firstBikeName\");\r",
+							"pm.test(\"First element has good name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].name).to.eql(firstBikeName);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Category is valid\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    for(var i in jsonData){\r",
+							"        pm.expect(jsonData[i].category).to.be.oneOf([\"Bike\", \"E-bike\", \"Other\"]);   \r",
+							"    } \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gr04.appdev.cloudns.ph/api/shop/",
+					"protocol": "https",
+					"host": [
+						"gr04",
+						"appdev",
+						"cloudns",
+						"ph"
+					],
+					"path": [
+						"api",
+						"shop",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "jsonLen",
+			"value": ""
+		},
+		{
+			"key": "jsonLength",
+			"value": ""
+		},
+		{
+			"key": "lastId",
+			"value": ""
+		},
+		{
+			"key": "nextId",
+			"value": ""
+		},
+		{
+			"key": "newId",
+			"value": ""
+		},
+		{
+			"key": "noId",
+			"value": ""
+		},
+		{
+			"key": "firstBikeName",
+			"value": ""
+		}
+	]
+}
