@@ -33,7 +33,7 @@ def index(request):
     cheapestEBikeS = Product.objects.filter(category='E-bike').all().aggregate(Min('salePrice'))
     cheapestEBike = list(cheapestEBike.values())[0]
     cheapestEBikeS = list(cheapestEBikeS.values())[0]
-    if cheapestEBikeS is not None and cheapestBike > cheapestBikeS:
+    if cheapestEBikeS is not None and cheapestEBike > cheapestEBikeS:
         cheapestBike = cheapestBikeS
 
     personalizationPrice = Product.objects.filter(name='Personalization option').all().aggregate(Min('price'))
@@ -56,19 +56,8 @@ class ShopViewSet(viewsets.ModelViewSet):
 # shopping
 def shop(request):
     products = Product.objects.all()
-    form = CartItemForm(request.POST or None)
-    if request.method == 'POST':
-        user = request.user
-        if not Order.objects.filter(customer=user).exists():
-            order = Order(customer=user)
-        else:
-            order = Order.objects.get(customer=user)
-        item = CartItem.objects.create(order=order, product=Product.objects.get(id=form.data['product']), quantity=form.data['quantity'])
-        item.save()
-
     context = {
-        'products': products, 
-        'form': form
+        'products': products
         }
     return render(request, 'KRRR/shop.html', context)
 
@@ -76,28 +65,31 @@ def shop(request):
 def product(request, id):
     form = CartItemForm(request.POST or None)
     if request.method == 'POST':
-        user = request.user
-        if not Order.objects.filter(customer=user, status='cart').exists():
-            order = Order(customer=user, status='cart')
-            order.save()
-        else:
-            order = Order.objects.get(customer=user, status='cart')
+        if request.user.is_authenticated:
+            user = request.user
+            if not Order.objects.filter(customer=user, status='cart').exists():
+                order = Order(customer=user, status='cart')
+                order.save()
+            else:
+                order = Order.objects.get(customer=user, status='cart')
 
-        if not CartItem.objects.filter(order=order, product=Product.objects.get(id=id)).exists():
-            item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
+            if not CartItem.objects.filter(order=order, product=Product.objects.get(id=id)).exists():
+                item = CartItem.objects.create(order=order, product=Product.objects.get(id=id), quantity=form.data['quantity'])
+            else:
+                item = CartItem.objects.get(order=order, product=Product.objects.get(id=id))
+                quantity = item.quantity + int(form.data['quantity'])
+                item.quantity = quantity
         else:
-            item = CartItem.objects.get(order=order, product=Product.objects.get(id=id))
-            quantity = item.quantity + int(form.data['quantity'])
-            item.quantity = quantity
+            return redirect('login')
             
-
         item.save()
         form = CartItemForm()
         return redirect('cart')
 
 
     product = Product.objects.get(id = id)
-    comments = Comment.objects.filter(product=product)
+    # comments = Comment.objects.filter(product=product)
+    comments = product.comment.all()
     context = {
         'product': product, 
         'comments': comments, 
@@ -200,7 +192,7 @@ def register(request):
 
 @login_required
 def account(request):
-    orders = Order.objects.filter(customer=request.user)
+    orders = request.user.orders.all()
     if request.method == "POST":
         updated_form = UserUpdateForm(request.POST, instance=request.user)
         if updated_form.is_valid():

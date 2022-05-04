@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KRRR</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <form method="POST"> {% csrf_token %}
             {{ form }}
             <p>You will paid {{cart_total}} NOK for {{ cart_quantity }} products</p>
-            <button type="submit">Pay</button>
+            <button class="save" type="submit">Pay</button>
 
         </form>
     </div>

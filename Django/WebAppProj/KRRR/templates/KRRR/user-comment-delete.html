@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KRRR</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}">
+
 </head>
 <body>
+    <h1>Delete comment</h1>
     <form method="POST">
         {% csrf_token %}
         <fieldset>
-            <legend>Delete Comment</legend>
-            <p>Are you sure you want to delete the "{{ comment.content }}" comment?</p>
+            <legend hidden="true">Delete Comment</legend>
+            <p class="info">Are you sure you want to delete the "{{ comment.content }}" comment?</p>
         </fieldset>
         <div class="form-func">
-            <button type="submit" class="warning">Yes, Delete</button>
-            <a href="{% url 'product' comment.product.id %}">Cancel</a>
-            
+            <button type="submit" class="save warning">Yes, Delete</button>
+            <button class="save"><a href="{% url 'product' comment.product.id %}">Cancel</a></button>       
         </div>
     </form>
 

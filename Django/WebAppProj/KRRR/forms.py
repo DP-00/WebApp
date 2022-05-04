@@ -36,6 +36,10 @@ class UserCommentForm(forms.ModelForm):
             'stars',
             'content'
         ]
+        labels = {
+            'stars': 'Your opinion',
+            'content': 'Describe your experience'
+        }
 
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=100)

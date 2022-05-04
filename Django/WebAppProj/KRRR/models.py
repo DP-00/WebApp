@@ -45,7 +45,7 @@ class Order(models.Model):
         ('done', 'order compleated'),
     )
 
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     order_date = models.DateTimeField(default=datetime.now())
     location = models.CharField(max_length=4, choices=LOCATION_TYPE, default='city')
     status = models.CharField(max_length=4, choices=ORDER_STATUS, default='cart')
@@ -53,7 +53,7 @@ class Order(models.Model):
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='cartitem')
 
 
 class Comment(models.Model):
@@ -64,8 +64,8 @@ class Comment(models.Model):
         ('4', 'Positive'),
         ('5', 'Excelant'),
     )
-    customer = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comment')
     comment_date = models.DateTimeField(default=datetime.now())
     stars = models.CharField(max_length=1, choices=STARS_TYPE, default='5')
     content = models.CharField(max_length=1000, blank=True)

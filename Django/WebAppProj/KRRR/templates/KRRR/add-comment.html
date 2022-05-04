@@ -12,12 +12,12 @@
     <form method="POST">
     {% csrf_token %}
         <fieldset>
-            <legend hidden>Add comment</legend>
+            <legend hidden>Your comment</legend>
             <h1>Add your comment</h1>
             {{ form.as_p }}
         </fieldset>
         <div>
-            <button id="save" type="submit">Save</button>
+            <button class="save" type="submit">Save</button>
         </div>
 
     </form>

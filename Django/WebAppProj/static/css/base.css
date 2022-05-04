@@ -9,9 +9,12 @@
     --grey3: #bec5c5;
 
     --blue2: #003232;
-    --blue1: rgb(14, 36, 36);
+    --blue1: #0E2424;
     --blue-text: #c9ffff;
     --blue-dark: #091818;
+
+    --red-warning: #61082a;
+    --red-hover: #320416;
 }
 
 * {
@@ -226,6 +229,7 @@ button{
     padding: 1.6rem;
     font-weight: bold;
     font-size: 1.6rem;
+    cursor: pointer;
 }
 
 button:hover {
