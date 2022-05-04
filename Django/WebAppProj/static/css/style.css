@@ -188,12 +188,12 @@
     height: 50rem;
     text-align: center;
     font-size: 2rem;
-    transition: 0.8s 0.4s; 
+    /* transition: 0.8s 0.4s;  */
     transform-style: preserve-3d;
     box-shadow: 0 0 5rem 0 rgba(0, 0, 0, 0.5);   
   }
      
-  .card:hover{
+  .card:hover, .card:active{
     transform: rotateY(180deg);
   }
 

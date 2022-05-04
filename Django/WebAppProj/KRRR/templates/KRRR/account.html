@@ -11,6 +11,10 @@
 <li><a href="{% url 'cart' %}">Cart</a></li>
 {% endblock menu %}
 
+{% block menu2 %}
+<li><a href="{% url 'logout' %}">Logout</a></li>
+{% endblock menu2 %}
+
 {% block content %}
 <section id="userdata">
     <h2>Manage your account</h2>
