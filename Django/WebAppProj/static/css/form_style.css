@@ -1,32 +1,24 @@
-#background {
-  overflow: hidden;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vW;
-  padding: 0;
-  border-radius: 0;
+h1 {
+    text-align: center;
+    font-size: 5rem;
 }
 
 form {
     background-color: var(--blue1);
-    margin: 15% auto;
+    margin: auto;
     padding: 5rem;
-    /* border: 1px solid var(--blue2); */
     width: 66%; /* Could be more or less, depending on screen size */
     line-height: 6.4rem;
     color: var(--grey3);
     position: relative;
     z-index: 1;
-  }
-
+    }
+  
 fieldset {
     border: none;
 }
-
-input {
+  
+input, select {
     width: 100%;
     background-color: var(--grey2);
     display: inline-block;
@@ -38,45 +30,31 @@ input {
     font-size: large;
 }
 
-a{
-   font-size: 2.4rem;
+p {
+    text-align: left;
 }
-
-button {
+  
+a{
+    font-size: 2.4rem;
+    margin: 5%;
+}
+  
+#save {
     float: right;
     font-weight: bold;
     font-size: 2.4rem;
     background-color: var(--blue2);
     width: 100%;
     margin-top: 2rem;
- }
+    border: 1px solid #ccc;
+}
 
- h1 {
-     text-align: center;
-     font-size: 5rem;
- }
+.helptext {
+    margin: 0;
+    font-size: small;
+}
 
- #options {
-     margin: 5%;
-     text-align: center;
- }
-
- a {
-     margin: 5%;
- }
-
- .helptext, ul {
-     margin: 0;
-     font-size: small;
- }
-
- ul {
-   list-style-type: none;
-   text-align: center;
- }
-
-
- li { 
-     display: inline-block;
-     padding: 0.5rem;
- }
+#options {
+    margin: 5%;
+    text-align: center;
+}
