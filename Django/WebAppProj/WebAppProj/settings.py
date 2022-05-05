@@ -61,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.template.context_processors.media',
 ]
 
 ROOT_URLCONF = 'WebAppProj.urls'
@@ -146,15 +145,15 @@ LOGIN_URL = "login"
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 # EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
-# SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY') 
+#SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY') 
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
-# EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
+EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-DEFAULT_FROM_EMAIL = 'some@gmail.com'
+DEFAULT_FROM_EMAIL = 'krrrteam@gmail.com'
 
 # SECURE_HSTS_SECONDS = 30  # Unit is seconds; *USE A SMALL VALUE FOR TESTING!*
 SECURE_HSTS_SECONDS = 2_592_000  # 30 days
