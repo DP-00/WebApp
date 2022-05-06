@@ -42,22 +42,13 @@ p {
   
 .save {
     float: right;
-    font-weight: bold;
     font-size: 2.4rem;
     background-color: var(--blue2);
     width: 100%;
     margin-top: 2rem;
-    border: 1px solid #ccc;
-    cursor: pointer;
 }
 
-.warning {
-    background-color: var(--red-warning);
-}
 
-.warning:hover {
-    background-color: var(--red-hover);
-}
 
 .helptext {
     margin: 0;
