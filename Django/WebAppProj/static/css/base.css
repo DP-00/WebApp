@@ -245,3 +245,38 @@ button:hover {
 .warning:hover {
     background-color: var(--red-hover);
 }
+
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5rem;
+    width: 66%;
+    border-radius: 0;
+    padding: 0.5rem;
+
+}
+
+table th {
+    font-size: 3rem;
+    font-weight: 700;
+    border-radius: 0;
+    padding: 0.5rem;
+}
+
+table td {
+    font-size: 2rem;
+    font-weight: 500;
+    border-radius: 0;
+    padding: 0.5rem;
+
+}
+
+table tr {
+    padding: 15rem;
+    border-radius: 0;
+
+
+}
+
+table tr:hover {background-color: var(--blue1);}
