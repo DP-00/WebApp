@@ -86,9 +86,7 @@ def product(request, id):
         form = CartItemForm()
         return redirect('cart')
 
-
     product = Product.objects.get(id = id)
-    # comments = Comment.objects.filter(product=product)
     comments = product.comment.all()
     context = {
         'product': product, 
@@ -152,6 +150,24 @@ def cart(request):
         'cart_quantity' : cart_quantity
         }
     return render(request, 'KRRR/cart.html', context)
+
+
+def change_cart(request, id):
+    item = CartItem.objects.get(id = id)
+    form = CartItemForm(request.POST or None)
+    if request.method == 'POST':
+        item.quantity = form.data['quantity']
+        if item.quantity == '0':
+            item.delete()
+        else:
+            item.save()
+        return redirect(cart)
+    context = {
+        'form': form,
+        'item': item
+    }
+    return render(request, 'KRRR/change-cart.html', context)
+
 
 
 def checkout(request):

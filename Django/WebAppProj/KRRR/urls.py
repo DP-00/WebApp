@@ -19,6 +19,7 @@ urlpatterns = [
     path('shop/<int:id>/add-comment', views.add_comment, name='add-comment'),
     path('shop/<int:id>/user-comment-delete', views.user_comment_delete, name='user-comment-delete'),
     path('cart/', views.cart, name="cart"),
+    path('cart/<int:id>/change-cart', views.change_cart, name="change-cart"),
     path('checkout/', views.checkout, name="checkout"),
 
 # customer urls

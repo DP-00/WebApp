@@ -1,0 +1,25 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KRRR</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form_style.css' %}">
+
+</head>
+<body>
+    <h1>How many of "{{ item.product.name }}" do you want?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend hidden="true">Change amount</legend>
+        </fieldset>
+        <div class="form-func">
+            {{ form.quantity }}
+            <button type="submit" class="save">Save</button>
+            <a href="{% url 'cart' %}"><button type="button" class="save">Cancel</button></a>       
+        </div>
+    </form>
+
+</body>

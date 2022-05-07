@@ -23,7 +23,7 @@
                     </tr>
                     {% for product in products %}
                     <tr>
-                            <td><a href="{% url 'product' product.product.id %}">{{product.product.name}}</a></td>
+                            <td><a href="{% url 'change-cart' product.id %}">{{product.product.name}}</a></td>
                             <td>{{product.product.price}} NOK</td>
                             <td>{{product.quantity}}</td>
                             <td></td>
