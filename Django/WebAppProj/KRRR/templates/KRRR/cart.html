@@ -1,5 +1,6 @@
 {% extends 'KRRR/main.html' %}
 {% load static %}
+{% load mathfilters %}
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
@@ -28,7 +29,7 @@
                             <td><a href="{% url 'change-cart' product.id %}">{{product.product.name}}</a></td>
                             <td>{{product.product.price}} NOK</td>
                             <td>{{product.quantity}}</td>
-                            <td></td>
+                            <td>{{ product.quantity|mul:product.product.price }} NOK</td>
                     </tr>
                     {% endfor %}
                 </table>
