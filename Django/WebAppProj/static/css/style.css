@@ -16,6 +16,10 @@
   position: absolute;
 }
 
+#hero-container h1 {
+  text-align: left;
+}
+
 #heroText {
   display: inline-block;
   width: 16rem;
