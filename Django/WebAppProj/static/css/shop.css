@@ -9,11 +9,16 @@ section {
   }
 
 .card {
-    display: grid;
-    padding: 1.6rem;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    align-items: center;
+  width: 100%;
+  display: grid;
+  padding: 1.6rem;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.card img {
+  width: 30vw;
 }
 
 .card p {
@@ -24,6 +29,7 @@ section {
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding: 2rem;
 }
 
 .content a {

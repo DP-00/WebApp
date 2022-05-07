@@ -3,6 +3,7 @@
 
 {% block extra_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+
 {% endblock extra_head %}
 
 {% block menu %}
@@ -10,8 +11,9 @@
 {% endblock menu %}
 
 {% block content %}
+        {% if products|length > 0 %}
         <h1>Shopping Cart</h1>
-        
+
         <div class="cart">
             <section class="products">
                 <table>
@@ -30,8 +32,7 @@
                     </tr>
                     {% endfor %}
                 </table>
-                
-                
+                      
             </section>
             <section class="cart-total">
                 <p>
@@ -40,4 +41,10 @@
                 <a href="{% url 'checkout' %}">Proceed to Checkout</a>
             </section>
         </div>
+        {% else %}
+        <section>
+            <p>Your cart is empty.</p>
+            <button><a href="{%url 'shop' %}">Go back to shopping</a></button>
+        </section>
+        {% endif %}
 {% endblock content %}
