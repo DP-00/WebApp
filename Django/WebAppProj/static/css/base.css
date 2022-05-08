@@ -54,9 +54,6 @@ header, footer {
     border-radius: 0;
 }
 
-#account {
-    padding: 3rem;
-}
 
 footer {
     display: flex;
@@ -154,6 +151,7 @@ nav {
 #menu-button{
     display: none;
 }
+
 
 nav button{
     background-color: var(--blue2);
