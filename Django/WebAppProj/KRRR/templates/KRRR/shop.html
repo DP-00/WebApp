@@ -25,7 +25,11 @@
             <img src="{{MEDIA_URL}}/{{ product.photo }}">
             <div class="content">
                 <h2>{{ product.name }}</h2>
+                {% if product.pricePerMinute %}
+                <p>{{ product.price }}NOK per minute</p>
+                {% else %}
                 <p>{{ product.price }}NOK</p>
+                {% endif %}
                 <a href="{% url 'product' product.id %}"><button name="more">More</button></a>
             </div>
         </div>

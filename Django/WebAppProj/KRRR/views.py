@@ -17,6 +17,8 @@ from .serializers import ProductSerializer
 from django.db.models import Sum, Min
 from django.conf import settings
 
+import datetime
+
 
 #  index - main page
 def index(request):
@@ -141,14 +143,13 @@ def cart(request):
         order = Order.objects.get(customer=user, status='cart')
     products = CartItem.objects.filter(order=order)
 
-    cart_total = sum([product.product.price*product.quantity for product in products])
     cart_quantity = sum([product.quantity for product in products])
     context = {
         'order': order, 
         'products': products,
-        'cart_total': cart_total,
-        'cart_quantity' : cart_quantity
+        'cart_quantity' : cart_quantity,
         }
+
     return render(request, 'KRRR/cart.html', context)
 
 
@@ -173,25 +174,59 @@ def change_cart(request, id):
 def checkout(request):
     order = Order.objects.get(customer=request.user, status='cart')
     products = CartItem.objects.filter(order=order)
-    cart_total = sum([product.product.price*product.quantity for product in products])
     cart_quantity = sum([product.quantity for product in products])
     form = UserOrderForm(request.POST or None)
+    minutes = 0
     if request.method == 'POST':
         order.location = form.data['location']
         order.order_date = form.data['order_date']
-        order.save()
+        order.return_date = form.data['return_date']
         order.status = 'paid'
         order.save()
-        return redirect('shop')
-
+        order_date = datetime.datetime.strptime(order.order_date, '%Y-%m-%dT%H:%M')
+        return_date = datetime.datetime.strptime(order.return_date, '%Y-%m-%dT%H:%M')
+        minutes = (return_date - order_date).total_seconds()/60
+        
+        return redirect('checkout-success', order.id)
+    cart_total = 0
+    for product in products:
+        if product.product.pricePerMinute:
+            cart_total += minutes*product.product.price*product.quantity
+        else:
+            cart_total += product.product.price*product.quantity
+    
     context = {
         'products': products,
         'cart_total': cart_total,
         'cart_quantity' : cart_quantity,
+        'minutes': minutes,
         'form': form,
         }
     return render(request, 'KRRR/checkout.html', context)
 
+def checkout_success(request, id):
+    order = Order.objects.get(id=id)
+    products = CartItem.objects.filter(order=order)
+    cart_quantity = sum([product.quantity for product in products])
+    order_date = order.order_date
+    return_date = order.return_date
+    minutes = (return_date - order_date).total_seconds()/60
+    cart_total = 0
+    for product in products:
+        if product.product.pricePerMinute:
+            cart_total += minutes*product.product.price*product.quantity
+        else:
+            cart_total += product.product.price*product.quantity
+    
+    context = {
+        'products': products,
+        'cart_total': cart_total,
+        'cart_quantity' : cart_quantity,
+        'minutes': minutes
+        }
+    return render(request, 'KRRR/checkout-success.html', context)
+
+        
 
 # customer and account management
 def register(request):

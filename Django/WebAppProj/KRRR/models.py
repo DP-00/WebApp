@@ -28,6 +28,7 @@ class Product(models.Model):
     description = models.CharField(max_length=250)
     photo = models.FileField(blank=True, upload_to='products')
     salePrice = models.IntegerField(blank=True, null=True)
+    pricePerMinute = models.BooleanField(default=False)
 
     def clean(self):
         if (self.salePrice is not None) and (self.salePrice >= self.price):
@@ -47,6 +48,7 @@ class Order(models.Model):
 
     customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     order_date = models.DateTimeField(default=datetime.now())
+    return_date = models.DateTimeField(default=datetime.now())
     location = models.CharField(max_length=4, choices=LOCATION_TYPE, default='city')
     status = models.CharField(max_length=4, choices=ORDER_STATUS, default='cart')
 

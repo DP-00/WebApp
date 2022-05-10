@@ -27,7 +27,11 @@
                     {% for product in products %}
                     <tr>
                             <td><a href="{% url 'change-cart' product.id %}">{{product.product.name}}</a></td>
-                            <td>{{product.product.price}} NOK</td>
+                            {% if product.pricePerMinute %}
+                            <td>{{ product.product.price }}NOK per minute</td>
+                            {% else %}
+                            <td>{{ product.product.price }}NOK</td>
+                            {% endif %}
                             <td>{{product.quantity}}</td>
                             <td>{{ product.quantity|mul:product.product.price }} NOK</td>
                     </tr>
@@ -36,9 +40,7 @@
                       
             </section>
             <section class="cart-total">
-                <p>
-                    Total: {{ cart_total }} NOK. Number of items: {{ cart_quantity }}
-                </p>
+                <p>Number of items: {{ cart_quantity }}</p>
                 <a href="{% url 'checkout' %}">Proceed to Checkout</a>
             </section>
         </div>

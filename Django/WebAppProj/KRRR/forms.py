@@ -22,11 +22,13 @@ class UserOrderForm(forms.ModelForm):
         model = Order
         fields = [
             'location',
-            'order_date'
+            'order_date',
+            'return_date'
         ]
         widgets = {
             'location': forms.Select(),
-            'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
+            'order_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'return_date': forms.DateTimeInput(attrs={'type': 'datetime-local'})
         }
 
 class UserCommentForm(forms.ModelForm):
