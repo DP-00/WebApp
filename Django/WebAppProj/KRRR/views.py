@@ -111,7 +111,7 @@ def add_comment(request, id):
         if form.is_valid():
             c.content=form.data['content']
             c.stars=form.data['stars']
-            c.comment_date=datetime.now()
+            c.comment_date=datetime.datetime.now()
             c.save()
             return redirect('product', id)
 

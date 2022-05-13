@@ -13,7 +13,6 @@
         <h1>Checkout</h1>
         <form method="POST"> {% csrf_token %}
             {{ form }}
-            <p>You will paid {{cart_total}} NOK for {{ cart_quantity }} products</p>
             <button class="save" type="submit">Pay</button>
 
         </form>
