@@ -25,12 +25,8 @@ The project covers both frontend and backend for a bicycle rental website. The c
    - see all user comments fo reach product
    - delete any user comment
 
-## Modules required
+## Requirements
 All of the modules required to run the projects are listed in `requirements.txt` file.
-1. Set `MEDIA_ROOT` in line 22 to match your domain name or comment this line and uncomment line 21 if you are running the project locally.
-2. In line 37 add your domain name and server's IP to the list of allowed hosts.
-3. Set `STATIC_ROOT` in line 136 to match your domain name or change it to an empty string if you are running the project locally.
-4. Configure the email sending host in lines 150 - 156 or comment them out if you don't have an email provider prepared. Then you won't be able to get emails for password changing.
 
 ## Environment variables
 The project needs two environment variables:
@@ -38,6 +34,10 @@ The project needs two environment variables:
 
 ## Configuration
 To configure the project, open `Django/WebAppProj/WebAppProj/settings.py`. 
+1. Set `MEDIA_ROOT` in line 22 to match your domain name or comment this line and uncomment line 21 if you are running the project locally.
+2. In line 37 add your domain name and server's IP to the list of allowed hosts.
+3. Set `STATIC_ROOT` in line 136 to match your domain name or change it to an empty string if you are running the project locally.
+4. Configure the email sending host in lines 150 - 156 or comment them out if you don't have an email provider prepared. Then you won't be able to get emails for password changing.
 
 ## Usage
 To run the project, use the following commands:
