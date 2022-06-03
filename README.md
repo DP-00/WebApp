@@ -5,10 +5,10 @@
 The project covers both frontend and backend for a bicycle rental website. The company is called KRRR - Keep Roling Roling Roling.
 
 ## Project navigation
-- HTML Files: Django/ WebAppProj/ templates
-- JS Files: Django/ WebAppProj/ static/ js
-- CSS Files: Django/ WebAppProj/ static/ css
-- Images: Django/ WebAppProj/ static/ img
+- HTML Files: `Django/ WebAppProj/ templates`
+- JS Files: `Django/ WebAppProj/ static/ js`
+- CSS Files: `Django/ WebAppProj/ static/ css`
+- Images: `Django/ WebAppProj/ static/ img`
 
 ## User groups
 1. Customer, can do the following:
