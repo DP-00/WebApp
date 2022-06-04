@@ -1,8 +1,8 @@
-
+// path for the map resources
 const srcPath = "../../static/images/map/";
 
 
-// basemap
+// creating basemap with Open Streen Map
 var map = new ol.Map({
     target: 'map',
     layers: [
@@ -16,7 +16,11 @@ var map = new ol.Map({
     })
 });
 
+// creating style for photo points
+
 var customStyleFunction = function(feature) {
+    
+    // taking photo path from geojson file and setting right file to the right photo
     const file = feature.get('file');
     const path = srcPath + file +"Icon.jpg";
     
@@ -33,6 +37,7 @@ var customStyleFunction = function(feature) {
 })];
 };
 
+// creating photo layer
 
 var vectorPhoto = new ol.layer.Vector({
     source: new ol.source.Vector({
@@ -43,6 +48,8 @@ var vectorPhoto = new ol.layer.Vector({
 });
 
 map.addLayer(vectorPhoto);
+
+// creating shop layer with points
 
 var vectorShop = new ol.layer.Vector({ source: new ol.source.Vector() });
 
@@ -62,6 +69,9 @@ var shopCentrum = new ol.Feature({
 
 vectorShop.getSource().addFeature(shopCentrum);
 
+
+// styling shop points
+
 var iconStyle = new ol.style.Style({
     image: new ol.style.Icon({
     opacity: 1,
@@ -76,53 +86,71 @@ shopCentrum.setStyle(iconStyle);
 map.addLayer(vectorShop);
 
 
-// display window on click
+
+
+
+// display pop-up window on click on map feature
 map.on('click', function (evt) {
     const feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
     return feature;
     });
 
-    
-
+   
     let mapInfo = document.getElementById('map-info-content');
 
+    // if in the place where the user clicked was any feature ( shop point or photo)
+    // window display information regarding clicked point
+    
     if (feature) {
-    const name = feature.get('name');
-    if (name == "Moa station" || name == "Centrum station")
-    {
-        mapInfo.innerHTML=null;
-        const h3 = document.createElement("h3");
-        const p = document.createElement("p");
-        h3.innerText = name;
-        p.innerText = feature.get('description');
-        mapInfo.appendChild(h3)
-        mapInfo.appendChild(p)
-        mapInfo.classList.add("no-grid");
+        
+        // takes feature name from the geojson file
+        const name = feature.get('name');
+        
+        
+       // different information are displayed for shop points and for photos
+       // content for shops
+        if (name == "Moa station" || name == "Centrum station")
+        {
+            // creating and appending needed elements
+            mapInfo.innerHTML=null;
+            const h3 = document.createElement("h3");
+            const p = document.createElement("p");
+            h3.innerText = name;
+            p.innerText = feature.get('description');
+            mapInfo.appendChild(h3)
+            mapInfo.appendChild(p)
+            
+            // adding class for styling without photo
+            mapInfo.classList.add("no-grid");
+        }
+        
+        // content for photos
+        else {
+            
+            // creating and appending needed elements
+            const desc = feature.get('desc');
+            const file = feature.get('file');
+            const path = srcPath + file +".jpg";
 
-    }
-    else{
-        const desc = feature.get('desc');
-        const file = feature.get('file');
-        const path = srcPath + file +".jpg";
+            mapInfo.innerHTML=null;
 
-        mapInfo.innerHTML=null;
+            const img = document.createElement("img");
+            const div = document.createElement("div");
+            const h3 = document.createElement("h3");
+            const p = document.createElement("p");
 
-        const img = document.createElement("img");
-        const div = document.createElement("div");
-        const h3 = document.createElement("h3");
-        const p = document.createElement("p");
+            img.src = path;
+            h3.innerText = name;
+            p.innerText = desc;
 
-        img.src = path;
-        h3.innerText = name;
-        p.innerText = desc;
-
-        mapInfo.appendChild(img)
-        mapInfo.appendChild(div)
-        div.appendChild(h3)
-        div.appendChild(p)
-
-        mapInfo.classList.remove("no-grid");
-    }
+            mapInfo.appendChild(img)
+            mapInfo.appendChild(div)
+            div.appendChild(h3)
+            div.appendChild(p)
+            
+            // adding class for styling with photo
+            mapInfo.classList.remove("no-grid");
+        }
     
 
 
