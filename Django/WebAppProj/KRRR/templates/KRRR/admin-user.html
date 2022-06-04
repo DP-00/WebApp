@@ -10,14 +10,22 @@
 
 <div class="content">
     <fieldset>
+        <!-- Here we are using values of instance attributes -->
         <legend>{{ user.username }}</legend>
         <p>First name: {{ user.first_name }}</p>
         <p>Last name: {{ user.last_name }}</p>
         <p><email>Email: {{ user.email }}</email></p>
         <div class="dw-links">
+            <!-- All URLs refers to urls from the URLS.PY file and its particualr attributes -->
             <a href="{% url 'admin-user-orders' user.username %}" class="detail">Orders</a>
+            <!-- Here HREF is resloved as a URL with the name ADMIN-USER-ORDERS and 
+                 with the addiotnial parameter username -->
             <a href="{% url 'admin-user-comments' user.username %}" class="detail">Comments</a>
+            <!-- Here HREF is resloved as a URL with the name ADMIN-USER-COMMENTS and 
+                 with the addiotnial parameter username -->
             <a href="{% url 'user-delete' user.id %}" class="warning">Delete</a>
+            <!-- Here HREF is resloved as a URL with the name USER-DELETE and 
+                 with the addiotnial parameter id -->
         </div>
     </fieldset>
 </div>

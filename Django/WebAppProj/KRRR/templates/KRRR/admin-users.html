@@ -11,10 +11,13 @@
 <div class="content">
     <fieldset>
         <legend>USERS</legend>
+        <!-- Here we iterate through every instace of the USERS object
+             which were provided by database  -->
         {% for user in users %}
     
         <div class="element">
             <p>{{ user.username }}</p>
+            <!-- Here we use one of instance's attribute  -->
             <div class="dw-links">
                 <a href="{% url 'admin-user' user.id %}" class="detail">Details</a>
                 <a href="{% url 'user-delete' user.id %}" class="warning">Delete</a>

@@ -1,13 +1,17 @@
 {% extends 'KRRR/admin-layout.html' %}
+<!-- Here we specify that THIS template inherits features from ADMIN-LAYOUT.HTML
+     adn extends it with content -->
 {% load static %}
 
 
 {% block extra_head %}
+    <!-- Here we're extanding the content of header block from ADMIN-LAYOUT.HTML -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/aa_style.css' %}">
 {% endblock extra_head %}
 
 
 {% block content %}
+<!-- Here we're extanding the content of main content block from ADMIN-LAYOUT.HTML -->
 
 <div class="content">
     <fieldset>

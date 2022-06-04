@@ -12,6 +12,7 @@
     <fieldset>
         <legend>ORDERS</legend>
         {% if not orders %}
+            <!-- Checking if the QuerySet is empty and if page renders differently -->
             <p id="del-q">User has not placed any orders yet.</p>
         {% else %}
             {% for order in orders %}

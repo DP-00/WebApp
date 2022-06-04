@@ -1,12 +1,21 @@
+<!-- This part is responsible for paginaiton
+
+    If site view has pagination attribute set,
+    Django can separate QuerySet into pages objects automatically
+-->
+
 <div class="pagination">
     {% if is_paginated %}
+    <!-- Parameter is set -->
     
         {% if page_obj.has_previous %}
+        <!-- Here checking if the page object has a page before it -->
             <a href="?page=1">First</a>
             <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
         {% endif %}
         
         {% if page_obj.has_next %}
+        <!-- Here checking if the page object has a page after it -->
             <a href="?page={{ page_obj.next_page_number }}">Next</a>
             <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
         {% endif %}
