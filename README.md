@@ -53,5 +53,5 @@ python Django/WebAppProj/manage.py migrate
 python Django/WebAppProj/manage.py runserver
 ```
 Then, you need to add data to the database for the page to work properly.
-Open in your browser at http://localhost:8000/admin/ or http://127.0.0.1:8000/admin/. Add at least one product for each category (include a product named 'Personalization option'). Create at least one comment.
+Open in your browser at http://localhost:8000/admin/ or http://127.0.0.1:8000/admin/. Log in with your superuser data. Add at least one product for each category (include a product named 'Personalization option'). Create at least one 5-star comment.
 Now you can open the website at http://localhost:8000/ or http://127.0.0.1:8000/
