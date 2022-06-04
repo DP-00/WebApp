@@ -3,10 +3,12 @@
 
 {% load humanize %}
 
+<!-- block that extands main template -->
 {% block extra_head %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock extra_head %}
 
+<!-- block that extands main template -->
 {% block menu %}
   <li><a href="#about-us">About us</a></li>
   <li><a href="#our-products">Products</a></li>
@@ -15,18 +17,21 @@
   <li><a href="#contact">Contact</a></li>
 {% endblock menu %}
 
+<!-- block that extands main template -->
 {% block content %}
   <section id="hero">
+    
+    <!--  overlay for gradient   -->
     <div>
       <div class="overlay inner"></div>
-        <!-- <img class="inner" src="{% static 'images/hero_bikes.png' %}" alt="Two cyclist standing next to their bikes"> -->
     </div>
     <div id="hero-container">
       <h1>Bicycle rentals for<br>modern folks</h1>
 
+      <!--   changeable text in hero section     -->
       <script src="../../../static/js/hero.js"></script>
-
       <p> Choose <span id="heroText">modern</span>  lifestyle!</p>
+      
       <button onclick="location.href='shop/'">Choose now!</button>
     </div>
   </section>
@@ -57,18 +62,22 @@
           BYOWT concept: Bring Your Own Winter Tires! Nothing 
           brings a warm home feeling better than BYOWT!</p>
   
+    <!--  container for three product cards   -->
     <div class="card-container">
+      
+    <!--  card 1 (all cards have the same structure)  -->
       <div class="card">
           <div class="card-front">
               <div class="card-image">
-                  <div class="overlay inner"></div>
+                 
+                <!--  overlay for gradient   -->
+                <div class="overlay inner"></div>
                     <picture>
                       <source type="image/webp" media="(min-width: 760px)" srcset="{% static 'images/bikeCard.webp' %}">
                       <source type="image/jpg" media="(min-width: 760px)" srcset="{% static 'images/bikeCard.jpg' %}">
                       <source type="image/webp" srcset="{% static 'images/bikeCardPhone.webp' %}">
                       <img class="inner" src="{% static 'images/bikeCardPhone.jpg' %}" alt="Bike with the nature in the background">
                     </picture>
-
 
               </div>
               <div class="card-text">
@@ -83,10 +92,13 @@
                 <li>Helmet included in price</li>
                 <li>You can leave the bike in another location! <br><i><sup>* 100 NOK fee</sup></i></li>
               </ul>
+            
+              <!--  lowest price for specific product that is loaded from database  -->
               <div class="price">from <div class="price-num">{{cheapestBike}} NOK</div>per minute</div>
           </div>
       </div>     
 
+      <!--  card 2 (all cards have the same structure)  -->
       <div class="card">
         <div class="card-front">
           <div class="card-image">
@@ -113,7 +125,8 @@
           <div class="price">from <div class="price-num">{{cheapestEBike}} NOK</div>per minute</div>
         </div>
       </div>
-        
+       
+      <!--  card 3 (all cards have the same structure)  -->
       <div class="card">
         <div class="card-front">
           <div class="card-image">
@@ -147,8 +160,11 @@
   <section id="places-to-explore" aria-hidden="true">
     <h2>Places to explore</h2>  
     <div id="map-container">
+      
+      <!--  interactive map is rendered in this block  -->
       <div id="map" class="map"></div>
 
+      <!--  window with information about selected point      -->
       <div id="map-info">
         <div id="map-info-content" class="map-info-content no-grid">
             The city offers many places to explore! Check the map to see where you can go from our renting points. 
@@ -158,6 +174,7 @@
 
     </div>
 
+<!--  libraries for map programming    -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/css/ol.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.css" />
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.13.0/build/ol.js"></script>
@@ -274,6 +291,8 @@
   <section id="comments">
     <h2>What our customers say about us:</h2>
     <div class="comment">
+      
+      <!--    random comment from the database with customer name and number of stars    -->
       <p>{{comment.comment_date|naturaltime}} {{comment.customer}} said: </p>
       <p>
           {% for star in ""|ljust:comment.stars %}
