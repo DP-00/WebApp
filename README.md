@@ -40,15 +40,18 @@ The project needs two environment variables:
 ## Configuration
 To configure the project, open `Django/WebAppProj/WebAppProj/settings.py`. 
 1. Set `MEDIA_ROOT` in line 22 to match your domain name or comment this line and uncomment line 21 if you are running the project locally.
-2. In line 37 add your domain name and server's IP to the list of allowed hosts.
+2. In line 37 add your domain name and server's IP to the list of allowed hosts. If you are going to run the project locally, you don't have to do that.
 3. Set `STATIC_ROOT` in line 136 to match your domain name or change it to an empty string if you are running the project locally.
 4. Configure the email sending host in lines 150 - 156 or comment them out if you don't have an email provider prepared. Then you won't be able to get emails for password changing.
 
 ## Usage
+First, create a superuser: `python Django/WebAppProj/manage.py createsuperuser`.
 To run the project, use the following commands:
 ```
 python Django/WebAppProj/manage.py makemigrations
 python Django/WebAppProj/manage.py migrate
 python Django/WebAppProj/manage.py runserver
 ```
-Open in your browser at http://localhost:8000 or http://127.0.0.1:8000/
+Then, you need to add data to the database for the page to work properly.
+Open in your browser at http://localhost:8000/admin/ or http://127.0.0.1:8000/admin/. Add at least one product for each category (include a product named 'Personalization option'). Create at least one comment.
+Now you can open the website at http://localhost:8000/ or http://127.0.0.1:8000/
