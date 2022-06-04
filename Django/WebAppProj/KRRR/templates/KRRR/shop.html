@@ -1,16 +1,21 @@
+<!-- Setting up inheritence -->
 {% extends 'KRRR/main.html' %}
+<!-- Load static files - images, CSS and JS -->
 {% load static %}
 
 {% block extra_head %}
+    <!-- Additional elements specific to this page added to the base template -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/shop.css' %}">
 {% endblock extra_head %}
 
 {% block menu %}
+    <!-- Additional elements specific to this page added to the base template -->
     <li><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'cart' %}">Cart</a></li>
 {% endblock menu %}
 
 {% block content %}
+    <!-- Additional elements specific to this page added to the base template -->
     <section id="intro">
         <h1>Our Products</h1>
         <p class="text-section">We have 120 bikes available in Ålesund. New bikes
@@ -20,8 +25,10 @@
             brings a warm home feeling better than BYOWT!</p>
     </section>
     <section id="products">
+        <!-- For loop going through each product available in the shop -->
         {% for product in products %}
         <div class="card">
+            <!-- Getting the properties of each product -->
             <img src="{{MEDIA_URL}}/{{ product.photo }}">
             <div class="content">
                 <h2>{{ product.name }}</h2>
